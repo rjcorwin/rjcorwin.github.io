@@ -18,18 +18,21 @@ In this post I hope to get you excited about the potential of Ground Computing a
 Back in 2011 I worked Mathew Lippencott and Molly Danielson of [Cloacina](http://mdml.co/portfolio/bathrooms-are-gross-so-were-redesigning-them/) on an online app that publishes historical environmental data about compost piles to surrounding neighbors, the same application today could be hosted on a $35 Raspberry Pi computer and the web app could be broadcasted via local WiFi with the help from the a project I worked on called Apitronic's Hive app. 
 See the summary of that platform on the successfully funded Kickstarter page [here]() and the code is on Github [here](](https://github.com/apitronics/Hive).
 
-![Arduino monitoring a compost pile and sending data through text messages to the Cloud. The same thing could now be built for less without the need for the Cloud server.]()
+![Arduino monitoring a compost pile and sending data through text messages to the Cloud. The same thing could now be built for less without the need for the Cloud server.](rodent-resistant-composter.png)
+> Arduino monitoring a compost pile and sending data through text messages to the Cloud. The same thing could now be built for less without the need for the Cloud server.
 
 In Ghana where it is cost prohibitive to have to students online all day to access resources like Khan Academy, Open Learning Exchange Ghana and Open Learning Exchange International had been running a large box server in a small community to provide access to such resources. 
 Last year with funding from USAID's All Children Reading program we were able to deploy to 24 schools where we installed Raspberry Pi computers as the school servers, and with the help of CouchDB, we were able to easily create a sneakernet where we could deliver more content from the Cloud and feedback could sync back up to the Cloud.
 
 ![The first six Raspberry Pi servers with the BeLL Software deployed in Ghana.](ghana-reads-raspberry-pi-deployment.jpg)
+> The first six Raspberry Pi servers with the BeLL Software deployed in Ghana.
 
 These small Linux computers are good for more than just serving up web apps, they can also do the data collection and even automation needed on the ground.
 For example, the Fido project uses a Raspberry Pi with a connected USB temperature sensor to detect when a greenhouse is too hot or too cold, and when outside the bounds set by the Farmer in the local web app, text messages the farmer through the local WiFi connection (text messages can be sent for free via emails by the way). 
 See the demo of a Fido in action at Wild Miller Gardens [here]() and the check out the code on Github over [here](). 
 
-![Within the first few weeks of having installed Fido, farmer Joel of Wild Miller Garden was alerted via text message that it was getting too cold in his Greenhouse at night for the vegetables he was growing.]()
+![Within the first few weeks of having installed Fido, farmer Joel of Wild Miller Garden was alerted via text message that it was getting too cold in his Greenhouse at night for the vegetables he was growing.](joel-and-fido.png)
+> Within the first few weeks of having installed Fido, farmer Joel of Wild Miller Garden was alerted via text message that it was getting too cold in his Greenhouse at night for the vegetables he was growing.
 
 
 ## Thinking about an Open Ground SDK
