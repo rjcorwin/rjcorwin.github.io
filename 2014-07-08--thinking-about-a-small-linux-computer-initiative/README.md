@@ -15,24 +15,25 @@ But it's not just about hosting web apps, the economics of "small Linux" can be 
 In this post I hope to get you excited about the potential of Ground Computing and explain how we can all benefit from each others work in Ground Computing regardless of the field we are looking to apply this to.
 
 ## Our journey from the Cloud to the Ground, a summary of recent Ground Server deployments
-Back in 2011 I worked Mathew Lippencott and Molly Danielson of [Cloacina](http://mdml.co/portfolio/bathrooms-are-gross-so-were-redesigning-them/) on an online app that publishes historical environmental data about compost piles to surrounding neighbors, the same application today could be hosted on a $35 Raspberry Pi computer and the web app could be broadcasted via local WiFi with the help from the a project I worked on called Apitronic's Hive app. 
-See the summary of that platform on the successfully funded Kickstarter page [here]() and the code is on Github [here](https://github.com/apitronics/Hive).
 
-![Arduino monitoring a compost pile and sending data through text messages to the Cloud. The same thing could now be built for less without the need for the Cloud server.](rodent-resistant-composter.png)
-> Arduino monitoring a compost pile and sending data through text messages to the Cloud. The same thing could now be built for less without the need for the Cloud server.
-
-In Ghana where it is cost prohibitive to have students online all day to access resources like Khan Academy, Open Learning Exchange Ghana and Open Learning Exchange International had been running a large box server in a small community to provide access to such resources. 
-Last year with funding from USAID's All Children Reading program we were able to deploy to 24 schools where we installed Raspberry Pi computers as the school servers, and with the help of CouchDB, we were able to easily create a sneakernet where we could deliver more content from the Cloud and feedback could sync back up to the Cloud.
+In Ghana where it is cost prohibitive to have students online all day to access resources like [Khan Academy](https://www.khanacademy.org/), [Open Learning Exchange Ghana](http://cms.oleghana.org/) and [Open Learning Exchange International](http://www.ole.org/) had been running a large box server in a small community to provide access to such resources. 
+Last year with funding from USAID's All Children Reading program we were able launch the [Ghana Reads program](http://ghanareads.ole.org.gh/) in 24 schools where we installed Raspberry Pi computers as the school servers, and with the help of [CouchDB](http://couchdb.apache.org/), we were able to easily create a [sneakernet](http://en.wikipedia.org/wiki/Sneakernet) where we could deliver more content from the Cloud and feedback could sync back up to the Cloud. The school servers published the BeLL Web App which helped teachers plan their course activities and sync resources to $60 tablets.   
 
 ![The first six Raspberry Pi servers with the BeLL Software deployed in Ghana.](ghana-reads-raspberry-pi-deployment.jpg)
 > The first six Raspberry Pi servers with the BeLL Software deployed in Ghana.
 
 These small Linux computers are good for more than just serving up web apps, they can also do the data collection and even automation needed on the ground.
 For example, the Fido project uses a Raspberry Pi with a connected USB temperature sensor to detect when a greenhouse is too hot or too cold, and when outside the bounds set by the Farmer in the local web app, text messages the farmer through the local WiFi connection (text messages can be sent for free via emails by the way). 
-See the demo of a Fido in action at Wild Miller Gardens [here]() and the check out the code on Github over [here](). 
+See the demo of a Fido in action at Wild Miller Gardens [here]() and the check out the code on Github over [here]().
 
 ![Within the first few weeks of having installed Fido, farmer Joel of Wild Miller Garden was alerted via text message that it was getting too cold in his Greenhouse at night for the vegetables he was growing.](joel-and-fido.png)
 > Within the first few weeks of having installed Fido, farmer Joel of Wild Miller Garden was alerted via text message that it was getting too cold in his Greenhouse at night for the vegetables he was growing.
+
+Back in 2011 I worked Mathew Lippencott and Molly Danielson of [Cloacina](http://mdml.co/portfolio/bathrooms-are-gross-so-were-redesigning-them/) on an online app that publishes historical environmental data about compost piles to surrounding neighbors, the same application today could be hosted on a $35 Raspberry Pi computer and the web app could be broadcasted via local WiFi with the help from the a project I worked on called Apitronic's Hive app. 
+See the summary of that platform on the successfully funded Kickstarter page [here]() and the code is on Github [here](https://github.com/apitronics/Hive).
+
+![Arduino monitoring a compost pile and sending data through text messages to the Cloud. The same thing could now be built for less without the need for the Cloud server.](rodent-resistant-composter.png)
+> Arduino monitoring a compost pile and sending data through text messages to the Cloud. The same thing could now be built for less without the need for the Cloud server.
 
 
 ## Thinking about an Open Ground SDK
@@ -56,7 +57,7 @@ For now, the following modules are wrapped up in the [Fido](https://github.com/r
 ## How can you help?
 
 ### Join the conversation
-Currently we have a Ground Computing listserv on Google Groups but we are most passionate about having this project incubated at with Public Lab. Lets discuss these possibilities on this Research Note on PublicLab.org.
+Currently we have a [Ground Computing listserv on Google Groups](https://groups.google.com/forum/#!forum/groundcomputing) but we are most passionate about having this project incubated at with Public Lab. Lets discuss these possibilities on this Research Note on PublicLab.org.
 
 ### How can we raise funds to support development of this? Your thoughts?
 While we think doing the proposed GroundHog distro and the Open Ground SDK is a great idea, we're not sure where we are going to raise the funds to support ourselves to get this work done.
