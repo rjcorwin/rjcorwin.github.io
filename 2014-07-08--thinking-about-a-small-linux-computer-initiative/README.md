@@ -14,14 +14,14 @@ Servers that host web apps used to cost thousands of dollars but with the arriva
 But it's not just about hosting web apps, the economics of "small Linux" can be used for environmental monitoring and automation which will have interesting implications for areas such as health, agriculture, environmental justice, and many more.
 In this post I hope to get you excited about the potential of Ground Computing and explain how we can all benefit from each others work in Ground Computing regardless of the field we are looking to apply this to.
 
-## Our journey from the Cloud to the Ground, a summary of recent Ground Computing deployments
+## Our journey from the Cloud to the Ground, a summary of recent Ground Server deployments
 Back in 2011 I worked Mathew Lippencott and Molly Danielson of [Cloacina](http://mdml.co/portfolio/bathrooms-are-gross-so-were-redesigning-them/) on an online app that publishes historical environmental data about compost piles to surrounding neighbors, the same application today could be hosted on a $35 Raspberry Pi computer and the web app could be broadcasted via local WiFi with the help from the a project I worked on called Apitronic's Hive app. 
-See the summary of that platform on the successfully funded Kickstarter page [here]() and the code is on Github [here](](https://github.com/apitronics/Hive).
+See the summary of that platform on the successfully funded Kickstarter page [here]() and the code is on Github [here](https://github.com/apitronics/Hive).
 
 ![Arduino monitoring a compost pile and sending data through text messages to the Cloud. The same thing could now be built for less without the need for the Cloud server.](rodent-resistant-composter.png)
 > Arduino monitoring a compost pile and sending data through text messages to the Cloud. The same thing could now be built for less without the need for the Cloud server.
 
-In Ghana where it is cost prohibitive to have to students online all day to access resources like Khan Academy, Open Learning Exchange Ghana and Open Learning Exchange International had been running a large box server in a small community to provide access to such resources. 
+In Ghana where it is cost prohibitive to have students online all day to access resources like Khan Academy, Open Learning Exchange Ghana and Open Learning Exchange International had been running a large box server in a small community to provide access to such resources. 
 Last year with funding from USAID's All Children Reading program we were able to deploy to 24 schools where we installed Raspberry Pi computers as the school servers, and with the help of CouchDB, we were able to easily create a sneakernet where we could deliver more content from the Cloud and feedback could sync back up to the Cloud.
 
 ![The first six Raspberry Pi servers with the BeLL Software deployed in Ghana.](ghana-reads-raspberry-pi-deployment.jpg)
@@ -47,7 +47,7 @@ For now, the following modules are wrapped up in the [Fido](https://github.com/r
 - WiFi Connect - Define what WiFi network the Ground Server should connect to.
 - WiFi Access Point Mode - Turn your Ground Computing device into a WiFi access point so you do not need any additional hardware to access the Apps on your Ground Server. 
 - Hostname - Define the hostname of the Ground Server so it can easily be reached at a human readable URL on the network. Example: http://myserver.local versus the IP address which is hard to figure out http://192.168.0.101
-- Heartbeat - Configure where your Ground Server's heartbeat should call  back to so the server you're pointing to can keep you up to date on the  status of your Ground Server. Great for knowing when your alarms can't alarm you!
+- Heartbeat - Configure where your Ground Server's heartbeat should call back to so the server you're pointing to can keep you up to date on the status of your Ground Server. Great for knowing when your alarms can't alarm you!
 - Updater - A framework for publishing updates for Ground Servers and an API to query for available updates and install them.
 - Data Hive - View data saved from other devices sent to your Ground Server and manage alerts.
 - Sensor Pack - A collection of drivers for commonly used sensors.
@@ -56,11 +56,23 @@ For now, the following modules are wrapped up in the [Fido](https://github.com/r
 ## How can you help?
 
 ### Join the conversation
+Currently we have a Ground Computing listserv on Google Groups but we are most passionate about having this project incubated at with Public Lab. Lets discuss these possibilities on this Research Note on PublicLab.org.
 
-### A Ground Computing Initiative in your community
+### How can we raise funds to support development of this? Your thoughts?
+While we think doing the proposed GroundHog distro and the Open Ground SDK is a great idea, we're not sure where we are going to raise the funds to support ourselves to get this work done.
+Would it be wise to do a Kickstarter?
+A Reverse Bounty?
+Do you know of a project we could work on that would result in building GroundHog and ultimately the Open Ground SDK?
 
-## How can we raise funds to support development of this? Your thought?
+### What license should we follow? Your thoughts?
+All of the projects I've worked on could not have been possible without the Open Source contributions of those who came before me and I intend to contribute back.
+For the Fido project we picked the [AGPL license](http://www.gnu.org/licenses/agpl-3.0.html) which I think best represents my intentions of my work remaining a part of the commons.
+This means that Open Source products that build upon this base will never have to worry about another company piggy backing off their contributions to the commons without also giving back.
+This is the license I find appealing but what's your opinion?
+I'm very interested in hearing the opinions of others who are interested in being contributors to this movement.
 
+### What do you think about these names?
+Open Ground, GroundHog, etc. These are all our first ideas on names. What do you think?
 
 
 
