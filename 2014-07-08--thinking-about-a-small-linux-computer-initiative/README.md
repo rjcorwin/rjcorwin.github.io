@@ -2,16 +2,16 @@
 # Thinking about a small Linux computer initiative. Who wants to join?
 
 ## Definition of Ground Server, Ground Computing
-A Ground Server hosts websites like a Cloud Server hosts websites on the Internet except it's on the ground which means the websites are accessible via your Local Area Network. 
-Ground Servers are usually hosted on little credit card sized computers like the [$35 Raspberry Pi](http://www.raspberrypi.org/) or [$45 BeagleBone Black from Texas Instruments](http://beagleboard.org/Products/BeagleBone+Black). 
-It's Ground Computing, not Cloud Computing. 
-Originally coined by [Jason Huggins](https://twitter.com/hugs/status/1605680019). 
+A Ground Server hosts websites like a Cloud Server hosts websites on the Internet except it's on the ground which means the websites are accessible via your Local Area Network.
+Ground Servers are usually hosted on little credit card sized computers like the [$35 Raspberry Pi](http://www.raspberrypi.org/) or [$45 BeagleBone Black from Texas Instruments](http://beagleboard.org/Products/BeagleBone+Black)).
+It's Ground Computing, not Cloud Computing.
+Originally coined by [Jason Huggins](https://twitter.com/hugs/status/1605680019).
 [More about Ground Computing](https://groundcomputing.hackpad.com/About-Ground-Computing-oHwlcUmeH94)
 
 ## Intro
-Since the early 2000's I have been a web developer hosting my creations on the Cloud but for the past few years I've worked with [Dogi (Public Lab server admin)](http://publiclab.org/profile/nemo) hosting web apps in an unusual place, the ground where they are actually used. 
-Servers that host web apps used to cost thousands of dollars but with the arrival of small Linux computers like the Raspberry Pi, you can host your own web apps locally for under $50. 
-But it's not just about hosting web apps, the economics of "small Linux" can be used for environmental monitoring and automation which will have interesting implications for areas such as health, agriculture, environmental justice, and many more. 
+Since the early 2000's I have been a web developer hosting my creations on the Cloud but for the past few years I've worked with [Dogi (Public Lab server admin)](http://publiclab.org/profile/nemo) hosting web apps in an unusual place, the ground where they are actually used.
+Servers that host web apps used to cost thousands of dollars but with the arrival of small Linux computers like the Raspberry Pi, you can host your own web apps locally for under $50.
+But it's not just about hosting web apps, the economics of "small Linux" can be used for environmental monitoring and automation which will have interesting implications for areas such as health, agriculture, environmental justice, and many more.
 In this post I hope to get you excited about the potential of Ground Computing and explain how we can all benefit from each others work in Ground Computing regardless of the field we are looking to apply this to.
 
 ## Our journey from the Cloud to the Ground, a summary of recent Ground Computing deployments
@@ -23,9 +23,9 @@ See the summary of that platform on the successfully funded Kickstarter page [he
 In Ghana where it is cost prohibitive to have to students online all day to access resources like Khan Academy, Open Learning Exchange Ghana and Open Learning Exchange International had been running a large box server in a small community to provide access to such resources. 
 Last year with funding from USAID's All Children Reading program we were able to deploy to 24 schools where we installed Raspberry Pi computers as the school servers, and with the help of CouchDB, we were able to easily create a sneakernet where we could deliver more content from the Cloud and feedback could sync back up to the Cloud.
 
-![The first six Raspberry Pi servers with the BeLL Software deployed in Ghana.](ghana-reads-raspberry-pi-deployment.jpg)  
+![The first six Raspberry Pi servers with the BeLL Software deployed in Ghana.](ghana-reads-raspberry-pi-deployment.jpg)
 
-These small Linux computers are good for more than just serving up web apps, they can also do the data collection and even automation needed on the ground.  
+These small Linux computers are good for more than just serving up web apps, they can also do the data collection and even automation needed on the ground.
 For example, the Fido project uses a Raspberry Pi with a connected USB temperature sensor to detect when a greenhouse is too hot or too cold, and when outside the bounds set by the Farmer in the local web app, text messages the farmer through the local WiFi connection (text messages can be sent for free via emails by the way). 
 See the demo of a Fido in action at Wild Miller Gardens [here]() and the check out the code on Github over [here](). 
 
@@ -34,7 +34,7 @@ See the demo of a Fido in action at Wild Miller Gardens [here]() and the check o
 
 ## Thinking about an Open Ground SDK
 For the past few years Dogi and I have been working fairly quietly on the various projects mentioned above and through that work there are components I've found that are useful across those projects and useful for many other future projects by people like you! I'm looking to create an Open Ground SDK which will be a collection of code modules commonly needed when developing a Ground Server, many of which can be extracted from work already done. 
-I'm also interested in developing an App server which when running will publish a web page for graphically using many of the modules in Open Ground SDK.  
+I'm also interested in developing an App server which when running will publish a web page for graphically using many of the modules in Open Ground SDK.
 These apps could serve as examples of how to integrate the Open Ground SDK modules into your own project or could be used as is. 
 We also want to publish an example of Open Ground SDK in action for the Raspberry Pi (and possibly also the BeagleBone Black now that they support Debian!). This project could be called GroundHog which will have the App server preinstalled and could be used as a starting point for your Ground Server project. 
 
