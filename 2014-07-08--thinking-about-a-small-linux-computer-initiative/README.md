@@ -1,9 +1,9 @@
 
 # Thinking about a small Linux computer initiative. Who wants to join?
 
-## Definition of Ground Server, Ground Computing
+> __Definition of Ground Server, Ground Computing__
 A Ground Server hosts websites like a Cloud Server hosts websites on the Internet except it's on the ground which means the websites are accessible via your Local Area Network.
-Ground Servers are usually hosted on little credit card sized computers like the [$35 Raspberry Pi](http://www.raspberrypi.org/) or [$45 BeagleBone Black from Texas Instruments](http://beagleboard.org/Products/BeagleBone+Black)).
+Ground Servers are usually hosted on little credit card sized computers like the [$35 Raspberry Pi](http://www.raspberrypi.org/) or [$45 BeagleBone Black from Texas Instruments](http://beagleboard.org/Products/BeagleBone+Black).
 It's Ground Computing, not Cloud Computing.
 Originally coined by [Jason Huggins](https://twitter.com/hugs/status/1605680019).
 [More about Ground Computing](https://groundcomputing.hackpad.com/About-Ground-Computing-oHwlcUmeH94)
