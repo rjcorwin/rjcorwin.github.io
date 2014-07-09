@@ -58,7 +58,11 @@ For now, the following modules are wrapped up in the [Fido](https://github.com/r
 ## How can you help?
 
 ### Join the conversation
-Currently we have a [Ground Computing listserv on Google Groups](https://groups.google.com/forum/#!forum/groundcomputing) but we are most passionate about having this project incubated at Public Lab. Lets discuss these possibilities on this Research Note on PublicLab.org.
+Currently we have a [Ground Computing listserv on Google Groups](https://groups.google.com/forum/#!forum/groundcomputing) but we are most passionate about having this project incubated at Public Lab. Lets discuss these possibilities on this [Research Note on PublicLab.org](http://publiclab.org/notes/rjstatic/07-09-2014/thinking-about-a-small-linux-web-app-server-initiative-who-wants-to-join).
+
+### What would you use the Open Ground SDK for?
+We are really excited to get feedback from a community of folks working on ideas we've never thought of.
+Your ideas will shape how we approach the Open Ground SDK so we really encourage your input and brainstorming!
 
 ### How can we raise funds to support development of this? Your thoughts?
 While we think doing the proposed GroundHog distro and the Open Ground SDK is a great idea, we're not sure where we are going to raise the funds to support ourselves to get this work done.
