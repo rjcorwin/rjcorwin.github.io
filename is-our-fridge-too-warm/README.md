@@ -1,6 +1,7 @@
 # Is our fridge too warm? A Fido now sends us text message alerts.
 
-> This post was posted to [publiclab.org](http://publiclab.org/notes/rjstatic/07-20-2014/is-our-fridge-too-warm-a-fido-now-sends-us-text-message-alerts) July 20, 2014. 
+Note:
+This post was posted to [publiclab.org](http://publiclab.org/notes/rjstatic/07-20-2014/is-our-fridge-too-warm-a-fido-now-sends-us-text-message-alerts) July 20, 2014. [[link]](http://publiclab.org/notes/rjstatic/07-20-2014/is-our-fridge-too-warm-a-fido-now-sends-us-text-message-alerts)
 
 Can I use Fido as an alarm when my fridge is too warm? It's a question Dogi and I have heard many times from people who run bio labs, restaurants, and here at the Pirateship hackerspace which has a particularly pesky fridge that tends to open itself sometimes. We decided to see if Fido is a good fit.  
 

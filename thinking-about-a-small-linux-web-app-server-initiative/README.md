@@ -1,6 +1,7 @@
 # Thinking about a small Linux web app server initiative. Who wants to join?
 
-> This post was posted to [PublicLab.org](http://publiclab.org/notes/rjstatic/07-09-2014/thinking-about-a-small-linux-web-app-server-initiative-who-wants-to-join) on July 9, 2014.
+Note:
+This post was posted to [PublicLab.org](http://publiclab.org/notes/rjstatic/07-09-2014/thinking-about-a-small-linux-web-app-server-initiative-who-wants-to-join) on July 9, 2014. [[link]](http://publiclab.org/notes/rjstatic/07-09-2014/thinking-about-a-small-linux-web-app-server-initiative-who-wants-to-join)
 
 > __Definition: Ground Server__ ~
 A Ground Server hosts websites like a Cloud Server hosts websites on the Internet except it's on the ground which means the websites are accessible via your Local Area Network. Ground Servers are usually hosted on little credit card sized computers like the [$35 Raspberry Pi](http://www.raspberrypi.org/) or [$45 BeagleBone Black from Texas Instruments](http://beagleboard.org/Products/BeagleBone+Black). It's Ground Computing, not Cloud Computing.
