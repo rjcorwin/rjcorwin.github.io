@@ -1,5 +1,8 @@
 # Web APIs and Web Apps for Adaptive Management in Agriculture! (DRAFT)
 
+Note:
+This is a draft being worked on by Dorn Cox and R.J. Steinert
+
 > Definition of Web API ~ A standard way that any Web App can access data from another Web App.
 
 ## The problem
