@@ -10,8 +10,6 @@ $('.rewards').hide();
 $('.col-md-3').addClass('col-md-4').removeClass('col-md-3');
 ```
 
-For some reason making this a Bookmarklet results in a redirection. Might be an Angular.js thing.
-
-<a href="javascript:$('nav').hide();$('#undefined-sticky-wrapper').hide();$('.rewards').hide();$('.col-md-3').addClass('col-md-4').removeClass('col-md-3');">Make HabitRPG Safe for Work</a> <-- this bookmarklet ends with a weird result. Anyone know how to fix?
+<a href="javascript:$('nav').hide();$('#undefined-sticky-wrapper').hide();$('.rewards').hide();$('.col-md-3').addClass('col-md-4').removeClass('col-md-3');void 0">Make HabitRPG Safe for Work</a> <-- Here's a bookmarklet to make it easy to run this code on the HabitRPG page. Thanks to n-gauge on Hacker News for figuring out I needed `;void 0` at the end of the code!
 
 <a href="https://news.ycombinator.com/item?id=8219501">Comments on Hacker News</a>
