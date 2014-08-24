@@ -14,3 +14,4 @@ For some reason making this a Bookmarklet results in a redirection. Might be an 
 
 <a href="javascript:$('nav').hide();$('#undefined-sticky-wrapper').hide();$('.rewards').hide();$('.col-md-3').addClass('col-md-4').removeClass('col-md-3');">Make HabitRPG Safe for Work</a> <-- this bookmarklet ends with a weird result. Anyone know how to fix?
 
+<a href="https://news.ycombinator.com/item?id=8219501">Comments on Hacker News</a>
