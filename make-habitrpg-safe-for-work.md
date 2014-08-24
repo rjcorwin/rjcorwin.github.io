@@ -1,4 +1,4 @@
-# Is HabitRPG NSFW? Here's a bookmarklet to make it more SFW.
+# Is HabitRPG NSFW? Here's a trick to make it more SFW.
 
 I like to use HabitRPG all day but my little green guy on my screen and all my other friends with their crazy head dresses doesn't look like I'm being productive when they flash across my screen for all to see. I wrote some code to hide the top two bars, remove the Rewards bar, and then even out the remaining three columns to fill the screen (gotta love Bootstrap Grid system). 
 
