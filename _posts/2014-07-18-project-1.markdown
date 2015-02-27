@@ -1,15 +1,15 @@
 ---
 title: FarmHack.org
-subtitle: Website Development
+subtitle: Farmers that build and modify their own tools sharing their innovation
 layout: default
 modal-id: 1
 date: 2014-07-18
 img: farmhack.png
 thumbnail: farmhack.png
 alt: image-alt
-project-date: April 2014
-client: Start Bootstrap
+link: http://farmhack.org
+linktext: http://farmhack.org
 category: Web Development
-description: Lorem ipsum dolor sit amet, usu cu alterum nominavi lobortis. At duo novum diceret. Tantas apeirian vix et, usu sanctus postulant inciderint ut, populo diceret necessitatibus in vim. Cu eum dicam feugiat noluisse.
+description: We are a worldwide community of farmers that build and modify our own tools. We share our hacks online and at meet ups because we become better farmers when we work together.
 
 ---

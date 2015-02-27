@@ -1,15 +1,15 @@
 ---
 title: Open Pipe Kit
-subtitle: Internet of Things
+subtitle: Now anyone can send data from sensors to the Internet
 layout: default
 modal-id: 2
 date: 2014-07-17
 img: opk.png
 thumbnail: opk-thumbnail.png
 alt: image-alt
-project-date: April 2014
-client: Start Bootstrap
+linktext: http://farmhack.net/tools/open-pipe-kit
+link: http://farmhack.net/tools/open-pipe-kit
 category: Web Development
-description: Lorem ipsum dolor sit amet, usu cu alterum nominavi lobortis. At duo novum diceret. Tantas apeirian vix et, usu sanctus postulant inciderint ut, populo diceret necessitatibus in vim. Cu eum dicam feugiat noluisse.
+description: The Open Pipe Kit (OPK) is the missing plumbing between sensors and databases that will empower thousands of data journalists, civic hackers, farmers, etc. to collect data without needing a programmer's assistance or being locked into one data platform from a proprietary turn-key solution.
 
 ---
