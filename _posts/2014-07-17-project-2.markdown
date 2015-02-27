@@ -1,11 +1,11 @@
 ---
-title: Escape
-subtitle: Website Design
+title: Open Pipe Kit
+subtitle: Internet of Things
 layout: default
 modal-id: 2
 date: 2014-07-17
-img: escape.png
-thumbnail: escape-thumbnail.png
+img: opk.png
+thumbnail: opk-thumbnail.png
 alt: image-alt
 project-date: April 2014
 client: Start Bootstrap
