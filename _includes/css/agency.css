@@ -340,6 +340,10 @@ section h3.section-subheading {
     font-weight: 400;
 }
 
+section#contact h3.section-subheading {
+    color: #FFF;
+ }
+
 @media(min-width:768px) {
     section {
         padding: 150px 0;
@@ -658,10 +662,11 @@ section#contact {
     background-image: url(../img/map-image.png);
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 section#contact .section-heading {
-    color: #fff;
+    color: #FED136;
 }
 
 section#contact .form-group {
