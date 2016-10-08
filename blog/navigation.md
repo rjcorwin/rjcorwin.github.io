@@ -1,4 +1,4 @@
-# R.J. Steinert's Blog
+# R.J. Steinert
 
 [Projects](/#projects)
 [Blog](/blog/index.html)
