@@ -10,3 +10,4 @@ I posit that the reason people don't sell their email inbox and instead opt for 
 
 But how do we lower that transaction cost? I wonder if we could learn something from the currency exchanges and wallet services for Cryptocurrencies (http://coinbase.com is a good example). They allow you to store your digital asset and easily exchange it for other currencies. What do you think?
 
+[gimmick:Disqus](rjsteinert-com)
