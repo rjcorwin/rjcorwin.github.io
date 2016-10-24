@@ -1,4 +1,5 @@
 # R.J. Steinert's Blog
+- October 23, 2016 [How to get started quickly with mdWiki on the command line](2016-10-23/getting-started-with-mdwiki.md)
 - October 8, 2016 [Will Farmers make money from data? We may need to lower the transaction cost.](2016-08-16/will-farmers-make-money-from-data.md)
 - July 22, 2014 [Web APIs and Web Apps for Adaptive Management in Agriculture!](web-apis-and-web-apps-for-adaptive-management-in-agriculture/README.md)
 - July 20, 2014 [Is our fridge too warm? A Fido now sends us text message alerts.](#!is-our-fridge-too-warm/README.md)
