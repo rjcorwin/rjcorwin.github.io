@@ -1,3 +1,5 @@
+# Publish the Distributed Web in 3 commands
+
 Install nodejs, dat, and Beaker Browser on your computer and in 3 commands you'll be publishing on to the distributed web hosting a hello world from your machine.
 
 ```
