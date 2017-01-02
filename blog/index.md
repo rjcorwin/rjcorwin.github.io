@@ -1,4 +1,5 @@
 # R.J. Steinert's Blog
+- January 2, 2017 [Publish to the Distributed Web in 3 commands](2017-01-02/publish-to-the-distributed-web-in-3-commands.md)
 - October 24, 2016 [Quickly reformat comment paragraphs to code's required width](2016-10-24/reformat-a-comment-block-to-required-width-automatically.md)
 - October 23, 2016 [How to get started quickly with mdWiki on the command line](2016-10-23/getting-started-with-mdwiki.md)
 - October 8, 2016 [Will Farmers make money from data? We may need to lower the transaction cost.](2016-08-16/will-farmers-make-money-from-data.md)
