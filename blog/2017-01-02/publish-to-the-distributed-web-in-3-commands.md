@@ -34,10 +34,9 @@ Now we're hosting that site from the Beaker Browser and our friends can too!
 
 ![beaker-site-hosted.png](beaker-site-hosted.png)
 
-Anyone can fork this dat site to their own site and make modification using the fork button.
+Anyone can fork this site to their own site and make modifications using the fork button.
 
 ![beaker-site-forked.png](beaker-site-forked.png)
-
 
 And there is more! See https://beakerbrowser.com/.
 
