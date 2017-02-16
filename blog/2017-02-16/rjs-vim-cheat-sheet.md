@@ -78,7 +78,7 @@ set autoindent
 set smartindent
 " Set the default shell to bash (if you are using fish, zsh, etc)
 set shell=bash
-" Enable mouse control for changing tabs, selecting text.
+" Enable mouse control for changing tabs, selecting text, scrolling, etc.
 set mouse=a
 ```
 
