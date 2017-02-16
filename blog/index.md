@@ -1,4 +1,5 @@
 # R.J. Steinert's Blog
+- February 16, 2017 [R.J.'s Vim Cheat Sheet](2017-02-16/rjs-vim-cheat-sheet.md)
 - January 2, 2017 [Publish to the Distributed Web in 3 commands](2017-01-02/publish-to-the-distributed-web-in-3-commands.md)
 - October 24, 2016 [Quickly reformat comment paragraphs to code's required width](2016-10-24/reformat-a-comment-block-to-required-width-automatically.md)
 - October 23, 2016 [How to get started quickly with mdWiki on the command line](2016-10-23/getting-started-with-mdwiki.md)
