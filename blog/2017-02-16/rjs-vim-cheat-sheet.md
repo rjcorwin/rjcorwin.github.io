@@ -38,6 +38,7 @@ This is a WIP document of the tricks I use in Vim the most.
   - `.`: Do that operation again. Useful for repeating indents.
   - `r<key>`: Replace character under cursor.
 - `v`: Visual mode, AKA select mode.
+  - Use navigation keys on home row, word skips, arrow keys, etc. to expand selection.
   - `y`: Copy.
   - `d`: Delete.
 - `/` Search mode.
