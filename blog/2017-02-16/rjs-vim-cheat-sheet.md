@@ -1,4 +1,4 @@
-# R.J.'s Vim Cheatsheet
+# R.J.'s Vim Cheat Sheet
 This is a WIP document of the tricks I use in Vim the most.
 
 ## Opening files in Vim
