@@ -9,6 +9,17 @@
   <lastBuildDate>Mon, 06 Sep 2010 00:01:00 +0000 </lastBuildDate>
 
   <entry>
+    <title>RJ's Vim Cheat Sheet</title>
+    <link href="http://rjsteinert.github.io/blog/#!2017-02-16/rjs-vim-cheat-sheet.md" />
+    <id>004</id>
+    <updated>2017T18:30:02Z</updated>
+    <summary>Researchers develop indicators to help farmers steer their farms better... but there is a problem. These indicators are often only calculated once in a season and often locked up in spreadsheets that require a specialist to use. Farmers want to be agile! They call it adaptive management. To become more adaptive, farmers have adopted tools that generate tons of data through environmental monitoring technology and online farm management software. But there’s a problem, all of this data is stuck in silos. So here’s the situation. Researchers develop tools to calculate indicators that farmers can’t use and tools that help farmers generate data don’t make it easy to move that data so that it could be used in the researchers’ tools. </summary>
+    <author>
+      <name>R.J. Steinert</name>
+      <email>rj@rjsteinert.com</email>
+    </author>
+  </entry>
+  <entry>
     <title>Web APIs and Web Apps for Adaptive Management in Agriculture!</title>
     <link href="http://rjsteinert.github.io/#!web-apis-and-web-apps-for-adaptive-management-in-agriculture/README.md" />
     <id>004</id>
