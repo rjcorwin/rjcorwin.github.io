@@ -17,12 +17,14 @@ This is a WIP document of the tricks I use in Vim the most.
 
 ## Tabs
 - `gt`, `gT`, `<tab numbe>gt`: Next tab, previous tab, go to tab number.
+- If you have `set mouse=a` in your `~/.vimrc` file, you can select a tab by clicking on it.
 
 
 ## Windows
 - `ctrl+w` and then arrow direction of window to switch to.
 - `resize <number of lines>`: Resize window to number of lines.
 - `vertical resize <number of columns`: Resize window to number of columns.
+- If you have `set mouse=a` in your `~/.vimrc` file, you can select a window by clicking on it.
 
 
 ## Vim modes
@@ -38,7 +40,8 @@ This is a WIP document of the tricks I use in Vim the most.
   - `.`: Do that operation again. Useful for repeating indents.
   - `r<key>`: Replace character under cursor.
 - `v`: Visual mode, AKA select mode.
-  - Use navigation keys on home row, word skips, arrow keys, etc. to expand selection.
+  - Use navigation keys on home row, word skips, arrow keys, etc. to expand selection. If you have `set mouse=a` in your `~/.vimrc` file, you can select text by click and dragging.
+
   - `y`: Copy.
   - `d`: Delete.
 - `/` Search mode.
@@ -75,6 +78,8 @@ set autoindent
 set smartindent
 " Set the default shell to bash (if you are using fish, zsh, etc)
 set shell=bash
+" Enable mouse control for changing tabs, selecting text.
+set mouse=a
 ```
 
 ## Tips
