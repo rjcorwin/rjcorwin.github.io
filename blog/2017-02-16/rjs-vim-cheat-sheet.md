@@ -60,7 +60,7 @@ This is a WIP document of the tricks I use in Vim the most.
 
 
 ## Vim settings in `~/.vimrc`
-My minimal Vim settings.
+Your `~/.vimrc` file is a set of commands to run every time Vim opens. Mine enables better handling of indentation when pasting from your system's clipboard, support for using a mouse, better indentation formatting, showing line numbers, and enabling formatting of text. See it [here](https://gist.github.com/rjsteinert/87c3dfdd96692d97ea3a88fd3f1bc867). Make it your own by running `curl https://gist.githubusercontent.com/rjsteinert/87c3dfdd96692d97ea3a88fd3f1bc867/raw/.vimrc > ~/.vimrc`.
 
 [gimmick:gist](87c3dfdd96692d97ea3a88fd3f1bc867)
 
