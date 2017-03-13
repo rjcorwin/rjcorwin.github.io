@@ -61,26 +61,7 @@ This is a WIP document of the tricks I use in Vim the most.
 
 ## Vim settings in `~/.vimrc`
 My minimal Vim settings.
-```
-" Syntax highlighting
-syntax on
-" show line numbers
-set number
-" When pasting from system's clipboard, fix indentation.
-set paste
-" Modern Vim features
-set nocompatible
-" Tab formatting
-set expandtab
-set tabstop=2
-set shiftwidth=2
-set autoindent
-set smartindent
-" Set the default shell to bash (if you are using fish, zsh, etc)
-set shell=bash
-" Enable mouse control for changing tabs, selecting text, scrolling, etc.
-set mouse=a
-```
+[gimmick:gist](87c3dfdd96692d97ea3a88fd3f1bc867)
 
 ## Tips
 - Map `caps lock` to `Esc` to keep your fingers on the home row. https://pqrs.org/osx/karabiner/seil.html.en
