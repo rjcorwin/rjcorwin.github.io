@@ -61,6 +61,7 @@ This is a WIP document of the tricks I use in Vim the most.
 
 ## Vim settings in `~/.vimrc`
 My minimal Vim settings.
+
 [gimmick:gist](87c3dfdd96692d97ea3a88fd3f1bc867)
 
 ## Tips
