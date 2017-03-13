@@ -64,6 +64,8 @@ My minimal Vim settings.
 
 [gimmick:gist](87c3dfdd96692d97ea3a88fd3f1bc867)
 
+<script src="https://gist.github.com/rjsteinert/87c3dfdd96692d97ea3a88fd3f1bc867.js"></script>
+
 ## Tips
 - Map `caps lock` to `Esc` to keep your fingers on the home row. https://pqrs.org/osx/karabiner/seil.html.en
 - Install `nerdtree` to make the file explorer formatted as an expandable tree. https://github.com/scrooloose/nerdtree
