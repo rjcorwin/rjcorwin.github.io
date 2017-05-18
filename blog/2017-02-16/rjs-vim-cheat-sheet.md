@@ -38,7 +38,9 @@ This is a WIP document of the tricks I use in Vim the most.
   - `h`, `j`, `k`, `l`: Left, Up, Down, Right. Great for keeping your hands on the home row. Also can be used when changing windows, and navigating file tree.
   - `<<`, `>>`: Indent.
   - `.`: Do that operation again. Useful for repeating indents.
-  - `r<key>`: Replace character under cursor.
+  - `r<key>`: Replace character under cursor with <key>.
+  - `o`: Create new line below cursor and start Insert mode.
+  - `A`: Go to end of line cursor is on and start Insert mode.
 - `v`: Visual mode, AKA select mode.
   - Use navigation keys on home row, word skips, arrow keys, etc. to expand selection. If you have `set mouse=a` in your `~/.vimrc` file, you can select text by click and dragging.
 
@@ -70,3 +72,5 @@ Your `~/.vimrc` file is a set of commands to run every time Vim opens. Mine enab
 - Map `caps lock` to `Esc` to keep your fingers on the home row. https://pqrs.org/osx/karabiner/seil.html.en
 - Install `nerdtree` to make the file explorer formatted as an expandable tree. https://github.com/scrooloose/nerdtree
 - Interactive Vim training is worth the time. http://www.openvim.com/
+- Remember, if there is anything you are doing that feels awkward there is a vim command to solve that problem. For example, going to the end of a line and starting insert mode is awkward without `A`.
+- [Another good vim cheatsheet](http://www.worldtimzone.com/res/vi.html)
