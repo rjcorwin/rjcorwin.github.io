@@ -1,5 +1,5 @@
 # R.J. Steinert's Blog
-- May 19, 2017 [What the heck is Android Things???](2017-19-2017/what-is-android-things.md)
+- May 19, 2017 [What the heck is Android Things???](2017-05-19/what-is-android-things.md)
 - April 11, 2017 [R.J.'s NG Conf 2017 Notes](2017-04-11/rjs-angular-conf-2017-notes.md)
 - February 16, 2017 [R.J.'s Vim Cheat Sheet](2017-02-16/rjs-vim-cheat-sheet.md)
 - January 2, 2017 [Publish to the Distributed Web in 3 commands](2017-01-02/publish-to-the-distributed-web-in-3-commands.md)
