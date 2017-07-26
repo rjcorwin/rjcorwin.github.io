@@ -1,4 +1,5 @@
 # R.J. Steinert's Blog
+- July 26, 2017 [How to cast your screen to a GIF](2017-07-26/how-to-make-gifs.md)
 - May 19, 2017 [What the heck is Android Things???](2017-05-19/what-is-android-things.md)
 - April 11, 2017 [R.J.'s NG Conf 2017 Notes](2017-04-11/rjs-angular-conf-2017-notes.md)
 - February 16, 2017 [R.J.'s Vim Cheat Sheet](2017-02-16/rjs-vim-cheat-sheet.md)
