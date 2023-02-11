@@ -6,12 +6,25 @@
   <title>RJ (Steinert) Corwin</title>
 </header>
 
-<body style="background: #CCC; color: black; margin: 15px;">
-  <div style="margin: auto; max-width: 300px;">
-    <h1>Hi there!</h1>
+<body style="background: #CCC; color: black; margin-top: 30px;">
+  <div style="margin: auto; max-width: 500px; color: white; font-weight: bolder; padding: 1px 30px; font-size: 3em;" id="container">
     <p>
-      I'm RJ Corwin, formerly RJ Steinert. I build software in the education space. You can find me on Github <a alt="github profile" href="https://github.com/rjsteinert">here</a>.
+      Hi there! I'm RJ Corwin, formerly RJ Steinert. I build software in the education space. You can find me on Github <a alt="github profile" href="https://github.com/rjsteinert" style="color: white">here</a>.
     </p>
   </div>
+	<script src="three.min.js"></script>
+	<script src="vanta.waves.min.js"></script>
+	<script>
+	VANTA.WAVES({
+		el: "#container",
+		mouseControls: true,
+		touchControls: true,
+		gyroControls: false,
+		minHeight: 200.00,
+		minWidth: 200.00,
+		scale: 1.00,
+		scaleMobile: 1.00
+	})
+	</script>
 </body>
 </html>
