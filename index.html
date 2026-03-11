@@ -149,51 +149,52 @@
       /* ── pixel art data ── */
       const P = 7; // px per game-pixel
       const _ = null;
-      const W = '#ffffff', C = '#00ffff', M = '#ff00ff';
+      const W = '#ffffff', R = '#FF00FF', D = '#660066';
 
+      // Super Meat Boy style: all red, chunky, white square eyes
       const FRAME_A = [
-        [_,_,W,W,W,W,_,_],
-        [_,W,W,W,W,W,W,_],
-        [_,W,_,W,W,_,W,_],
-        [_,W,W,W,W,W,W,_],
-        [_,C,C,C,C,C,C,_],
-        [C,C,C,C,C,C,C,C],
-        [_,C,C,C,C,C,C,_],
-        [_,_,M,M,M,M,_,_],
-        [M,M,_,_,M,M,_,_],
-        [M,M,_,_,_,M,M,_],
-        [_,_,_,_,_,M,M,_],
+        [_,R,R,R,R,R,R,_],   // head top
+        [_,R,R,R,R,R,R,_],   // head
+        [_,R,W,R,R,W,R,_],   // eyes
+        [_,R,R,R,R,R,R,_],   // chin
+        [R,R,R,R,R,R,R,R],   // body full width
+        [R,R,R,R,R,R,R,R],   // body
+        [R,R,R,R,R,R,R,R],   // body lower
+        [_,_,R,R,R,R,_,_],   // hips
+        [_,R,R,_,R,R,_,_],   // upper legs A
+        [_,R,_,_,_,R,R,_],   // lower legs A
+        [_,_,_,_,_,R,R,R],   // right foot fwd
       ];
       const FRAME_B = [
-        [_,_,W,W,W,W,_,_],
-        [_,W,W,W,W,W,W,_],
-        [_,W,_,W,W,_,W,_],
-        [_,W,W,W,W,W,W,_],
-        [_,C,C,C,C,C,C,_],
-        [C,C,C,C,C,C,C,C],
-        [_,C,C,C,C,C,C,_],
-        [_,_,M,M,M,M,_,_],
-        [_,_,M,M,_,M,M,M],
-        [_,M,M,_,_,_,M,M],
-        [_,M,M,_,_,_,_,_],
+        [_,R,R,R,R,R,R,_],
+        [_,R,R,R,R,R,R,_],
+        [_,R,W,R,R,W,R,_],
+        [_,R,R,R,R,R,R,_],
+        [R,R,R,R,R,R,R,R],
+        [R,R,R,R,R,R,R,R],
+        [R,R,R,R,R,R,R,R],
+        [_,_,R,R,R,R,_,_],
+        [_,_,R,R,_,R,R,_],   // upper legs B (swapped)
+        [_,R,R,_,_,_,R,_],   // lower legs B
+        [R,R,R,_,_,_,_,_],   // left foot fwd
       ];
-      // crouched frame (used when dead / ducking)
+      // dead frame: X eyes, slumped
       const FRAME_D = [
-        [_,_,W,W,W,W,_,_],
-        [_,W,W,W,W,W,W,_],
-        [_,W,_,W,W,_,W,_],
-        [_,W,W,W,W,W,W,_],
-        [_,C,C,C,C,C,C,_],
-        [C,C,C,C,C,C,C,C],
-        [_,C,C,C,C,C,C,_],
-        [_,_,M,M,M,M,_,_],
-        [_,M,M,M,M,M,M,_],
-        [_,M,_,_,_,_,M,_],
-        [M,M,_,_,_,_,M,M],
+        [_,R,R,R,R,R,R,_],
+        [_,R,R,R,R,R,R,_],
+        [_,R,W,R,R,W,R,_],   // X eye top
+        [_,R,R,W,W,R,R,_],   // X eye cross
+        [_,R,R,R,R,R,R,_],
+        [R,R,R,R,R,R,R,R],
+        [R,R,R,R,R,R,R,R],
+        [_,_,R,R,R,R,_,_],
+        [_,R,R,_,_,R,R,_],
+        [_,R,_,_,_,_,R,_],
+        [_,_,_,_,_,_,_,_],
       ];
 
       /* ── layout constants ── */
-      const CH      = 130; // canvas height (fixed)
+      const CH      = 260; // canvas height — fits max double-jump + runner height
       const GROUND_H = 8;
       const TILE_H   = 24;
       const RW = 8 * P;   // runner sprite width  = 56
@@ -428,12 +429,12 @@
 
         if (showRunner) {
           const frame = isDead ? FRAME_D : (frameIdx === 0 ? FRAME_A : FRAME_B);
-          ctx.shadowColor = C;
-          ctx.shadowBlur  = isDead ? 4 : 10;
+          ctx.shadowColor = R;
+          ctx.shadowBlur  = isDead ? 4 : 12;
           frame.forEach((row, py) => {
             row.forEach((color, px) => {
               if (!color) return;
-              ctx.fillStyle = isDead && color === C ? '#007777' : color;
+              ctx.fillStyle = isDead && color === R ? D : color;
               ctx.fillRect(rx + px * P, Math.floor(rtop) + py * P, P, P);
             });
           });
