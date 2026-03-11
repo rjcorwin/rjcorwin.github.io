@@ -81,7 +81,7 @@ body::after {
   position: relative;
   height: 100vh; min-height: 600px;
   display: flex; flex-direction: column; justify-content: center;
-  padding: 0 8% 110px;
+  padding: 0 8% 150px;
   overflow: hidden;
   z-index: 1;
 }
@@ -109,45 +109,14 @@ body::after {
 }
 .hero-cta { display: flex; gap: 20px; flex-wrap: wrap; }
 
-/* ─── PLATFORM / RUNNER ─── */
-.platform {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 96px; z-index: 2;
-}
-.platform-surface {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 8px;
-  background: var(--cyan);
-  box-shadow: 0 0 15px var(--cyan), 0 0 35px rgba(0,255,255,.5), 0 -2px 0 rgba(255,255,255,.4);
-}
-.platform-tiles {
-  position: absolute; bottom: 8px; left: 0;
-  width: 400%; height: 24px;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(0,255,255,.55) 0, rgba(0,255,255,.55) 1px,
-    rgba(0,255,255,.1) 1px, rgba(0,255,255,.1) 32px,
-    rgba(0,255,255,.55) 32px, rgba(0,255,255,.55) 33px,
-    transparent 33px, transparent 64px
-  );
-  animation: scroll-platform 1.4s linear infinite;
-}
-.runner-container {
-  position: absolute; bottom: 32px; left: 12%;
-  z-index: 3;
-  animation: runner-bob .25s steps(1, end) infinite alternate;
-}
-#runner-canvas {
+/* ─── GAME CANVAS ─── */
+#game-canvas {
+  position: absolute; bottom: 0; left: 0;
+  width: 100%; height: 130px;
+  cursor: pointer;
   image-rendering: pixelated;
-  filter: drop-shadow(0 0 8px var(--cyan)) drop-shadow(0 0 16px rgba(0,255,255,.35));
-}
-/* decorative blocks */
-.plat-deco {
-  position: absolute; bottom: 8px; right: 12%;
-  display: flex; gap: 40px; align-items: flex-end;
-}
-.deco-block {
-  background: var(--magenta);
-  box-shadow: 0 0 12px var(--magenta), 0 0 24px rgba(255,0,255,.3);
+  z-index: 2;
+  display: block;
 }
 
 /* ─── SECTIONS ─── */
