@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOW CODING AGENTS WORK (AND WHY YOU'RE STILL THE ENGINEER) — RJ CORWIN</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">RJ CORWIN</a>
+    <ul class="nav-links">
+      <li><a href="/blog/">BLOG</a></li>
+      <li><a href="/school/">AI CODING SCHOOL</a></li>
+      <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
+      <li><a href="https://twitch.tv/HackingWithRJ" target="_blank" rel="noopener">TWITCH</a></li>
+      <li><a href="https://youtube.com/@HackingWithRJ" target="_blank" rel="noopener">YOUTUBE</a></li>
+    </ul>
+  </nav>
+
+  <div class="post-hero">
+    <div class="post-meta">
+      <span class="post-date">2026-03-11</span>
+      <div class="post-tags">
+        <span class="tag">AI</span>
+        <span class="tag">WORKFLOW</span>
+        <span class="tag">AGENTS</span>
+      </div>
+    </div>
+    <h1>HOW CODING AGENTS WORK (AND WHY YOU'RE STILL THE ENGINEER)</h1>
+  </div>
+
+  <div class="post-divider"></div>
+
+  <article class="post-body">
+<h1>How Coding Agents Work (And Why You&#39;re Still the Engineer)</h1>
+<p>The framing I keep coming back to: a coding agent is a very capable new hire who has read every public codebase on the internet but has never worked at your company, doesn&#39;t know your team&#39;s conventions, and has no memory of what you decided last Tuesday.</p>
+<p>That framing changes how you use them.</p>
+<h2>The slot machine problem</h2>
+<p>Prompting an agent to just implement something has been compared to pulling a slot machine. You prompt, hope for the right output, and when it&#39;s wrong you pull again — &quot;no, not that, do this instead.&quot; The agent responds &quot;Of course!&quot; and tries again.</p>
+<p>Here&#39;s what&#39;s happening during that spiral:</p>
+<ul>
+<li>The codebase is getting more complex with each pull (spaghettification)</li>
+<li>The context window is filling up, so the agent is getting progressively dumber</li>
+<li>Some evidence suggests it in-context learns to give you worse results the longer you go</li>
+</ul>
+<p>The goal of doing some upfront planning is to minimize rework and avoid the spiral entirely.</p>
+<h2>Research, Plan, Implement</h2>
+<p>The methodology I use is called RPI: Research, Plan, Implement. Instead of jumping straight to implementation, you break the work into phases.</p>
+<ol>
+<li><strong>Research</strong> — With the agent&#39;s help, document the work before any code is written: the request, the relevant parts of the codebase, and the decisions that need to be made.</li>
+<li><strong>Plan</strong> — Document the specific code changes required to implement the feature.</li>
+<li><strong>Implement</strong> — Have the agent execute the plan.</li>
+</ol>
+<p>The key insight is that you reset context between phases. Each phase starts fresh with only the relevant documents loaded. This keeps the agent sharp and the output focused.</p>
+<h2>What agents are actually good at</h2>
+<p>Agents are exceptional at pattern matching against what they&#39;ve been trained on. Give them a clear, specific task with good context and they&#39;ll execute it faster and more thoroughly than you could.</p>
+<p>They&#39;re also good at documentation, at exploring a codebase you hand them, and at writing boilerplate you&#39;d rather not write yourself.</p>
+<h2>What you have to bring</h2>
+<p><strong>Organizational context.</strong> The agent doesn&#39;t know your team conventions, your business constraints, your historical decisions, your user needs, or why that one weird thing in the codebase is the way it is. You do. You have to provide that context — either directly in the prompt or in structured documents the agent can read.</p>
+<p><strong>Engineering judgment.</strong> LLMs pattern-match against their training data. If the solution you need exists somewhere in that distribution, they can find it. But anything truly novel — architecture the world hasn&#39;t built yet, creative leaps, decisions that require weighing tradeoffs your organization cares about — that&#39;s yours. The agent can help with the parts that look like things it&#39;s seen. The rest is engineering.</p>
+<p><strong>Decisions.</strong> Every non-trivial software decision requires context the agent doesn&#39;t have. You keep the decision authority. The agent helps you think through options and execute the one you pick.</p>
+<hr>
+<p>This is the theory behind the three levels in <a href="/school/">AI Coding School</a>. Each level is the same todo app feature, implemented with increasing structure and automation — so you can see concretely what changes as the methodology gets more rigorous.</p>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="how-to-make-gifs.html" class="post-nav-link prev-post">
+      <span class="nav-dir">&lt; PREV</span>
+      <span class="nav-title">HOW TO MAKE GIFS</span>
+    </a>
+    
+  </nav>
+
+  <footer class="site-footer">
+    <p>RJ CORWIN &nbsp;&mdash;&nbsp; <a href="/">HOME</a> &nbsp;&mdash;&nbsp; <a href="/blog/">BLOG</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      const s = document.createElement('div');
+      s.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;';
+      for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        const dur   = 2 + Math.random() * 5;
+        const delay = -(Math.random() * 6);
+        star.style.cssText = `
+          position:absolute;
+          left:${Math.random()*100}%; top:${Math.random()*100}%;
+          width:2px; height:2px; background:#fff;
+          animation:star-twinkle ${dur}s ease-in-out infinite ${delay}s;
+          --base-op:${(.08+Math.random()*.2).toFixed(2)};
+          --peak-op:${(.4+Math.random()*.4).toFixed(2)};
+        `;
+        s.appendChild(star);
+      }
+      document.body.prepend(s);
+    })();
+  </script>
+
+</body>
+</html>
