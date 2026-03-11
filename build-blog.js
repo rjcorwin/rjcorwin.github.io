@@ -323,7 +323,7 @@ ${cards}
     </div>
   </section>
 
-  <section class="site-section" style="padding-top: 32px;">
+  <section class="site-section" style="padding-top: 24px;">
     <div class="section-inner">
       <span class="section-label">// ABOUT</span>
       <article class="post-body">
