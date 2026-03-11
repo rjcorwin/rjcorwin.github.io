@@ -56,7 +56,7 @@ const nav = `
     <a href="/" class="nav-logo">RJ CORWIN</a>
     <ul class="nav-links">
       <li><a href="/blog/">BLOG</a></li>
-      <li><a href="/ai-coding-school/">AI CODING SCHOOL</a></li>
+      <li><a href="/school/">AI CODING SCHOOL</a></li>
       <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
       <li><a href="https://twitch.tv/HackingWithRJ" target="_blank" rel="noopener">TWITCH</a></li>
       <li><a href="https://youtube.com/@HackingWithRJ" target="_blank" rel="noopener">YOUTUBE</a></li>
@@ -203,7 +203,7 @@ ${cards}
 
 const SCHOOL_REPO   = 'https://github.com/rjcorwin/ai-coding-school.git';
 const schoolSrcDir  = path.join(__dirname, '.ai-coding-school-src');
-const schoolOutDir  = path.join(__dirname, 'ai-coding-school');
+const schoolOutDir  = path.join(__dirname, 'school');
 
 // Clone or pull the source repo
 function syncSchoolRepo() {
