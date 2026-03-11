@@ -79,7 +79,7 @@ body::after {
 /* ─── HERO ─── */
 .hero {
   position: relative;
-  height: 100vh; min-height: 600px;
+  height: 100vh; height: 100dvh; min-height: 600px;
   display: flex; flex-direction: column; justify-content: center;
   padding: 0 8% 275px;
   overflow: hidden;
