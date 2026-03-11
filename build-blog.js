@@ -55,7 +55,7 @@ const nav = `
     <a href="/" class="nav-logo">RJ CORWIN</a>
     <ul class="nav-links">
       <li><a href="/blog/">BLOG</a></li>
-      <li><a href="/school/">AI CODING SCHOOL</a></li>
+      <li><a href="/school/">HOW RJ CODES WITH AI</a></li>
       <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
       <li><a href="https://twitch.tv/HackingWithRJ" target="_blank" rel="noopener">TWITCH</a></li>
       <li><a href="https://youtube.com/@HackingWithRJ" target="_blank" rel="noopener">YOUTUBE</a></li>
@@ -197,7 +197,7 @@ ${cards}
 }
 
 // ============================================================
-// AI CODING SCHOOL
+// HOW RJ CODES WITH AI
 // ============================================================
 
 const schoolSrcDir  = path.join(__dirname, 'school', 'src');
@@ -233,7 +233,7 @@ function schoolPageTemplate({ title, bodyHtml, prevTrack, nextTrack }) {
     </a>`
     : `<a href="index.html" class="post-nav-link prev-post">
       <span class="nav-dir">&lt; BACK</span>
-      <span class="nav-title">AI CODING SCHOOL</span>
+      <span class="nav-title">HOW RJ CODES WITH AI</span>
     </a>`;
   const nextLink = nextTrack
     ? `<a href="${nextTrack.slug}.html" class="post-nav-link next-post">
@@ -247,7 +247,7 @@ function schoolPageTemplate({ title, bodyHtml, prevTrack, nextTrack }) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${title.toUpperCase()} — AI CODING SCHOOL — RJ CORWIN</title>
+  <title>${title.toUpperCase()} — HOW RJ CODES WITH AI — RJ CORWIN</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -255,7 +255,7 @@ ${nav}
 
   <div class="post-hero">
     <div class="post-meta">
-      <span class="post-date neon-cyan">AI CODING SCHOOL</span>
+      <span class="post-date neon-cyan">HOW RJ CODES WITH AI</span>
     </div>
     <h1>${title.toUpperCase()}</h1>
   </div>
@@ -306,7 +306,7 @@ function schoolIndexTemplate({ introHtml, tracks }) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI CODING SCHOOL — RJ CORWIN</title>
+  <title>HOW RJ CODES WITH AI — RJ CORWIN</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -315,7 +315,7 @@ ${nav}
   <section class="site-section" style="padding-top: 140px;">
     <div class="section-inner">
       <span class="section-label">&gt; SELECT TRACK</span>
-      <h1 class="section-heading neon-cyan">AI CODING SCHOOL</h1>
+      <h1 class="section-heading neon-cyan">HOW RJ CODES WITH AI</h1>
 
       <div class="links-grid">
 ${cards}
