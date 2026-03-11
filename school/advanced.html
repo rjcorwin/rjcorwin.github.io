@@ -30,16 +30,16 @@
 
   <article class="post-body school-body">
 <h1>RPI Guide: Advanced</h1>
-<p>Builds on the <a href="undefined">undefined</a> with two additions:</p>
+<p>Builds on the <a href="intermediate.html">intermediate track</a> with two additions:</p>
 <ul>
 <li><strong>Review loops on every phase</strong> — The intermediate track introduced the work-review-gate loop for implementation. Here, we extend the same pattern to research and plan. The CONTRIBUTING.md for this track adds <code>research-review-NNN.md</code>, <code>plan-review-NNN.md</code>, and their corresponding gate steps.</li>
-<li><strong>Cook automation</strong> — Instead of manually running three prompts (work, review, gate) per phase, the <a href="undefined">undefined</a> CLI runs one command and loops the agent through the cycle until it&#39;s satisfied.</li>
+<li><strong>Cook automation</strong> — Instead of manually running three prompts (work, review, gate) per phase, the <a href="https://github.com/rjcorwin/cook">cook</a> CLI runs one command and loops the agent through the cycle until it&#39;s satisfied.</li>
 </ul>
 <h2>Prerequisites</h2>
 <ul>
-<li>Complete the <a href="undefined">undefined</a> (or at least read it — you need to understand the plan folder structure and the implementation review loop you saw there)</li>
-<li>Read <a href="undefined">undefined</a> — note the new review/gate steps on Research and Plan compared to the intermediate version</li>
-<li>Install <a href="undefined">undefined</a>: <code>npm install -g @let-it-cook/cli</code></li>
+<li>Complete the <a href="intermediate.html">intermediate track</a> (or at least read it — you need to understand the plan folder structure and the implementation review loop you saw there)</li>
+<li>Read <a href="https://gist.github.com/rjcorwin/296885590dc8a4ebc64e70879dc04a0f">CONTRIBUTING.md</a> — note the new review/gate steps on Research and Plan compared to the intermediate version</li>
+<li>Install <a href="https://github.com/rjcorwin/cook">cook</a>: <code>npm install -g @let-it-cook/cli</code></li>
 <li>Run <code>cook doctor</code> to verify your setup</li>
 </ul>
 <h2>Step 0: Generate the todo app</h2>
@@ -71,7 +71,7 @@ Read the existing codebase first, then write plans/x7k-dark-mode/research.md per
 <li><strong>Gate</strong> — A third pass decides if the review passes or if the agent needs to iterate</li>
 </ol>
 <p>If the gate says &quot;ITERATE&quot;, cook loops back automatically. When it says &quot;DONE&quot;, you get the result.</p>
-<p><strong>Human:Review</strong> — You still make the decisions. For each open question, ask the AI to present options with pros and cons, pick one, and have the agent update <code>research.md</code> with your decision. (Same process as the <a href="undefined">undefined</a> and <a href="undefined">undefined</a> tracks.)</p>
+<p><strong>Human:Review</strong> — You still make the decisions. For each open question, ask the AI to present options with pros and cons, pick one, and have the agent update <code>research.md</code> with your decision. (Same process as the <a href="beginner.html">beginner</a> and <a href="intermediate.html">intermediate</a> tracks.)</p>
 <h2>Plan — One cook command</h2>
 <p>Same expansion here. In the intermediate track, planning was a single AI:Work prompt. Now it gets the full work-review-gate cycle too — the AI writes <code>plan.md</code>, reviews it in <code>plan-review-001.md</code>, and gates whether it needs revision.</p>
 <pre><code class="language-bash">cook &quot;Read plans/x7k-dark-mode/research.md for decisions and context. Write plans/x7k-dark-mode/plan.md per CONTRIBUTING.md.&quot;

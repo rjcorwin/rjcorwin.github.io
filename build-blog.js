@@ -203,25 +203,12 @@ ${cards}
 const schoolSrcDir  = path.join(__dirname, 'school', 'src');
 const schoolOutDir  = path.join(__dirname, 'school');
 
-// Rewrite relative markdown links to match generated HTML structure
-function rewriteSchoolLinks(href) {
-  if (!href) return href;
-  if (/1-beginner/i.test(href))    return 'beginner.html';
-  if (/2-intermediate/i.test(href)) return 'intermediate.html';
-  if (/3-advanced/i.test(href))     return 'advanced.html';
-  if (/CONTRIBUTING\.md/i.test(href)) return '#';
-  return href;
-}
-
-function markedWithRewrite() {
-  const renderer = new marked.Renderer();
-  renderer.link = ({ href, title, text }) => {
-    const h = rewriteSchoolLinks(href);
-    const t = title ? ` title="${title}"` : '';
-    const ext = h && !h.startsWith('#') && !h.startsWith('/') && !h.startsWith('http') ? '' : '';
-    return `<a href="${h}"${t}>${text}</a>`;
-  };
-  return { renderer };
+// Rewrite relative cross-track links in markdown source before parsing
+function fixSchoolLinks(md) {
+  return md
+    .replace(/\(\.\.\/1-beginner[^)]*\)/g, '(beginner.html)')
+    .replace(/\(\.\.\/2-intermediate[^)]*\)/g, '(intermediate.html)')
+    .replace(/\(\.\.\/3-advanced[^)]*\)/g, '(advanced.html)');
 }
 
 // School track page template
@@ -366,11 +353,9 @@ ${introHtml}
 function buildSchool() {
   fs.mkdirSync(schoolOutDir, { recursive: true });
 
-  const opts = markedWithRewrite();
-
   // Root README → intro content for index
-  const rootMd   = fs.readFileSync(path.join(schoolSrcDir, 'README.md'), 'utf8');
-  const introHtml = marked(rootMd, opts);
+  const rootMd    = fs.readFileSync(path.join(schoolSrcDir, 'README.md'), 'utf8');
+  const introHtml = marked(rootMd);
 
   // The three tracks
   const tracks = [
@@ -404,8 +389,8 @@ function buildSchool() {
 
   // Build each track page
   tracks.forEach((track, i) => {
-    const md      = fs.readFileSync(path.join(schoolSrcDir, track.src), 'utf8');
-    const bodyHtml = marked(md, opts);
+    const md       = fs.readFileSync(path.join(schoolSrcDir, track.src), 'utf8');
+    const bodyHtml = marked(fixSchoolLinks(md));
     const prevTrack = tracks[i - 1] || null;
     const nextTrack = tracks[i + 1] || null;
     const html = schoolPageTemplate({ title: track.title, bodyHtml, prevTrack, nextTrack });
