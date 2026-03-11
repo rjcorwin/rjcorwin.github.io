@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REFORMAT A COMMENT BLOCK TO REQUIRED WIDTH AUTOMATICALLY — RJ CORWIN</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">RJ CORWIN</a>
+    <ul class="nav-links">
+      <li><a href="/blog/">BLOG</a></li>
+      <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
+      <li><a href="https://twitch.tv/HackingWithRJ" target="_blank" rel="noopener">TWITCH</a></li>
+      <li><a href="https://youtube.com/@HackingWithRJ" target="_blank" rel="noopener">YOUTUBE</a></li>
+    </ul>
+  </nav>
+
+  <div class="post-hero">
+    <div class="post-meta">
+      <span class="post-date">2016-10-24</span>
+      <div class="post-tags">
+        <span class="tag">VIM</span>
+        <span class="tag">ATOM</span>
+        <span class="tag">WORKFLOW</span>
+      </div>
+    </div>
+    <h1>REFORMAT A COMMENT BLOCK TO REQUIRED WIDTH AUTOMATICALLY</h1>
+  </div>
+
+  <div class="post-divider"></div>
+
+  <article class="post-body">
+<h1>Quickly reformat comment paragraphs to code&#39;s required width</h1>
+<p>Maybe the first time we write a comment block it looks nice and neat like...</p>
+<pre><code>/*
+  The quick brown fox jumped over the lazy dog. The quick
+  brown fox jumped over the lazy dog the quick brown fox
+  jumped over the lazy dog. The quick brown fox jumped over
+  the lazy dog.
+*/
+</code></pre>
+<p>But then inevitably we have some text we need to add in the middle...</p>
+<pre><code>/*
+  The quick brown fox jumped over the lazy dog. The quick
+  brown fox jumped over the lazy dog the quick brown fox who is my cousin frank
+  jumped over the lazy dog. The quick brown fox jumped over
+  the lazy dog.
+*/
+</code></pre>
+<p>... and now our nice and neat formatting is all messed up! Reflow to the rescue!</p>
+<p>In Atom, select the comment block and then go to <code>Edit -&gt; Reflow Selection</code>. In Vim, select the comment block (<code>v</code> then arrow around) and then type <code>gq</code> like GQ now you are dressed up much nicer.</p>
+<pre><code>/*
+  The quick brown fox jumped over the lazy dog. The quick
+  brown fox jumped over the lazy dog the quick brown fox who
+   is my cousin frank jumped over the lazy dog. The quick
+   brown fox jumped over the lazy dog.
+*/
+</code></pre>
+<p>Check out the <a href="http://vim.wikia.com/wiki/Automatic_formatting_of_paragraphs">VIM wiki</a> for more info on options for things like setting what the width of paragraphs should be.</p>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="getting-started-with-mdwiki.html" class="post-nav-link prev-post">
+      <span class="nav-dir">&lt; PREV</span>
+      <span class="nav-title">GETTING STARTED WITH MDWIKI</span>
+    </a>
+    <a href="publish-to-distributed-web.html" class="post-nav-link next-post">
+      <span class="nav-dir">NEXT &gt;</span>
+      <span class="nav-title">PUBLISH TO THE DISTRIBUTED WEB IN 3 COMMANDS</span>
+    </a>
+  </nav>
+
+  <footer class="site-footer">
+    <p>RJ CORWIN &nbsp;&mdash;&nbsp; <a href="/">HOME</a> &nbsp;&mdash;&nbsp; <a href="/blog/">BLOG</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      const s = document.createElement('div');
+      s.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;';
+      for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        const dur   = 2 + Math.random() * 5;
+        const delay = -(Math.random() * 6);
+        star.style.cssText = `
+          position:absolute;
+          left:${Math.random()*100}%; top:${Math.random()*100}%;
+          width:2px; height:2px; background:#fff;
+          animation:star-twinkle ${dur}s ease-in-out infinite ${delay}s;
+          --base-op:${(.08+Math.random()*.2).toFixed(2)};
+          --peak-op:${(.4+Math.random()*.4).toFixed(2)};
+        `;
+        s.appendChild(star);
+      }
+      document.body.prepend(s);
+    })();
+  </script>
+
+</body>
+</html>

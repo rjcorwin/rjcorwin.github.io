@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GETTING STARTED WITH MDWIKI — RJ CORWIN</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">RJ CORWIN</a>
+    <ul class="nav-links">
+      <li><a href="/blog/">BLOG</a></li>
+      <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
+      <li><a href="https://twitch.tv/HackingWithRJ" target="_blank" rel="noopener">TWITCH</a></li>
+      <li><a href="https://youtube.com/@HackingWithRJ" target="_blank" rel="noopener">YOUTUBE</a></li>
+    </ul>
+  </nav>
+
+  <div class="post-hero">
+    <div class="post-meta">
+      <span class="post-date">2016-10-23</span>
+      <div class="post-tags">
+        <span class="tag">MARKDOWN</span>
+        <span class="tag">TOOLS</span>
+        <span class="tag">BLOGGING</span>
+      </div>
+    </div>
+    <h1>GETTING STARTED WITH MDWIKI</h1>
+  </div>
+
+  <div class="post-divider"></div>
+
+  <article class="post-body">
+<h1>Get started with mdWiki fast on the command line</h1>
+<pre><code>mkdir myblog
+cd myblog
+wget mdwiki.info
+echo &quot;Hello world&quot; &gt;&gt; index.md
+python -m SimpleHTTPServer 8000 &amp; open http://localhost:8000
+</code></pre>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="will-farmers-make-money-from-data.html" class="post-nav-link prev-post">
+      <span class="nav-dir">&lt; PREV</span>
+      <span class="nav-title">WILL FARMERS MAKE MONEY FROM DATA?</span>
+    </a>
+    <a href="reformat-comment-block.html" class="post-nav-link next-post">
+      <span class="nav-dir">NEXT &gt;</span>
+      <span class="nav-title">REFORMAT A COMMENT BLOCK TO REQUIRED WIDTH AUTOMATICALLY</span>
+    </a>
+  </nav>
+
+  <footer class="site-footer">
+    <p>RJ CORWIN &nbsp;&mdash;&nbsp; <a href="/">HOME</a> &nbsp;&mdash;&nbsp; <a href="/blog/">BLOG</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      const s = document.createElement('div');
+      s.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;';
+      for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        const dur   = 2 + Math.random() * 5;
+        const delay = -(Math.random() * 6);
+        star.style.cssText = `
+          position:absolute;
+          left:${Math.random()*100}%; top:${Math.random()*100}%;
+          width:2px; height:2px; background:#fff;
+          animation:star-twinkle ${dur}s ease-in-out infinite ${delay}s;
+          --base-op:${(.08+Math.random()*.2).toFixed(2)};
+          --peak-op:${(.4+Math.random()*.4).toFixed(2)};
+        `;
+        s.appendChild(star);
+      }
+      document.body.prepend(s);
+    })();
+  </script>
+
+</body>
+</html>

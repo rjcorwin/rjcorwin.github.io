@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PUBLISH TO THE DISTRIBUTED WEB IN 3 COMMANDS — RJ CORWIN</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">RJ CORWIN</a>
+    <ul class="nav-links">
+      <li><a href="/blog/">BLOG</a></li>
+      <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
+      <li><a href="https://twitch.tv/HackingWithRJ" target="_blank" rel="noopener">TWITCH</a></li>
+      <li><a href="https://youtube.com/@HackingWithRJ" target="_blank" rel="noopener">YOUTUBE</a></li>
+    </ul>
+  </nav>
+
+  <div class="post-hero">
+    <div class="post-meta">
+      <span class="post-date">2017-01-02</span>
+      <div class="post-tags">
+        <span class="tag">DAT</span>
+        <span class="tag">DECENTRALIZED</span>
+        <span class="tag">WEB</span>
+      </div>
+    </div>
+    <h1>PUBLISH TO THE DISTRIBUTED WEB IN 3 COMMANDS</h1>
+  </div>
+
+  <div class="post-divider"></div>
+
+  <article class="post-body">
+<h1>Publish to the Distributed Web in 3 commands using Dat</h1>
+<p>Install <a href="https://nodejs.org/en/">nodejs</a>, <a href="http://docs.datproject.org/">dat</a>, and <a href="https://beakerbrowser.com/">Beaker Browser</a> on your computer and in 3 commands you&#39;ll be publishing on to the Distributed web hosting a hello world from your machine.</p>
+<p>Run these 3 commands...</p>
+<pre><code>▶ mkdir dat-web-test
+▶ echo &quot;Hello world&quot; &gt;&gt; dat-web-test/index.html
+▶ dat dat-web-test/
+Sharing /Users/rsteinert/dat-web-test
+
+Share Link: 99daa0dca45fcaedc72e3c882b416c4844a52efe3b13d54b69052aa41710f75e
+The Share Link is secret and only those you share it with will be able to get the files
+
+[=============================&gt;] Sharing 1 file (12 B)
+
+Waiting for connections.
+</code></pre>
+<p>Copy that share link and paste it into the Beaker Browser. Share that URL with anyone running Beaker Browser and they&#39;ll see this website hosted from your computer!</p>
+<p>Now let&#39;s try out being a peer host to improve availability when my other computer shuts down. Click on the site menu and click &quot;View Site Files&quot;...</p>
+<p>Now click on the &quot;Host&quot; button...</p>
+<p>Now we&#39;re hosting that site from the Beaker Browser and our friends can too!</p>
+<p>Anyone can fork this site to their own site and make modifications using the fork button.</p>
+<p>And there is more! See <a href="https://beakerbrowser.com/">https://beakerbrowser.com/</a>.</p>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="reformat-comment-block.html" class="post-nav-link prev-post">
+      <span class="nav-dir">&lt; PREV</span>
+      <span class="nav-title">REFORMAT A COMMENT BLOCK TO REQUIRED WIDTH AUTOMATICALLY</span>
+    </a>
+    <a href="vim-cheat-sheet.html" class="post-nav-link next-post">
+      <span class="nav-dir">NEXT &gt;</span>
+      <span class="nav-title">VIM CHEAT SHEET</span>
+    </a>
+  </nav>
+
+  <footer class="site-footer">
+    <p>RJ CORWIN &nbsp;&mdash;&nbsp; <a href="/">HOME</a> &nbsp;&mdash;&nbsp; <a href="/blog/">BLOG</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      const s = document.createElement('div');
+      s.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;';
+      for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        const dur   = 2 + Math.random() * 5;
+        const delay = -(Math.random() * 6);
+        star.style.cssText = `
+          position:absolute;
+          left:${Math.random()*100}%; top:${Math.random()*100}%;
+          width:2px; height:2px; background:#fff;
+          animation:star-twinkle ${dur}s ease-in-out infinite ${delay}s;
+          --base-op:${(.08+Math.random()*.2).toFixed(2)};
+          --peak-op:${(.4+Math.random()*.4).toFixed(2)};
+        `;
+        s.appendChild(star);
+      }
+      document.body.prepend(s);
+    })();
+  </script>
+
+</body>
+</html>

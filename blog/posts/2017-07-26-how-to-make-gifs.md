@@ -1,0 +1,21 @@
+---
+title: How to Make GIFs
+date: 2017-07-26
+slug: how-to-make-gifs
+tags: [tools, workflow]
+excerpt: The tools I use to capture, trim, and optimize GIFs for posts and docs.
+---
+
+# How to capture your screen and turn it into a GIF
+
+GIFs are a powerful tool for showing a quick example of something. A GIF is worth a thousand words it feels like sometimes.
+
+Here are some tips.
+
+- capture with giphy capture
+  - https://giphy.com/apps/giphycapture
+- Reduce colors and optimize with gifsicle. This will half the size.
+  - On Mac with brew, install with `brew install gifsicle`
+  - Run command `gifsicle --colors 256 -O3 original.gif -o output.gif`
+  - Install the gif command into your ZSH with `mkdir ~/bin && echo "gifsicle --colors 256 -O3 $1 -o $2" > ~/bin/gif.sh && chmod +x ~/bin/gif.sh && echo 'alias gif="~/bin/gif.sh" >> ~/.zshrc'`. Then open a new ZSH session and run `gif some-gif-to-optimize.gif the-optimized-gif-output.gif`.
+- reduce framerate (takes a while) https://ezgif.com/

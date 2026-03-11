@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WHAT IS ANDROID THINGS? — RJ CORWIN</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">RJ CORWIN</a>
+    <ul class="nav-links">
+      <li><a href="/blog/">BLOG</a></li>
+      <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
+      <li><a href="https://twitch.tv/HackingWithRJ" target="_blank" rel="noopener">TWITCH</a></li>
+      <li><a href="https://youtube.com/@HackingWithRJ" target="_blank" rel="noopener">YOUTUBE</a></li>
+    </ul>
+  </nav>
+
+  <div class="post-hero">
+    <div class="post-meta">
+      <span class="post-date">2017-05-19</span>
+      <div class="post-tags">
+        <span class="tag">ANDROID</span>
+        <span class="tag">IOT</span>
+        <span class="tag">HARDWARE</span>
+      </div>
+    </div>
+    <h1>WHAT IS ANDROID THINGS?</h1>
+  </div>
+
+  <div class="post-divider"></div>
+
+  <article class="post-body">
+<h1>What the heck is Android Things??? (it&#39;s an Operating System)</h1>
+<blockquote>
+<p>I&#39;ve been wondering that myself given the landing page for the project doesn&#39;t answer that question. After watching a couple Google IO 2017 videos, I think I got it.</p>
+</blockquote>
+<p>Android Things is a version of Android OS but without the User Interface. It runs on small devices like Raspberry Pi 3. In the Android Things SDK you will find Android Libraries for interacting with hardware over interfaces like GPIO. So instead of having to be a Linux administrator to deploy and run your Widget code on something like a Raspberry Pi, you use the Android IDE to write code and deploy to your Raspberry Pi via USB.</p>
+<p>Need to manage a fleet of devices and securely update them remotely with &quot;Over the Air&quot; updates? Google Cloud IoT Core, which is currently in closed beta, will soon offer a service to help you with that. Register your devices running Android Things with your Google Cloud IoT Core account and you will be able to push your new code via the UI in the Google Cloud IoT Core.</p>
+<p>Here is a collection of links demonstrating developing with Android Things and managing device fleets with Google Cloud IoT Core.</p>
+<ul>
+<li><a href="https://youtu.be/v3Dm5aeuQKE?t=219">Demo of writing code and deploying to hardware in Android Studio</a></li>
+<li><a href="https://developer.android.com/things/sdk/pio/gpio.html">Documentation on new Android libraries for communicating with things over interfaces like GPIO</a></li>
+<li><a href="https://youtu.be/sjpNek_7z-I?t=505">Explanation of the architecture of Android Things OS</a></li>
+<li><a href="https://developer.android.com/things/hardware/developer-kits.html">Supported Devices that can run Android Things OS</a></li>
+<li><a href="https://youtu.be/ETWhOWvqH5E?t=1667">Example of registering a device with Google Cloud IoT using adb CLI and gcloud CLI</a></li>
+<li><a href="https://youtu.be/ETWhOWvqH5E?t=1988">Demo showing registering devices at scale with Google Cloud IoT</a></li>
+<li><a href="https://youtu.be/ETWhOWvqH5E?t=2256">Demo of a custom app that shows device data from Google Clout IoT Core as a dashboard</a></li>
+</ul>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="ng-conf-2017-notes.html" class="post-nav-link prev-post">
+      <span class="nav-dir">&lt; PREV</span>
+      <span class="nav-title">NG CONF 2017 NOTES</span>
+    </a>
+    <a href="how-to-make-gifs.html" class="post-nav-link next-post">
+      <span class="nav-dir">NEXT &gt;</span>
+      <span class="nav-title">HOW TO MAKE GIFS</span>
+    </a>
+  </nav>
+
+  <footer class="site-footer">
+    <p>RJ CORWIN &nbsp;&mdash;&nbsp; <a href="/">HOME</a> &nbsp;&mdash;&nbsp; <a href="/blog/">BLOG</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      const s = document.createElement('div');
+      s.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;';
+      for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        const dur   = 2 + Math.random() * 5;
+        const delay = -(Math.random() * 6);
+        star.style.cssText = `
+          position:absolute;
+          left:${Math.random()*100}%; top:${Math.random()*100}%;
+          width:2px; height:2px; background:#fff;
+          animation:star-twinkle ${dur}s ease-in-out infinite ${delay}s;
+          --base-op:${(.08+Math.random()*.2).toFixed(2)};
+          --peak-op:${(.4+Math.random()*.4).toFixed(2)};
+        `;
+        s.appendChild(star);
+      }
+      document.body.prepend(s);
+    })();
+  </script>
+
+</body>
+</html>

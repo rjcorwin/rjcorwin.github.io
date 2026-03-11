@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IS OUR FRIDGE TOO WARM? — RJ CORWIN</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">RJ CORWIN</a>
+    <ul class="nav-links">
+      <li><a href="/blog/">BLOG</a></li>
+      <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
+      <li><a href="https://twitch.tv/HackingWithRJ" target="_blank" rel="noopener">TWITCH</a></li>
+      <li><a href="https://youtube.com/@HackingWithRJ" target="_blank" rel="noopener">YOUTUBE</a></li>
+    </ul>
+  </nav>
+
+  <div class="post-hero">
+    <div class="post-meta">
+      <span class="post-date">2014-07-20</span>
+      <div class="post-tags">
+        <span class="tag">HARDWARE</span>
+        <span class="tag">IOT</span>
+        <span class="tag">OPEN-SOURCE</span>
+      </div>
+    </div>
+    <h1>IS OUR FRIDGE TOO WARM?</h1>
+  </div>
+
+  <div class="post-divider"></div>
+
+  <article class="post-body">
+<h1>Is our fridge too warm? A Fido now sends us text message alerts.</h1>
+<p>Note:
+This post was posted to <a href="http://publiclab.org/notes/rjstatic/07-20-2014/is-our-fridge-too-warm-a-fido-now-sends-us-text-message-alerts">publiclab.org</a> July 20, 2014. <a href="http://publiclab.org/notes/rjstatic/07-20-2014/is-our-fridge-too-warm-a-fido-now-sends-us-text-message-alerts">[link]</a></p>
+<p>Can I use Fido as an alarm when my fridge is too warm? It&#39;s a question Dogi and I have heard many times from people who run bio labs, restaurants, and here at the Pirateship hackerspace which has a particularly pesky fridge that tends to open itself sometimes. We decided to see if Fido is a good fit.</p>
+<p>We taped a Fido to the side of one of the refrigerators at the Pirateship and ran the temperature sensor into the freezer section of the fridge.  On our laptop we visited the Web App the Fido was broadcasting on our WiFi.  We watched the temperature drop to levels previously never seen on a Fido; we usually put these things in greenhouses and cold frames where we&#39;ve seen Charde plants suffering through crazy temperatures like 125 degrees Fahrenheit. We set the alerts on the Fido to text message us when -5 degrees Celsius was reached, boy were we in for a surprise.</p>
+<p>-197.5 degrees Fahrenheit! It looks like we had found a bug. After looking into the code it turned out the problem was possibly in the Node.js module we were using to poll the temperature sensor.  We confirmed the same behavior on a second device and <a href="https://github.com/asmuelle/node-temper1/issues/5">filed a bug</a>. To make sure it wasn&#39;t actually a problem inherent with the temper1 sensors, we tried another library to poll the temper1 sensor. We used <a href="https://github.com/padelt/temper-python">temper-python</a> and found that it was correctly sensing below freezing temperatures.</p>
+<p>After some code refactoring we had <a href="https://github.com/rjsteinert/Fido/pull/1/files">modified our Fido code</a> to poll the temperature sensor using the temper-python library.</p>
+<p>The really exciting part for us was that we now had a release to push to all of our other remote Fidos in greenhouses around the Northeast. Before just pushing the release it was time to do QA! We set up another Fido without the update, rolled an update script on a QA Update Server, and set this QA Fido to receive updates from the QA Update Server. This was no simple code update, this update script also had dependencies to pull in and another setup script to run, <a href="https://github.com/rjsteinert/Fido-Updater-QA/blob/master/scripts/0.0.4.js">our slickest update to date</a> using the Update framework mentioned in our <a href="http://publiclab.org/notes/rjstatic/07-09-2014/thinking-about-a-small-linux-web-app-server-initiative-who-wants-to-join">proposal for an Open Ground SDK</a>. After testing the update on our QA Fido, it failed! We had <a href="https://github.com/rjsteinert/Fido-Updater-QA/commit/c47dd9889c53b44236845a6bab977111bdd2e6b1#diff-8b797751080e4ce6c3d013c94268770e">missed a semicolon in the update script</a>. Doh! This is why we do QA!</p>
+<p>After resetting the QA Fido we reran the update with success! To be extra careful we set up a second QA Fido and also saw the same success.  Then we sent that update to the actual Update Server that all of the remote Fidos in the world listen to.  Just to be <strong>extra extra extra</strong> careful we tested the deployed update on another Fido we have here.  It sure takes a lot of Fido to make a solid update! Good dogies.</p>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="index.html" class="post-nav-link prev-post">
+      <span class="nav-dir">&lt; BACK</span>
+      <span class="nav-title">BLOG INDEX</span>
+    </a>
+    <a href="make-habitrpg-safe-for-work.html" class="post-nav-link next-post">
+      <span class="nav-dir">NEXT &gt;</span>
+      <span class="nav-title">MAKE HABITRPG SAFE FOR WORK</span>
+    </a>
+  </nav>
+
+  <footer class="site-footer">
+    <p>RJ CORWIN &nbsp;&mdash;&nbsp; <a href="/">HOME</a> &nbsp;&mdash;&nbsp; <a href="/blog/">BLOG</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      const s = document.createElement('div');
+      s.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;';
+      for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        const dur   = 2 + Math.random() * 5;
+        const delay = -(Math.random() * 6);
+        star.style.cssText = `
+          position:absolute;
+          left:${Math.random()*100}%; top:${Math.random()*100}%;
+          width:2px; height:2px; background:#fff;
+          animation:star-twinkle ${dur}s ease-in-out infinite ${delay}s;
+          --base-op:${(.08+Math.random()*.2).toFixed(2)};
+          --peak-op:${(.4+Math.random()*.4).toFixed(2)};
+        `;
+        s.appendChild(star);
+      }
+      document.body.prepend(s);
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "rjcorwin-github-io",
+  "private": true,
+  "scripts": {
+    "build": "node build-blog.js"
+  },
+  "devDependencies": {
+    "marked": "^12.0.0"
+  }
+}

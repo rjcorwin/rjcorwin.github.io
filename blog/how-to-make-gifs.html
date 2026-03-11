@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOW TO MAKE GIFS — RJ CORWIN</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">RJ CORWIN</a>
+    <ul class="nav-links">
+      <li><a href="/blog/">BLOG</a></li>
+      <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
+      <li><a href="https://twitch.tv/HackingWithRJ" target="_blank" rel="noopener">TWITCH</a></li>
+      <li><a href="https://youtube.com/@HackingWithRJ" target="_blank" rel="noopener">YOUTUBE</a></li>
+    </ul>
+  </nav>
+
+  <div class="post-hero">
+    <div class="post-meta">
+      <span class="post-date">2017-07-26</span>
+      <div class="post-tags">
+        <span class="tag">TOOLS</span>
+        <span class="tag">WORKFLOW</span>
+      </div>
+    </div>
+    <h1>HOW TO MAKE GIFS</h1>
+  </div>
+
+  <div class="post-divider"></div>
+
+  <article class="post-body">
+<h1>How to capture your screen and turn it into a GIF</h1>
+<p>GIFs are a powerful tool for showing a quick example of something. A GIF is worth a thousand words it feels like sometimes.</p>
+<p>Here are some tips.</p>
+<ul>
+<li>capture with giphy capture<ul>
+<li><a href="https://giphy.com/apps/giphycapture">https://giphy.com/apps/giphycapture</a></li>
+</ul>
+</li>
+<li>Reduce colors and optimize with gifsicle. This will half the size.<ul>
+<li>On Mac with brew, install with <code>brew install gifsicle</code></li>
+<li>Run command <code>gifsicle --colors 256 -O3 original.gif -o output.gif</code></li>
+<li>Install the gif command into your ZSH with <code>mkdir ~/bin &amp;&amp; echo &quot;gifsicle --colors 256 -O3 $1 -o $2&quot; &gt; ~/bin/gif.sh &amp;&amp; chmod +x ~/bin/gif.sh &amp;&amp; echo &#39;alias gif=&quot;~/bin/gif.sh&quot; &gt;&gt; ~/.zshrc&#39;</code>. Then open a new ZSH session and run <code>gif some-gif-to-optimize.gif the-optimized-gif-output.gif</code>.</li>
+</ul>
+</li>
+<li>reduce framerate (takes a while) <a href="https://ezgif.com/">https://ezgif.com/</a></li>
+</ul>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="what-is-android-things.html" class="post-nav-link prev-post">
+      <span class="nav-dir">&lt; PREV</span>
+      <span class="nav-title">WHAT IS ANDROID THINGS?</span>
+    </a>
+    
+  </nav>
+
+  <footer class="site-footer">
+    <p>RJ CORWIN &nbsp;&mdash;&nbsp; <a href="/">HOME</a> &nbsp;&mdash;&nbsp; <a href="/blog/">BLOG</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      const s = document.createElement('div');
+      s.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;';
+      for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        const dur   = 2 + Math.random() * 5;
+        const delay = -(Math.random() * 6);
+        star.style.cssText = `
+          position:absolute;
+          left:${Math.random()*100}%; top:${Math.random()*100}%;
+          width:2px; height:2px; background:#fff;
+          animation:star-twinkle ${dur}s ease-in-out infinite ${delay}s;
+          --base-op:${(.08+Math.random()*.2).toFixed(2)};
+          --peak-op:${(.4+Math.random()*.4).toFixed(2)};
+        `;
+        s.appendChild(star);
+      }
+      document.body.prepend(s);
+    })();
+  </script>
+
+</body>
+</html>

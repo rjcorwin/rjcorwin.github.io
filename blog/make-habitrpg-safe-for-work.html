@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAKE HABITRPG SAFE FOR WORK — RJ CORWIN</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">RJ CORWIN</a>
+    <ul class="nav-links">
+      <li><a href="/blog/">BLOG</a></li>
+      <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
+      <li><a href="https://twitch.tv/HackingWithRJ" target="_blank" rel="noopener">TWITCH</a></li>
+      <li><a href="https://youtube.com/@HackingWithRJ" target="_blank" rel="noopener">YOUTUBE</a></li>
+    </ul>
+  </nav>
+
+  <div class="post-hero">
+    <div class="post-meta">
+      <span class="post-date">2014-08-24</span>
+      <div class="post-tags">
+        <span class="tag">JAVASCRIPT</span>
+        <span class="tag">TOOLS</span>
+        <span class="tag">PRODUCTIVITY</span>
+      </div>
+    </div>
+    <h1>MAKE HABITRPG SAFE FOR WORK</h1>
+  </div>
+
+  <div class="post-divider"></div>
+
+  <article class="post-body">
+<h1>Is HabitRPG NSFW? Here&#39;s a trick to make it more SFW.</h1>
+<p>I like to use HabitRPG all day but my little green guy on my screen and all my other friends with their crazy head dresses doesn&#39;t look like I&#39;m being productive when they flash across my screen for all to see. I wrote some code to hide the top two bars, remove the Rewards bar, and then even out the remaining three columns to fill the screen (gotta love Bootstrap Grid system).</p>
+<p>Here&#39;s the code. Open Developer tools in your browser and paste this into the console when you are on the HabitRPG page.</p>
+<pre><code>$(&#39;nav&#39;).hide();
+$(&#39;#undefined-sticky-wrapper&#39;).hide();
+$(&#39;.rewards&#39;).hide();
+$(&#39;.col-md-3&#39;).addClass(&#39;col-md-4&#39;).removeClass(&#39;col-md-3&#39;);
+</code></pre>
+<p><a href="javascript:$('nav').hide();$('#undefined-sticky-wrapper').hide();$('.rewards').hide();$('.col-md-3').addClass('col-md-4').removeClass('col-md-3');void 0">Make HabitRPG Safe for Work</a> &lt;-- Here&#39;s a bookmarklet to make it easy to run this code on the HabitRPG page. Thanks to n-gauge on Hacker News for figuring out I needed <code>;void 0</code> at the end of the code!</p>
+<p><a href="https://news.ycombinator.com/item?id=8219501">Comments on Hacker News</a></p>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="is-our-fridge-too-warm.html" class="post-nav-link prev-post">
+      <span class="nav-dir">&lt; PREV</span>
+      <span class="nav-title">IS OUR FRIDGE TOO WARM?</span>
+    </a>
+    <a href="will-farmers-make-money-from-data.html" class="post-nav-link next-post">
+      <span class="nav-dir">NEXT &gt;</span>
+      <span class="nav-title">WILL FARMERS MAKE MONEY FROM DATA?</span>
+    </a>
+  </nav>
+
+  <footer class="site-footer">
+    <p>RJ CORWIN &nbsp;&mdash;&nbsp; <a href="/">HOME</a> &nbsp;&mdash;&nbsp; <a href="/blog/">BLOG</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      const s = document.createElement('div');
+      s.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;';
+      for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        const dur   = 2 + Math.random() * 5;
+        const delay = -(Math.random() * 6);
+        star.style.cssText = `
+          position:absolute;
+          left:${Math.random()*100}%; top:${Math.random()*100}%;
+          width:2px; height:2px; background:#fff;
+          animation:star-twinkle ${dur}s ease-in-out infinite ${delay}s;
+          --base-op:${(.08+Math.random()*.2).toFixed(2)};
+          --peak-op:${(.4+Math.random()*.4).toFixed(2)};
+        `;
+        s.appendChild(star);
+      }
+      document.body.prepend(s);
+    })();
+  </script>
+
+</body>
+</html>
