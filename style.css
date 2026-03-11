@@ -190,6 +190,10 @@ body::after {
 .btn-magenta { background: transparent; color: var(--magenta); border: 2px solid var(--magenta); box-shadow: 0 0 10px rgba(255,0,255,.2); }
 .btn-cyan:hover    { background: rgba(0,255,255,.08);   box-shadow: 0 0 20px rgba(0,255,255,.5);   transform: translate(-2px,-2px); }
 .btn-magenta:hover { background: rgba(255,0,255,.08);   box-shadow: 0 0 20px rgba(255,0,255,.5);   transform: translate(-2px,-2px); }
+.btn-yellow { background: transparent; color: var(--yellow); border: 2px solid var(--yellow); box-shadow: 0 0 10px rgba(255,255,0,.2); }
+.btn-green  { background: transparent; color: var(--green);  border: 2px solid var(--green);  box-shadow: 0 0 10px rgba(57,255,20,.2); }
+.btn-yellow:hover { background: rgba(255,255,0,.08);  box-shadow: 0 0 20px rgba(255,255,0,.5);  transform: translate(-2px,-2px); }
+.btn-green:hover  { background: rgba(57,255,20,.08);  box-shadow: 0 0 20px rgba(57,255,20,.5);  transform: translate(-2px,-2px); }
 
 /* ─── FOOTER ─── */
 .site-footer {
