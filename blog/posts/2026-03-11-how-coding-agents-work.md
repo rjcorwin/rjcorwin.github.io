@@ -50,4 +50,4 @@ They're also good at documentation, at exploring a codebase you hand them, and a
 
 ---
 
-This is the theory behind the three levels in [AI Coding School](/school/). Each level is the same todo app feature, implemented with increasing structure and automation — so you can see concretely what changes as the methodology gets more rigorous.
+This is the theory behind the three levels in [How RJ Codes With AI](/school/). Each level is the same todo app feature, implemented with increasing structure and automation — so you can see concretely what changes as the methodology gets more rigorous.
