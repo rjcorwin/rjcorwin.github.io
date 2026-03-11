@@ -312,7 +312,7 @@ function schoolIndexTemplate({ introHtml, tracks }) {
 <body>
 ${nav}
 
-  <section class="site-section" style="padding-top: 140px; padding-bottom: 0;">
+  <section class="site-section" style="padding-top: 140px;">
     <div class="section-inner">
       <span class="section-label">&gt; SELECT TRACK</span>
       <h1 class="section-heading neon-cyan">AI CODING SCHOOL</h1>
@@ -323,7 +323,7 @@ ${cards}
     </div>
   </section>
 
-  <section class="site-section" style="padding-top: 16px;">
+  <section class="site-section" style="padding-top: 32px;">
     <div class="section-inner">
       <span class="section-label">// ABOUT</span>
       <article class="post-body">
