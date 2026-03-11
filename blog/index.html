@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MISSION LOG — RJ CORWIN</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">RJ CORWIN</a>
+    <ul class="nav-links">
+      <li><a href="/blog/" class="neon-cyan">MISSION LOG</a></li>
+      <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
+      <li><a href="https://twitch.tv" target="_blank" rel="noopener">TWITCH</a></li>
+      <li><a href="https://youtube.com" target="_blank" rel="noopener">YOUTUBE</a></li>
+    </ul>
+  </nav>
+
+  <section class="site-section" style="padding-top: 140px;">
+    <div class="section-inner">
+      <span class="section-label">&gt; SELECT STAGE</span>
+      <h1 class="section-heading neon-magenta">MISSION LOG</h1>
+
+      <div class="blog-list">
+
+        <a href="entry.html" class="blog-card" data-num="01">
+          <span class="post-num">01</span>
+          <span class="post-date">2026-03-11</span>
+          <span class="post-title">LEVEL 01: WHY I STARTED STREAMING CODE</span>
+          <span class="post-excerpt">
+            Turns out watching someone debug live is more entertaining than it has any right to be.
+            Here's how I accidentally started a stream, and why I kept going.
+          </span>
+          <div class="post-tags">
+            <span class="tag">STREAMING</span>
+            <span class="tag">DEV LIFE</span>
+          </div>
+        </a>
+
+        <a href="entry.html" class="blog-card" data-num="02">
+          <span class="post-num">02</span>
+          <span class="post-date">2026-02-24</span>
+          <span class="post-title">LEVEL 02: BIT.TRIP RUNNER TAUGHT ME ABOUT RHYTHM IN CODE</span>
+          <span class="post-excerpt">
+            Flow state in a rhythm game and flow state writing software are the same thing.
+            I didn't realize this until I 1CC'd Runner and then wrote the best code of my week.
+          </span>
+          <div class="post-tags">
+            <span class="tag">GAMES</span>
+            <span class="tag">PHILOSOPHY</span>
+          </div>
+        </a>
+
+        <a href="entry.html" class="blog-card" data-num="03">
+          <span class="post-num">03</span>
+          <span class="post-date">2026-02-10</span>
+          <span class="post-title">LEVEL 03: BUILDING THIS SITE WITH RAW HTML AND SPITE</span>
+          <span class="post-excerpt">
+            No framework. No build step. No npm. Just a CSS file, three HTML pages,
+            and a deep desire to have something that loads in under a second.
+          </span>
+          <div class="post-tags">
+            <span class="tag">WEB</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>RJ CORWIN &nbsp;&mdash;&nbsp; <a href="/">HOME</a> &nbsp;&mdash;&nbsp; BUILT WITH RAW HTML AND SPITE</p>
+  </footer>
+
+  <script>
+    /* stars */
+    (function () {
+      const s = document.createElement('div');
+      s.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;';
+      for (let i = 0; i < 60; i++) {
+        const star = document.createElement('div');
+        const dur   = 2 + Math.random() * 5;
+        const delay = -(Math.random() * 6);
+        star.style.cssText = `
+          position:absolute;
+          left:${Math.random()*100}%; top:${Math.random()*100}%;
+          width:2px; height:2px; background:#fff;
+          animation:star-twinkle ${dur}s ease-in-out infinite ${delay}s;
+          --base-op:${(.1+Math.random()*.25).toFixed(2)};
+          --peak-op:${(.5+Math.random()*.5).toFixed(2)};
+        `;
+        s.appendChild(star);
+      }
+      document.body.prepend(s);
+    })();
+  </script>
+
+</body>
+</html>

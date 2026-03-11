@@ -1,31 +1,239 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RJ CORWIN</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<html>
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">RJ CORWIN</a>
+    <ul class="nav-links">
+      <li><a href="/blog/">MISSION LOG</a></li>
+      <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
+      <li><a href="https://twitch.tv" target="_blank" rel="noopener">TWITCH</a></li>
+      <li><a href="https://youtube.com" target="_blank" rel="noopener">YOUTUBE</a></li>
+    </ul>
+  </nav>
 
-<header>
-  <title>RJ (Steinert) Corwin</title>
-</header>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-stars" id="hero-stars"></div>
 
-<body style="background: #CCC; margin-top: 30px;">
-  <div style="margin: auto; max-width: 500px; color: white; font-weight: bolder; padding: 1px 30px; font-size: 3em;" id="container">
-    <p>
-      Hi there! I'm RJ Corwin, formerly RJ Steinert. I build software in the education space. You can find me on Github <a alt="github profile" href="https://github.com/rjcorwin" style="color: white">here</a>.
-    </p>
-  </div>
-	<script src="three.min.js"></script>
-	<script src="vanta.waves.min.js"></script>
-	<script>
-	VANTA.WAVES({
-		el: "#container",
-		mouseControls: true,
-		touchControls: true,
-		gyroControls: false,
-		minHeight: 200.00,
-		minWidth: 200.00,
-		scale: 1.00,
-		scaleMobile: 1.00
-	})
-	</script>
+    <span class="hero-greeting">&gt; PLAYER ONE READY</span>
+    <h1 class="hero-title">
+      HELLO WORLD<br>
+      <span class="name">RJ CORWIN</span>
+    </h1>
+    <span class="hero-sub">SOFTWARE DEV &nbsp;/&nbsp; STREAMER &nbsp;/&nbsp; PIXEL ENTHUSIAST</span>
+
+    <div class="hero-cta">
+      <a href="/blog/" class="btn btn-cyan">MISSION LOG</a>
+      <a href="https://github.com/rjcorwin" class="btn btn-magenta" target="_blank" rel="noopener">GITHUB</a>
+    </div>
+
+    <!-- PLATFORM -->
+    <div class="platform">
+      <div class="runner-container">
+        <canvas id="runner-canvas" width="56" height="80"></canvas>
+      </div>
+
+      <!-- decorative blocks -->
+      <div class="plat-deco">
+        <div class="deco-block" style="width:16px;height:32px;"></div>
+        <div class="deco-block" style="width:16px;height:16px;"></div>
+        <div class="deco-block" style="width:16px;height:48px;"></div>
+        <div class="deco-block" style="width:16px;height:24px;"></div>
+      </div>
+
+      <div class="platform-tiles"></div>
+      <div class="platform-surface"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="site-section" id="about">
+    <div class="section-inner">
+      <span class="section-label">// PLAYER INFO</span>
+      <h2 class="section-heading neon-cyan">ABOUT</h2>
+      <div class="about-text">
+        <p>
+          Hey — I'm RJ Corwin (formerly RJ Steinert). I build software in the education space,
+          stream coding sessions and video game runs, and occasionally ship side projects
+          at 2am while listening to chiptune.
+        </p>
+        <p>
+          I believe software should be <span class="neon-yellow">fast</span>,
+          <span class="neon-green">readable</span>, and <span class="neon-magenta">weird enough to be interesting</span>.
+          Most of my work lives on <a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GitHub</a>.
+        </p>
+      </div>
+
+      <div class="player-stats">
+        <div class="stat-item">
+          <span class="stat-label">CLASS</span>
+          <span class="stat-value neon-white">FULL STACK DEV</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">SPECIALTY</span>
+          <span class="stat-value">EDUCATION TECH</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">STREAMS</span>
+          <span class="stat-value neon-cyan">CODING / GAMES</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">STATUS</span>
+          <span class="stat-value neon-green">ONLINE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LINKS -->
+  <section class="site-section" id="links">
+    <div class="section-inner">
+      <span class="section-label">// COLLECTIBLES</span>
+      <h2 class="section-heading neon-magenta">FIND ME</h2>
+      <div class="links-grid">
+        <a href="https://github.com/rjcorwin" class="link-card" target="_blank" rel="noopener">
+          <span class="card-label">CODE</span>
+          <span class="card-name">GITHUB</span>
+          <span class="card-desc">Open source projects, experiments, and whatever I shipped last night.</span>
+        </a>
+        <a href="https://twitch.tv" class="link-card" target="_blank" rel="noopener">
+          <span class="card-label">LIVE</span>
+          <span class="card-name">TWITCH</span>
+          <span class="card-desc">Live coding streams, game runs, and the occasional rubber duck debugging session.</span>
+        </a>
+        <a href="https://youtube.com" class="link-card" target="_blank" rel="noopener">
+          <span class="card-label">VIDEO</span>
+          <span class="card-name">YOUTUBE</span>
+          <span class="card-desc">VODs, tutorials, and dev logs. The blog companion channel.</span>
+        </a>
+        <a href="/blog/" class="link-card">
+          <span class="card-label">WORDS</span>
+          <span class="card-name">MISSION LOG</span>
+          <span class="card-desc">Blog posts alongside my videos. Code breakdowns, game recs, project post-mortems.</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>RJ CORWIN &nbsp;&mdash;&nbsp; <a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a> &nbsp;&mdash;&nbsp; BUILT WITH RAW HTML AND SPITE</p>
+  </footer>
+
+  <script>
+    /* ── STARS ── */
+    (function () {
+      const container = document.getElementById('hero-stars');
+      for (let i = 0; i < 90; i++) {
+        const s = document.createElement('div');
+        const big = Math.random() < 0.1;
+        const dur = 2 + Math.random() * 5;
+        const delay = -(Math.random() * 6);
+        const baseOp = (.1 + Math.random() * .3).toFixed(2);
+        const peakOp = (.6 + Math.random() * .4).toFixed(2);
+        s.style.cssText = `
+          position:absolute;
+          left:${Math.random()*100}%;
+          top:${Math.random()*100}%;
+          width:${big ? 3 : 2}px; height:${big ? 3 : 2}px;
+          background:${Math.random()<.85 ? '#fff' : (Math.random()<.5 ? 'var(--cyan)' : 'var(--magenta)')};
+          animation: star-twinkle ${dur}s ease-in-out infinite ${delay}s;
+          --base-op:${baseOp}; --peak-op:${peakOp};
+        `;
+        container.appendChild(s);
+      }
+    })();
+
+    /* ── FLOATING BITS ── */
+    (function () {
+      const colors = ['#00FFFF','#FF00FF','#FFFF00','#39FF14'];
+      function spawnBit() {
+        const bit = document.createElement('div');
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const size = 4 + Math.floor(Math.random() * 3) * 4;
+        bit.style.cssText = `
+          position:fixed;
+          left:${10 + Math.random()*80}%;
+          bottom:${60 + Math.random()*20}px;
+          width:${size}px; height:${size}px;
+          background:${color};
+          box-shadow:0 0 ${size}px ${color};
+          animation: float-bit ${1.5 + Math.random()*2}s linear forwards;
+          z-index:2; pointer-events:none;
+          image-rendering:pixelated;
+        `;
+        document.body.appendChild(bit);
+        setTimeout(() => bit.remove(), 4000);
+      }
+      setInterval(spawnBit, 800);
+    })();
+
+    /* ── PIXEL RUNNER ── */
+    (function () {
+      const canvas = document.getElementById('runner-canvas');
+      const ctx    = canvas.getContext('2d');
+      const P = 7; // px per pixel
+
+      const WHITE = '#ffffff';
+      const CYAN  = '#00ffff';
+      const MAG   = '#ff00ff';
+      const T     = null; // transparent
+
+      // 8 wide × 10 tall
+      const FRAME_A = [
+        [T,T,WHITE,WHITE,WHITE,WHITE,T,T],
+        [T,WHITE,WHITE,WHITE,WHITE,WHITE,WHITE,T],
+        [T,WHITE,T,WHITE,WHITE,T,WHITE,T],
+        [T,WHITE,WHITE,WHITE,WHITE,WHITE,WHITE,T],
+        [T,CYAN,CYAN,CYAN,CYAN,CYAN,CYAN,T],
+        [CYAN,CYAN,CYAN,CYAN,CYAN,CYAN,CYAN,CYAN],
+        [T,CYAN,CYAN,CYAN,CYAN,CYAN,CYAN,T],
+        [T,T,MAG,MAG,MAG,MAG,T,T],
+        [MAG,MAG,T,T,MAG,MAG,T,T],
+        [MAG,MAG,T,T,T,MAG,MAG,T],
+        [T,T,T,T,T,MAG,MAG,T],
+      ];
+
+      const FRAME_B = [
+        [T,T,WHITE,WHITE,WHITE,WHITE,T,T],
+        [T,WHITE,WHITE,WHITE,WHITE,WHITE,WHITE,T],
+        [T,WHITE,T,WHITE,WHITE,T,WHITE,T],
+        [T,WHITE,WHITE,WHITE,WHITE,WHITE,WHITE,T],
+        [T,CYAN,CYAN,CYAN,CYAN,CYAN,CYAN,T],
+        [CYAN,CYAN,CYAN,CYAN,CYAN,CYAN,CYAN,CYAN],
+        [T,CYAN,CYAN,CYAN,CYAN,CYAN,CYAN,T],
+        [T,T,MAG,MAG,MAG,MAG,T,T],
+        [T,T,MAG,MAG,T,MAG,MAG,MAG],
+        [T,MAG,MAG,T,T,T,MAG,MAG],
+        [T,MAG,MAG,T,T,T,T,T],
+      ];
+
+      function draw(frame) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        frame.forEach((row, y) => {
+          row.forEach((color, x) => {
+            if (!color) return;
+            ctx.fillStyle = color;
+            ctx.fillRect(x * P, y * P, P, P);
+          });
+        });
+      }
+
+      let frameIdx = 0;
+      const frames = [FRAME_A, FRAME_B];
+      draw(frames[0]);
+      setInterval(() => {
+        frameIdx = 1 - frameIdx;
+        draw(frames[frameIdx]);
+      }, 130);
+    })();
+  </script>
 </body>
 </html>
-
