@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 'use strict';
 
-const fs            = require('fs');
-const path          = require('path');
-const { execSync }  = require('child_process');
-const { marked }    = require('marked');
+const fs         = require('fs');
+const path       = require('path');
+const { marked } = require('marked');
 
 // --- Frontmatter parser ---
 function parseFrontmatter(src) {
@@ -201,20 +200,8 @@ ${cards}
 // AI CODING SCHOOL
 // ============================================================
 
-const SCHOOL_REPO   = 'https://github.com/rjcorwin/ai-coding-school.git';
-const schoolSrcDir  = path.join(__dirname, '.ai-coding-school-src');
+const schoolSrcDir  = path.join(__dirname, 'school', 'src');
 const schoolOutDir  = path.join(__dirname, 'school');
-
-// Clone or pull the source repo
-function syncSchoolRepo() {
-  if (fs.existsSync(path.join(schoolSrcDir, '.git'))) {
-    console.log('pulling ai-coding-school...');
-    execSync('git pull', { cwd: schoolSrcDir, stdio: 'inherit' });
-  } else {
-    console.log('cloning ai-coding-school...');
-    execSync(`git clone ${SCHOOL_REPO} "${schoolSrcDir}"`, { stdio: 'inherit' });
-  }
-}
 
 // Rewrite relative markdown links to match generated HTML structure
 function rewriteSchoolLinks(href) {
@@ -362,7 +349,6 @@ ${introHtml}
 }
 
 function buildSchool() {
-  syncSchoolRepo();
   fs.mkdirSync(schoolOutDir, { recursive: true });
 
   const opts = markedWithRewrite();
@@ -378,21 +364,21 @@ function buildSchool() {
       title: 'Beginner Track',
       label: 'LEVEL 01',
       desc:  'The flat-file approach to RPI — research, plan, implement with context resets between phases. No extra tooling required.',
-      src:   '1-beginner/README.md',
+      src:   'beginner.md',
     },
     {
       slug:  'intermediate',
       title: 'Intermediate Track',
       label: 'LEVEL 02',
       desc:  'Add decision documents, structured plan folders, and self-review loops to keep larger features organized.',
-      src:   '2-intermediate/README.md',
+      src:   'intermediate.md',
     },
     {
       slug:  'advanced',
       title: 'Advanced Track',
       label: 'LEVEL 03',
       desc:  'Fully automated RPI with the cook CLI — review loops across all phases with human checkpoints kept intact.',
-      src:   '3-advanced/README.md',
+      src:   'advanced.md',
     },
   ];
 
