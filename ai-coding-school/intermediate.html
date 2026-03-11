@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INTERMEDIATE TRACK — AI CODING SCHOOL — RJ CORWIN</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">RJ CORWIN</a>
+    <ul class="nav-links">
+      <li><a href="/blog/">BLOG</a></li>
+      <li><a href="/ai-coding-school/">AI CODING SCHOOL</a></li>
+      <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
+      <li><a href="https://twitch.tv/HackingWithRJ" target="_blank" rel="noopener">TWITCH</a></li>
+      <li><a href="https://youtube.com/@HackingWithRJ" target="_blank" rel="noopener">YOUTUBE</a></li>
+    </ul>
+  </nav>
+
+  <div class="post-hero">
+    <div class="post-meta">
+      <span class="post-date neon-cyan">AI CODING SCHOOL</span>
+    </div>
+    <h1>INTERMEDIATE TRACK</h1>
+  </div>
+
+  <div class="post-divider"></div>
+
+  <article class="post-body">
+<h1>RPI Guide: Intermediate</h1>
+<p>The <a href="undefined">undefined</a> gave you the shape of RPI — research, plan, implement — with you reviewing the output at each phase. The intermediate track builds on that with three additions:</p>
+<ul>
+<li><strong>Decision docs</strong> — when an open question is too complex to answer off the top of your head, you ask the agent to write a decision doc laying out the options with pros and cons before you commit</li>
+<li><strong>Structured plan folders</strong> — the repo gets a CONTRIBUTING.md defining the workflow and templates, and every feature gets a plan folder to keep its research, decisions, and implementation history together</li>
+<li><strong>Implementation review loop</strong> — after the agent implements, it reviews its own code and decides if it&#39;s ready before you spend time on it</li>
+</ul>
+<h2>Prerequisites</h2>
+<ul>
+<li>Complete the <a href="undefined">undefined</a> or understand the basics of Research, Plan, Implement</li>
+<li>Read CONTRIBUTING.md (in this folder) — it defines the full file structure, workflow steps, and templates used in this track</li>
+</ul>
+<h2>Step 0: Generate the todo app</h2>
+<p>If you haven&#39;t already, generate the todo app:</p>
+<p><strong>Prompt:</strong></p>
+<pre><code>Create a simple todo app using HTML, CSS, and vanilla JavaScript in a single index.html file. It should support adding, completing, and deleting todos. Keep it simple — no frameworks, no build tools.
+</code></pre>
+<h2>Step 1: Set up the plan folder</h2>
+<p>Every feature gets its own plan folder and git branch. This keeps research, planning, and implementation artifacts organized and tied to a PR.</p>
+<pre><code class="language-bash">mkdir -p plans/x7k-dark-mode
+git checkout -b x7k-dark-mode
+</code></pre>
+<h2>Research</h2>
+<h3>AI:Work — Write research.md</h3>
+<p><strong>Prompt:</strong></p>
+<pre><code>We&#39;re going to add a dark mode / light mode toggle to our todo app.
+
+Requirements:
+- User can switch between dark and light themes
+- The toggle should be visible and accessible
+- Theme preference should persist across page reloads
+
+Read the existing codebase first, then write plans/x7k-dark-mode/research.md per CONTRIBUTING.md.
+</code></pre>
+<p>Same output expectations as the beginner track, but now following the structured template from CONTRIBUTING.md.</p>
+<p><strong>Run <code>/clear</code>.</strong></p>
+<h3>Human:Review — Your turn</h3>
+<p>Read the research document. For straightforward questions, just pick an option and record it:</p>
+<p><strong>Prompt:</strong></p>
+<pre><code>Go with localStorage. Update plans/x7k-dark-mode/research.md to record this decision under the open questions section.
+</code></pre>
+<p>For harder questions, ask the agent to write a decision doc first so you can explore the options in depth:</p>
+<p><strong>Prompt:</strong></p>
+<pre><code>Write a decision doc in plans/x7k-dark-mode/ for the toggle placement question per CONTRIBUTING.md.
+</code></pre>
+<p>Read the decision doc, pick an option, then record it in research.md. Repeat for each open question until every decision is resolved.</p>
+<p><strong>Run <code>/clear</code>.</strong></p>
+<h2>Plan</h2>
+<h3>AI:Work — Write plan.md</h3>
+<p><strong>Prompt:</strong></p>
+<pre><code>Read plans/x7k-dark-mode/research.md for decisions and context. Write plans/x7k-dark-mode/plan.md per CONTRIBUTING.md.
+</code></pre>
+<p><strong>Run <code>/clear</code>.</strong></p>
+<h3>Human:Review — Approve the plan</h3>
+<p>Read the plan. Does it match your research decisions? Is anything overcomplicated or missing? Edit and approve before moving on.</p>
+<p><strong>Run <code>/clear</code>.</strong></p>
+<h2>Implement</h2>
+<p>This is where the cook loop comes in. Each step runs in a fresh context — run <code>/clear</code> between them.</p>
+<h3>AI:Work — Implement and write devlog</h3>
+<p><strong>Prompt:</strong></p>
+<pre><code>Read plans/x7k-dark-mode/plan.md. Implement the plan. When done, write a new devlog in the plan folder per CONTRIBUTING.md covering what was done, tricky parts, and any decisions made.
+</code></pre>
+<p>The devlog replaces the manual debrief from the beginner track — instead of asking &quot;what was tricky?&quot; after the fact, the agent documents it as a persistent artifact.</p>
+<p><strong>Run <code>/clear</code>.</strong></p>
+<h3>AI:Review — Write code review</h3>
+<p><strong>Prompt:</strong></p>
+<pre><code>Review the implementation against plans/x7k-dark-mode/plan.md, read the latest devlog in the plan for context on how implementation went, read through the implementation&#39;s code changes, and then write a code review file in the plan folder per CONTRIBUTING.md.
+</code></pre>
+<p><strong>Run <code>/clear</code>.</strong></p>
+<h3>AI:Gate — Ship it?</h3>
+<p><strong>Prompt:</strong></p>
+<pre><code>Read the latest devlog and latest code review in plans/x7k-dark-mode/. Are there any High issues? If yes, write a new plan in the plan folder with fixes needed per CONTRIBUTING.md. If no, write plans/x7k-dark-mode/pr.md and confirm ready for human review.
+</code></pre>
+<p>If the gate says revision is needed, run <code>/clear</code>, go back to AI:Work with the new plan, and loop again. If it passes, move on.</p>
+<h3>Human:Review — Final approval</h3>
+<p>Test the implementation. Review the PR description. Merge when satisfied.</p>
+<p>Ready to automate the loops? Move on to the <a href="undefined">undefined</a>.</p>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="beginner.html" class="post-nav-link prev-post">
+      <span class="nav-dir">&lt; PREV</span>
+      <span class="nav-title">BEGINNER TRACK</span>
+    </a>
+    <a href="advanced.html" class="post-nav-link next-post">
+      <span class="nav-dir">NEXT &gt;</span>
+      <span class="nav-title">ADVANCED TRACK</span>
+    </a>
+  </nav>
+
+  <footer class="site-footer">
+    <p>RJ CORWIN &nbsp;&mdash;&nbsp; <a href="/">HOME</a> &nbsp;&mdash;&nbsp; <a href="/blog/">BLOG</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      const s = document.createElement('div');
+      s.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;';
+      for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        const dur   = 2 + Math.random() * 5;
+        const delay = -(Math.random() * 6);
+        star.style.cssText = `
+          position:absolute;
+          left:${Math.random()*100}%; top:${Math.random()*100}%;
+          width:2px; height:2px; background:#fff;
+          animation:star-twinkle ${dur}s ease-in-out infinite ${delay}s;
+          --base-op:${(.08+Math.random()*.2).toFixed(2)};
+          --peak-op:${(.4+Math.random()*.4).toFixed(2)};
+        `;
+        s.appendChild(star);
+      }
+      document.body.prepend(s);
+    })();
+  </script>
+
+</body>
+</html>

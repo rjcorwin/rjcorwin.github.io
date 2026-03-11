@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BEGINNER TRACK — AI CODING SCHOOL — RJ CORWIN</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">RJ CORWIN</a>
+    <ul class="nav-links">
+      <li><a href="/blog/">BLOG</a></li>
+      <li><a href="/ai-coding-school/">AI CODING SCHOOL</a></li>
+      <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
+      <li><a href="https://twitch.tv/HackingWithRJ" target="_blank" rel="noopener">TWITCH</a></li>
+      <li><a href="https://youtube.com/@HackingWithRJ" target="_blank" rel="noopener">YOUTUBE</a></li>
+    </ul>
+  </nav>
+
+  <div class="post-hero">
+    <div class="post-meta">
+      <span class="post-date neon-cyan">AI CODING SCHOOL</span>
+    </div>
+    <h1>BEGINNER TRACK</h1>
+  </div>
+
+  <div class="post-divider"></div>
+
+  <article class="post-body">
+<h1>RPI Guide: Beginner</h1>
+<p>The simplest version of RPI. No special file structure, no agent review loops. Just you, an AI agent, and three phases.</p>
+<p>All three tracks use the same example: generate a simple todo app, then add a dark mode/light mode switcher using the RPI methodology. This will be a bit contrived since we want to focus on the prompting required to keep us in the loop and not get too in the weeds on the architecture of a system you&#39;re unfamiliar with. The goal is that you&#39;ll then be able to take these prompts and dig in on a task related to your domain.</p>
+<h2>Step 0: Generate the todo app</h2>
+<p>Before we can research a change, we need something to change.</p>
+<p><strong>Prompt:</strong></p>
+<pre><code>Create a simple todo app using HTML, CSS, and vanilla JavaScript in a single index.html file. It should support adding, completing, and deleting todos. Keep it simple — no frameworks, no build tools.
+</code></pre>
+<p>Open <code>index.html</code> in a browser and click around. This is the codebase we&#39;ll be working with.</p>
+<h2>Research</h2>
+<p>We ask the AI to explore the codebase and surface what we need to know — not to implement anything yet.</p>
+<p><strong>Prompt:</strong></p>
+<pre><code>I want to add a dark mode / light mode toggle to this todo app.
+
+Requirements:
+- User can switch between dark and light themes
+- The toggle should be visible and accessible
+- Theme preference should persist across page reloads
+
+Read the existing codebase first, then write a research.md file covering:
+- What are the requirements?
+- How is the current code structured? What parts would this feature touch?
+- What decisions do we need to make before building this? List them as open questions, and for each question list the options with pros and cons.
+</code></pre>
+<p><strong>What to look for in the output:</strong></p>
+<p>The AI should produce a <code>research.md</code> that:</p>
+<ul>
+<li>Describes the current architecture (how the CSS is structured, where styles live)</li>
+<li>Identifies the components the change touches</li>
+<li>Raises open questions like:<ul>
+<li>Where do we store the preference? (<code>localStorage</code>? cookie? server-side?)</li>
+<li>Do we use CSS custom properties (variables) or swap entire stylesheets?</li>
+<li>Where does the toggle go in the UI?</li>
+<li>Should the default theme match the OS preference via <code>prefers-color-scheme</code>?</li>
+</ul>
+</li>
+</ul>
+<p>These open questions are the whole point. The AI is surfacing decisions <em>for you</em>. You haven&#39;t written a line of code, but you&#39;re already building a picture of what this feature involves.</p>
+<h3>Making decisions</h3>
+<p>Now it&#39;s time to decide. The research doc already has the options and tradeoffs laid out — read through them and pick one for each open question. Then tell the agent your decisions and have it record them:</p>
+<p><strong>Prompt:</strong></p>
+<pre><code>Go with localStorage. Update research.md to record this decision under the open questions section.
+</code></pre>
+<p>Repeat for each open question: ask for options, review them, decide, and have the agent update the doc. By the end, every open question in <code>research.md</code> should have a decision recorded next to it.</p>
+<p><strong>Clear the context before moving on.</strong> Run <code>/clear</code> in Claude Code. This keeps the next phase focused and prevents the agent from carrying forward assumptions from the research conversation.</p>
+<h2>Plan</h2>
+<p>Now that we have research with decisions made, we ask the AI to write a concrete plan.</p>
+<p><strong>Prompt:</strong></p>
+<pre><code>Read research.md. Based on the decisions documented there, write a plan.md that describes the specific code changes needed to implement dark mode. Include:
+- What files change
+- What gets added, modified, or removed
+- The order of operations
+</code></pre>
+<p><strong>Review the plan.</strong> Does it match your decisions? Does anything look wrong or overcomplicated? Edit it if needed. This is your last checkpoint before code gets written.</p>
+<p><strong>Clear the context before moving on.</strong> Run <code>/clear</code> in Claude Code.</p>
+<h2>Implement</h2>
+<p><strong>Prompt:</strong></p>
+<pre><code>Read plan.md. Implement the changes described in the plan.
+</code></pre>
+<p>Once it&#39;s done, ask it to debrief:</p>
+<p><strong>Prompt:</strong></p>
+<pre><code>What work did you do, what were the tricky parts, and what decisions did you have to make along the way?
+</code></pre>
+<p>This is how you catch surprises. If the agent had to make a judgment call or hit something unexpected, you want to know before it&#39;s worth your time testing and reading the code — and in the worst case, before you ship a decision you didn&#39;t realize was made. Review the debrief, then test the app: toggle the theme, reload the page, check that preference persists. Lastly, review the code.</p>
+<p>If decisions surfaced during implementation that weren&#39;t in the research, the right move is to reset the implementation and go back to research with what you now know. The <a href="undefined">undefined</a> covers how to handle that loop.</p>
+<h2>What did we just do?</h2>
+<p>We produced the ultimate ticket before writing any code:</p>
+<ol>
+<li><strong>The request</strong> — clearly scoped: add dark/light mode toggle</li>
+<li><strong>Documentation</strong> — the AI mapped the existing architecture and how the change touches it</li>
+<li><strong>Decisions</strong> — the AI identified the choices, we made them</li>
+</ol>
+<p>Each phase built on the last, and we stayed in control of the decisions that matter.</p>
+<p>Ready for more structure? Move on to the <a href="undefined">undefined</a>.</p>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="index.html" class="post-nav-link prev-post">
+      <span class="nav-dir">&lt; BACK</span>
+      <span class="nav-title">AI CODING SCHOOL</span>
+    </a>
+    <a href="intermediate.html" class="post-nav-link next-post">
+      <span class="nav-dir">NEXT &gt;</span>
+      <span class="nav-title">INTERMEDIATE TRACK</span>
+    </a>
+  </nav>
+
+  <footer class="site-footer">
+    <p>RJ CORWIN &nbsp;&mdash;&nbsp; <a href="/">HOME</a> &nbsp;&mdash;&nbsp; <a href="/blog/">BLOG</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      const s = document.createElement('div');
+      s.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;';
+      for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        const dur   = 2 + Math.random() * 5;
+        const delay = -(Math.random() * 6);
+        star.style.cssText = `
+          position:absolute;
+          left:${Math.random()*100}%; top:${Math.random()*100}%;
+          width:2px; height:2px; background:#fff;
+          animation:star-twinkle ${dur}s ease-in-out infinite ${delay}s;
+          --base-op:${(.08+Math.random()*.2).toFixed(2)};
+          --peak-op:${(.4+Math.random()*.4).toFixed(2)};
+        `;
+        s.appendChild(star);
+      }
+      document.body.prepend(s);
+    })();
+  </script>
+
+</body>
+</html>

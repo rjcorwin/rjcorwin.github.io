@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI CODING SCHOOL — RJ CORWIN</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">RJ CORWIN</a>
+    <ul class="nav-links">
+      <li><a href="/blog/">BLOG</a></li>
+      <li><a href="/ai-coding-school/">AI CODING SCHOOL</a></li>
+      <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
+      <li><a href="https://twitch.tv/HackingWithRJ" target="_blank" rel="noopener">TWITCH</a></li>
+      <li><a href="https://youtube.com/@HackingWithRJ" target="_blank" rel="noopener">YOUTUBE</a></li>
+    </ul>
+  </nav>
+
+  <section class="site-section" style="padding-top: 140px;">
+    <div class="section-inner">
+      <span class="section-label">&gt; SELECT TRACK</span>
+      <h1 class="section-heading neon-cyan">AI CODING SCHOOL</h1>
+
+      <div class="links-grid">
+
+        <a href="beginner.html" class="link-card">
+          <span class="card-label">LEVEL 01</span>
+          <span class="card-name">BEGINNER TRACK</span>
+          <span class="card-desc">The flat-file approach to RPI — research, plan, implement with context resets between phases. No extra tooling required.</span>
+        </a>
+
+        <a href="intermediate.html" class="link-card">
+          <span class="card-label">LEVEL 02</span>
+          <span class="card-name">INTERMEDIATE TRACK</span>
+          <span class="card-desc">Add decision documents, structured plan folders, and self-review loops to keep larger features organized.</span>
+        </a>
+
+        <a href="advanced.html" class="link-card">
+          <span class="card-label">LEVEL 03</span>
+          <span class="card-name">ADVANCED TRACK</span>
+          <span class="card-desc">Fully automated RPI with the cook CLI — review loops across all phases with human checkpoints kept intact.</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="site-section">
+    <div class="section-inner">
+      <span class="section-label">// ABOUT</span>
+      <article class="post-body">
+<h1>RPI with Coding Agents</h1>
+<p>Research, Plan, Implement (RPI) is a methodology for writing software with Agentic Coding Tools. Instead of prompting an AI to implement and hoping for the best, we break the work into phases where the AI helps us understand, decide, and then build.</p>
+<ol>
+<li><strong>Research</strong> — With AI&#39;s help, we create what equates to the ultimate ticket:<ol>
+<li>The request</li>
+<li>Documentation for the related parts of the code</li>
+<li>Decisions we need to make</li>
+</ol>
+</li>
+<li><strong>Plan</strong> — We document the code changes required.</li>
+<li><strong>Implement</strong> — We have the AI coding agent implement the plan.</li>
+</ol>
+<h2>Why not just prompt and implement?</h2>
+<p>Prompting to implement has been equated to a slot machine. You keep pulling hoping to get lucky. When it doesn&#39;t give you the results you want, you start pulling again with prompts like &quot;No not that, this&quot;, and the agent responds, &quot;Of course!&quot;.</p>
+<p>What is happening during this spiral:
+0. The models are trained to do what you request, and their praise of the request is sycophantic.</p>
+<ol>
+<li>Complexity of the code base is increasing on each pull (spaghettification)</li>
+<li>Context window of the agent is filling up so it&#39;s getting dumber</li>
+<li>Some speculate that it is in-context learning to give you bad results</li>
+</ol>
+<p>The goal of some up front planning is to minimize rework to prevent spirals.</p>
+<h2>What is our role?</h2>
+<p>LLMs seem impressive and all-knowing, but they are not replacing us. We must be the decision makers for two reasons.</p>
+<ol>
+<li>They lack the context of your organization, we provide it<ul>
+<li>They are a new person on the job — they don&#39;t know what they don&#39;t know</li>
+<li>Every decision in software development requires organizational context: team conventions, business constraints, historical decisions, dependencies, user needs</li>
+<li>LLMs cannot hold that context in their heads — it&#39;s not in the training data, and it won&#39;t fit in a single prompt</li>
+</ul>
+</li>
+<li>Humans provide the engineering — LLMs provide pattern matching on what they&#39;ve been trained on<ul>
+<li>If the solution you need is outside the distribution of what the LLM has seen, its ability to engineer is quite limited</li>
+<li>Anything truly novel — something that has never been created before — requires human engineering judgment</li>
+<li>The LLM can help with the parts that look like things it&#39;s seen, but the creative leaps and novel architecture are yours</li>
+</ul>
+</li>
+</ol>
+<h2>Tracks</h2>
+<p>This walkthrough comes in three levels. Pick the one that fits:</p>
+<ul>
+<li><strong><a href="undefined">undefined</a></strong> — Simplified prompts, flat file structure, no agent review loops. Good for getting the feel of RPI.</li>
+<li><strong><a href="undefined">undefined</a></strong> — Adds structured plan folders, <a href="undefined">undefined</a> conventions, and AI self-review loops. Good for real projects.</li>
+<li><strong><a href="undefined">undefined</a></strong> — Automates the agent review cycles using the <a href="undefined">undefined</a> CLI. Good for when you trust the process and want speed.</li>
+</ul>
+<p>Learn about the theory behind RPI from Dax: <a href="undefined">undefined</a></p>
+
+      </article>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>RJ CORWIN &nbsp;&mdash;&nbsp; <a href="/">HOME</a> &nbsp;&mdash;&nbsp; <a href="/blog/">BLOG</a></p>
+  </footer>
+
+  <script>
+    /* stars */
+    (function () {
+      const s = document.createElement('div');
+      s.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;';
+      for (let i = 0; i < 60; i++) {
+        const star = document.createElement('div');
+        const dur   = 2 + Math.random() * 5;
+        const delay = -(Math.random() * 6);
+        star.style.cssText = `
+          position:absolute;
+          left:${Math.random()*100}%; top:${Math.random()*100}%;
+          width:2px; height:2px; background:#fff;
+          animation:star-twinkle ${dur}s ease-in-out infinite ${delay}s;
+          --base-op:${(.1+Math.random()*.25).toFixed(2)};
+          --peak-op:${(.5+Math.random()*.5).toFixed(2)};
+        `;
+        s.appendChild(star);
+      }
+      document.body.prepend(s);
+    })();
+  </script>
+
+</body>
+</html>
