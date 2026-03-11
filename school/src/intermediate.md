@@ -9,11 +9,15 @@ The [beginner track](../1-beginner/) gave you the shape of RPI — research, pla
 ## Prerequisites
 
 - Complete the [beginner track](../1-beginner/) or understand the basics of Research, Plan, Implement
-- Read CONTRIBUTING.md (in this folder) — it defines the full file structure, workflow steps, and templates used in this track
+- Read [CONTRIBUTING.md](https://raw.githubusercontent.com/rjcorwin/ai-coding-school/main/2-intermediate/CONTRIBUTING.md) — it defines the full file structure, workflow steps, and templates used in this track
 
-## Step 0: Generate the todo app
+## Step 0: Set up the project
 
-If you haven't already, generate the todo app:
+```bash
+mkdir todo-app && cd todo-app && curl https://raw.githubusercontent.com/rjcorwin/ai-coding-school/main/2-intermediate/CONTRIBUTING.md > CONTRIBUTING.md
+```
+
+Then generate the todo app:
 
 **Prompt:**
 ```

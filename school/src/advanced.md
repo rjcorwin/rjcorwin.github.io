@@ -8,13 +8,17 @@ Builds on the [intermediate track](../2-intermediate/) with two additions:
 ## Prerequisites
 
 - Complete the [intermediate track](../2-intermediate/) (or at least read it — you need to understand the plan folder structure and the implementation review loop you saw there)
-- Read [CONTRIBUTING.md](https://gist.github.com/rjcorwin/296885590dc8a4ebc64e70879dc04a0f) — note the new review/gate steps on Research and Plan compared to the intermediate version
+- Read [CONTRIBUTING.md](https://raw.githubusercontent.com/rjcorwin/ai-coding-school/main/3-advanced/CONTRIBUTING.md) — note the new review/gate steps on Research and Plan compared to the intermediate version
 - Install [cook](https://github.com/rjcorwin/cook): `npm install -g @let-it-cook/cli`
 - Run `cook doctor` to verify your setup
 
-## Step 0: Generate the todo app
+## Step 0: Set up the project
 
-If you haven't already, generate the todo app:
+```bash
+mkdir todo-app && cd todo-app && curl https://raw.githubusercontent.com/rjcorwin/ai-coding-school/main/3-advanced/CONTRIBUTING.md > CONTRIBUTING.md
+```
+
+Then generate the todo app:
 
 **Prompt:**
 ```
@@ -24,7 +28,6 @@ Create a simple todo app using HTML, CSS, and vanilla JavaScript in a single ind
 ## Step 1: Set up the plan folder
 
 ```bash
-curl https://gist.githubusercontent.com/rjcorwin/296885590dc8a4ebc64e70879dc04a0f/raw/46035954b5a0423c0c62b96c3ff8e9295169bf4f/CONTRIBUTING.md > CONTRIBUTING.md
 mkdir -p plans/x7k-dark-mode
 git checkout -b x7k-dark-mode
 ```
