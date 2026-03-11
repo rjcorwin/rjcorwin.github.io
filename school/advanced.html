@@ -28,7 +28,7 @@
 
   <div class="post-divider"></div>
 
-  <article class="post-body">
+  <article class="post-body school-body">
 <h1>RPI Guide: Advanced</h1>
 <p>Builds on the <a href="undefined">undefined</a> with two additions:</p>
 <ul>
@@ -179,6 +179,21 @@ rm plans/x7k-dark-mode/plan.md
       }
       document.body.prepend(s);
     })();
+  </script>
+  <script>
+    document.querySelectorAll('.school-body pre').forEach(pre => {
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.textContent = 'COPY';
+      btn.addEventListener('click', () => {
+        navigator.clipboard.writeText(pre.querySelector('code')?.innerText ?? pre.innerText).then(() => {
+          btn.textContent = 'COPIED';
+          btn.classList.add('copied');
+          setTimeout(() => { btn.textContent = 'COPY'; btn.classList.remove('copied'); }, 1500);
+        });
+      });
+      pre.appendChild(btn);
+    });
   </script>
 
 </body>

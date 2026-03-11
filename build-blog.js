@@ -262,7 +262,7 @@ ${nav}
 
   <div class="post-divider"></div>
 
-  <article class="post-body">
+  <article class="post-body school-body">
 ${bodyHtml}
   </article>
 
@@ -272,6 +272,21 @@ ${bodyHtml}
   </nav>
 ${footer}
 ${starScript}
+  <script>
+    document.querySelectorAll('.school-body pre').forEach(pre => {
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.textContent = 'COPY';
+      btn.addEventListener('click', () => {
+        navigator.clipboard.writeText(pre.querySelector('code')?.innerText ?? pre.innerText).then(() => {
+          btn.textContent = 'COPIED';
+          btn.classList.add('copied');
+          setTimeout(() => { btn.textContent = 'COPY'; btn.classList.remove('copied'); }, 1500);
+        });
+      });
+      pre.appendChild(btn);
+    });
+  </script>
 
 </body>
 </html>`;

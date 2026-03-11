@@ -28,7 +28,7 @@
 
   <div class="post-divider"></div>
 
-  <article class="post-body">
+  <article class="post-body school-body">
 <h1>RPI Guide: Beginner</h1>
 <p>The simplest version of RPI. No special file structure, no agent review loops. Just you, an AI agent, and three phases.</p>
 <p>All three tracks use the same example: generate a simple todo app, then add a dark mode/light mode switcher using the RPI methodology. This will be a bit contrived since we want to focus on the prompting required to keep us in the loop and not get too in the weeds on the architecture of a system you&#39;re unfamiliar with. The goal is that you&#39;ll then be able to take these prompts and dig in on a task related to your domain.</p>
@@ -141,6 +141,21 @@ Read the existing codebase first, then write a research.md file covering:
       }
       document.body.prepend(s);
     })();
+  </script>
+  <script>
+    document.querySelectorAll('.school-body pre').forEach(pre => {
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.textContent = 'COPY';
+      btn.addEventListener('click', () => {
+        navigator.clipboard.writeText(pre.querySelector('code')?.innerText ?? pre.innerText).then(() => {
+          btn.textContent = 'COPIED';
+          btn.classList.add('copied');
+          setTimeout(() => { btn.textContent = 'COPY'; btn.classList.remove('copied'); }, 1500);
+        });
+      });
+      pre.appendChild(btn);
+    });
   </script>
 
 </body>

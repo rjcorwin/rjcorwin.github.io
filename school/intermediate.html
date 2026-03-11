@@ -28,7 +28,7 @@
 
   <div class="post-divider"></div>
 
-  <article class="post-body">
+  <article class="post-body school-body">
 <h1>RPI Guide: Intermediate</h1>
 <p>The <a href="undefined">undefined</a> gave you the shape of RPI — research, plan, implement — with you reviewing the output at each phase. The intermediate track builds on that with three additions:</p>
 <ul>
@@ -144,6 +144,21 @@ Read the existing codebase first, then write plans/x7k-dark-mode/research.md per
       }
       document.body.prepend(s);
     })();
+  </script>
+  <script>
+    document.querySelectorAll('.school-body pre').forEach(pre => {
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.textContent = 'COPY';
+      btn.addEventListener('click', () => {
+        navigator.clipboard.writeText(pre.querySelector('code')?.innerText ?? pre.innerText).then(() => {
+          btn.textContent = 'COPIED';
+          btn.classList.add('copied');
+          setTimeout(() => { btn.textContent = 'COPY'; btn.classList.remove('copied'); }, 1500);
+        });
+      });
+      pre.appendChild(btn);
+    });
   </script>
 
 </body>
