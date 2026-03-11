@@ -361,21 +361,21 @@ function buildSchool() {
   const tracks = [
     {
       slug:  'beginner',
-      title: 'Beginner Track',
+      title: 'Level 01: Beginner',
       label: 'LEVEL 01',
       desc:  'The flat-file approach to RPI — research, plan, implement with context resets between phases. No extra tooling required.',
       src:   'beginner.md',
     },
     {
       slug:  'intermediate',
-      title: 'Intermediate Track',
+      title: 'Level 02: Intermediate',
       label: 'LEVEL 02',
       desc:  'Add decision documents, structured plan folders, and self-review loops to keep larger features organized.',
       src:   'intermediate.md',
     },
     {
       slug:  'advanced',
-      title: 'Advanced Track',
+      title: 'Level 03: Advanced',
       label: 'LEVEL 03',
       desc:  'Fully automated RPI with the cook CLI — review loops across all phases with human checkpoints kept intact.',
       src:   'advanced.md',

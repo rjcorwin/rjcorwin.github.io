@@ -1,8 +1,8 @@
-# RPI Guide: Beginner
+# Level 01: Beginner
 
-The simplest version of RPI. No special file structure, no agent review loops. Just you, an AI agent, and three phases.
+The simplest version of this workflow. No special file structure, no agent review loops. Just you, an AI agent, and three phases: research, plan, implement.
 
-All three tracks use the same example: generate a simple todo app, then add a dark mode/light mode switcher using the RPI methodology. This will be a bit contrived since we want to focus on the prompting required to keep us in the loop and not get too in the weeds on the architecture of a system you're unfamiliar with. The goal is that you'll then be able to take these prompts and dig in on a task related to your domain.
+All three tracks use the same example: generate a simple todo app, then add a dark mode/light mode switcher. It's a bit contrived — the point is to focus on the prompting and the process, not the architecture. Once you have the feel for it, take these prompts into a task in your own codebase.
 
 ## Step 0: Generate the todo app
 

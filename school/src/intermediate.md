@@ -1,6 +1,6 @@
-# RPI Guide: Intermediate
+# Level 02: Intermediate
 
-The [beginner track](../1-beginner/) gave you the shape of RPI — research, plan, implement — with you reviewing the output at each phase. The intermediate track builds on that with three additions:
+The [beginner track](../1-beginner/) gave you the shape of the workflow — research, plan, implement — with you reviewing the output at each phase. The intermediate track builds on that with three additions:
 
 - **Decision docs** — when an open question is too complex to answer off the top of your head, you ask the agent to write a decision doc laying out the options with pros and cons before you commit
 - **Structured plan folders** — the repo gets a CONTRIBUTING.md defining the workflow and templates, and every feature gets a plan folder to keep its research, decisions, and implementation history together
