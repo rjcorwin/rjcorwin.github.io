@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>"ANNOUNCING COOK: BECAUSE YOUR AGENT WASN'T ACTUALLY DONE" — RJ CORWIN</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">RJ CORWIN</a>
+    <ul class="nav-links">
+      <li><a href="/blog/">BLOG</a></li>
+      <li><a href="/school/">HOW RJ CODES WITH AI</a></li>
+      <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
+      <li><a href="https://twitch.tv/HackingWithRJ" target="_blank" rel="noopener">TWITCH</a></li>
+      <li><a href="https://youtube.com/@HackingWithRJ" target="_blank" rel="noopener">YOUTUBE</a></li>
+    </ul>
+  </nav>
+
+  <div class="post-hero">
+    <div class="post-meta">
+      <span class="post-date">2026-03-15</span>
+      <div class="post-tags">
+        <span class="tag">AI</span>
+        <span class="tag">AGENTS</span>
+        <span class="tag">TOOLS</span>
+        <span class="tag">COOK</span>
+      </div>
+    </div>
+    <h1>"ANNOUNCING COOK: BECAUSE YOUR AGENT WASN'T ACTUALLY DONE"</h1>
+  </div>
+
+  <div class="post-divider"></div>
+
+  <article class="post-body">
+<h1>Announcing Cook: Because Your Agent Wasn&#39;t Actually Done</h1>
+<p>You&#39;ve been here. The agent says &quot;Done! I&#39;ve implemented the feature as requested.&quot; You review the code and find a half-finished error handler, a TODO comment where validation should be, and a function that technically exists but doesn&#39;t actually work. The agent declared victory and moved on.</p>
+<p>This is the fundamental problem with coding agents right now: <strong>they say done when they&#39;re not done.</strong></p>
+<h2>The &quot;done&quot; problem</h2>
+<p>If you&#39;ve ever tried one of those free online code review bots, you already know the pattern. The agent produces something, announces completion, and you discover it deferred half the work to &quot;a future PR&quot; or just quietly skipped the hard parts. The bugs aren&#39;t mysterious — the agent ran out of patience (or context) and decided close enough was good enough.</p>
+<p>Why does this happen? The agent has no incentive to self-critique. It executed your prompt, produced output, and from its perspective the job is finished. There&#39;s no second pass asking &quot;wait, did I actually handle the edge cases?&quot; There&#39;s no reviewer pushing back on the shortcuts.</p>
+<p>So what do you do? You write another prompt: &quot;Review the code you just wrote and fix the issues.&quot; Then you review <em>that</em> output and find more problems. So you write another prompt. You&#39;re now doing manual QA on an assembly line, and the overhead is eating the productivity gains that made you reach for an agent in the first place.</p>
+<p>The models and agent harnesses will get better. This is a transient problem. But right now, today, you need a stopgap — something that automates the review loop so you only get notified when the work is actually done, not when the agent <em>thinks</em> it&#39;s done.</p>
+<h2>The insanity problem</h2>
+<p>Here&#39;s the other thing: LLMs are non-deterministic.</p>
+<p>Same prompt, same codebase, same Tuesday afternoon — and sometimes the agent decides to refactor your entire authentication system when you asked it to fix a typo in a tooltip. It goes down a rabbit hole, blows up scope, introduces a critical regression, and delivers the result with the same confidence as if it had done exactly what you asked.</p>
+<p>This isn&#39;t a bug you can prompt-engineer away. It&#39;s a property of the system. Most of the time the output is good. Sometimes it&#39;s unhinged. And when you&#39;re shipping code, &quot;sometimes unhinged&quot; is not an acceptable failure mode.</p>
+<p>If you only run one attempt, you&#39;re exposed to whatever mood the model is in. You have no baseline to compare against. The temporary insanity ships, and you discover the repercussions later.</p>
+<h2>Cook</h2>
+<p><a href="https://github.com/rjcorwin/cook">Cook</a> is a CLI that addresses both problems.</p>
+<p>Install it:</p>
+<pre><code class="language-bash">npm install -g @let-it-cook/cli
+</code></pre>
+<h3>Review loops: actually done means actually done</h3>
+<p>Cook automates the work-review-gate cycle. You give it a prompt:</p>
+<pre><code class="language-bash">cook &quot;Add input validation to the signup form per the spec in plans/signup/plan.md&quot;
+</code></pre>
+<p>Cook runs three steps in a loop:</p>
+<ol>
+<li><strong>Work</strong> — the agent executes your prompt</li>
+<li><strong>Review</strong> — a second pass reviews what changed and flags issues by severity</li>
+<li><strong>Gate</strong> — a third pass decides: DONE or ITERATE</li>
+</ol>
+<p>If the gate says ITERATE, cook loops back to Work with the review findings. If it says DONE, you get notified. Default max iterations is 3 — enough to catch the &quot;I said done but I wasn&#39;t&quot; problem without burning tokens on infinite loops.</p>
+<p>The point is simple: <strong>you review when the work is actually done.</strong> Not when the agent first claims it&#39;s done. Not after you&#39;ve manually prompted a review and then manually prompted a fix. Cook handles that overhead so you can go do something else and come back to finished work.</p>
+<h3>Racing: guard against the rabbit hole</h3>
+<p>For the non-determinism problem, cook has race mode:</p>
+<pre><code class="language-bash">cook &quot;Add dark mode toggle to the settings page&quot; x3
+</code></pre>
+<p>This spins up three independent runs of the same prompt, each in its own git worktree branched from HEAD. Each run goes through the full work-review-gate loop independently. When they&#39;re all finished, a judge agent reads every session log side-by-side and picks the best one. The winning branch gets merged back; the rest get cleaned up.</p>
+<p>Three attempts means three different rolls of the dice. If one agent goes down a rabbit hole, the other two probably didn&#39;t. The judge picks the sane one. You get consistency without having to babysit each run.</p>
+<p>You can even customize what &quot;best&quot; means:</p>
+<pre><code class="language-bash">cook &quot;Add dark mode&quot; x3 &quot;least code wins&quot;
+</code></pre>
+<h3>What it supports</h3>
+<p>Cook works with Claude Code, Codex, and OpenCode. You can configure different agents and models per step — use a fast model for the gate check, a strong model for the work, whatever makes sense for your project. Sandboxing options range from native agent sandboxes to full Docker isolation.</p>
+<p>Run <code>cook init</code> in your project to scaffold a <code>COOK.md</code> template and <code>.cook/config.json</code>, then <code>cook doctor</code> to verify everything&#39;s wired up.</p>
+<h2>The bigger picture</h2>
+<p>Cook isn&#39;t a replacement for engineering judgment. You still decide what to build, review the final output, and make the calls the agent can&#39;t. What it replaces is the mechanical overhead of running the agent loop yourself — the tedious cycle of &quot;review, prompt to fix, review again&quot; that eats your afternoon.</p>
+<p>The models will improve. The agents will get better at knowing when they&#39;re actually done. But until that happens, cook is the loop that keeps them honest.</p>
+<p><a href="https://github.com/rjcorwin/cook">github.com/rjcorwin/cook</a></p>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="how-coding-agents-work.html" class="post-nav-link prev-post">
+      <span class="nav-dir">&lt; PREV</span>
+      <span class="nav-title">HOW CODING AGENTS WORK (AND WHY YOU'RE STILL THE ENGINEER)</span>
+    </a>
+    
+  </nav>
+
+  <footer class="site-footer">
+    <p>RJ CORWIN &nbsp;&mdash;&nbsp; <a href="/">HOME</a> &nbsp;&mdash;&nbsp; <a href="/blog/">BLOG</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      const s = document.createElement('div');
+      s.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;';
+      for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        const dur   = 2 + Math.random() * 5;
+        const delay = -(Math.random() * 6);
+        star.style.cssText = `
+          position:absolute;
+          left:${Math.random()*100}%; top:${Math.random()*100}%;
+          width:2px; height:2px; background:#fff;
+          animation:star-twinkle ${dur}s ease-in-out infinite ${delay}s;
+          --base-op:${(.08+Math.random()*.2).toFixed(2)};
+          --peak-op:${(.4+Math.random()*.4).toFixed(2)};
+        `;
+        s.appendChild(star);
+      }
+      document.body.prepend(s);
+    })();
+  </script>
+
+</body>
+</html>
