@@ -43,11 +43,12 @@
 <p>Why does this happen? The agent has no incentive to self-critique. It executed your prompt, produced output, and from its perspective the job is finished. There&#39;s no second pass asking &quot;wait, did I actually handle the edge cases?&quot; There&#39;s no reviewer pushing back on the shortcuts.</p>
 <p>So what do you do? You write another prompt: &quot;Review the code you just wrote and fix the issues.&quot; Then you review <em>that</em> output and find more problems. So you write another prompt. You&#39;re now doing manual QA on an assembly line, and the overhead is eating the productivity gains that made you reach for an agent in the first place.</p>
 <p>The models and agent harnesses will get better. This is a transient problem. But right now, today, you need a stopgap — something that automates the review loop so you only get notified when the work is actually done, not when the agent <em>thinks</em> it&#39;s done.</p>
-<h2>The insanity problem</h2>
-<p>Here&#39;s the other thing: LLMs are non-deterministic.</p>
+<h2>The roll of the dice</h2>
+<p>Here&#39;s the other thing: LLMs are non-deterministic. Every run is a roll of the dice.</p>
 <p>Same prompt, same codebase, same Tuesday afternoon — and sometimes the agent decides to refactor your entire authentication system when you asked it to fix a typo in a tooltip. It goes down a rabbit hole, blows up scope, introduces a critical regression, and delivers the result with the same confidence as if it had done exactly what you asked.</p>
 <p>This isn&#39;t a bug you can prompt-engineer away. It&#39;s a property of the system. Most of the time the output is good. Sometimes it&#39;s unhinged. And when you&#39;re shipping code, &quot;sometimes unhinged&quot; is not an acceptable failure mode.</p>
-<p>If you only run one attempt, you&#39;re exposed to whatever mood the model is in. You have no baseline to compare against. The temporary insanity ships, and you discover the repercussions later.</p>
+<p>A recent example I hit before building cook: I was building an MCP server. I kicked off two agent instances with the same prompt. Run A used the MCP framework — the obvious, correct approach. Run B decided to write its own MCP framework from scratch. Same prompt, same codebase, completely different interpretation of the task. I only discovered the divergence because I happened to have Claude compare the two PRs afterward. If I&#39;d only run one instance, whichever version I got would have shipped without me realizing there was a fundamentally different (and in one case, fundamentally better) approach.</p>
+<p>If you only run one attempt, you&#39;re exposed to whatever the model rolls. You have no baseline to compare against. The bad roll ships, and you discover the repercussions later. But the flip side is also true — sometimes the roll of the dice is a <em>good</em> thing. An unexpected outlier that&#39;s actually better than what you would have specified. You don&#39;t want to eliminate variance. You want to see it, compare it, and choose.</p>
 <h2>Cook</h2>
 <p><a href="https://github.com/rjcorwin/cook">Cook</a> is a CLI that addresses both problems.</p>
 <p>Install it:</p>
@@ -65,15 +66,22 @@
 </ol>
 <p>If the gate says ITERATE, cook loops back to Work with the review findings. If it says DONE, you get notified. Default max iterations is 3 — enough to catch the &quot;I said done but I wasn&#39;t&quot; problem without burning tokens on infinite loops.</p>
 <p>The point is simple: <strong>you review when the work is actually done.</strong> Not when the agent first claims it&#39;s done. Not after you&#39;ve manually prompted a review and then manually prompted a fix. Cook handles that overhead so you can go do something else and come back to finished work.</p>
-<h3>Racing: guard against the rabbit hole</h3>
+<h3>Racing: harness the roll of the dice</h3>
 <p>For the non-determinism problem, cook has race mode:</p>
 <pre><code class="language-bash">cook &quot;Add dark mode toggle to the settings page&quot; x3
 </code></pre>
-<p>This spins up three independent runs of the same prompt, each in its own git worktree branched from HEAD. Each run goes through the full work-review-gate loop independently. When they&#39;re all finished, a judge agent reads every session log side-by-side and picks the best one. The winning branch gets merged back; the rest get cleaned up.</p>
-<p>Three attempts means three different rolls of the dice. If one agent goes down a rabbit hole, the other two probably didn&#39;t. The judge picks the sane one. You get consistency without having to babysit each run.</p>
-<p>You can even customize what &quot;best&quot; means:</p>
+<p>This spins up three independent runs of the same prompt, each in its own git worktree branched from HEAD. Each run goes through the full work-review-gate loop independently. When they&#39;re all finished, you choose the best result.</p>
+<p>In ML, the standard fix for non-determinism is majority voting — run it N times and pick the most common answer. But code isn&#39;t a classification task. Sometimes the outlier roll is the one that found a better architecture, a cleaner abstraction, or an approach you hadn&#39;t considered. Majority vote would throw that away.</p>
+<p>So instead of majority vote, cook gives you two modes for picking the winner:</p>
+<ol>
+<li><strong>Prompt-based judging</strong> — you define what &quot;better&quot; means, and a judge agent reads every session log side-by-side and picks. You can make it as specific as you want:</li>
+</ol>
 <pre><code class="language-bash">cook &quot;Add dark mode&quot; x3 &quot;least code wins&quot;
 </code></pre>
+<ol start="2">
+<li><strong>Manual pick with automated comparison</strong> — you decide which result is best, and cook automates the comparison review for you, saving you the time of digging through each diff yourself.</li>
+</ol>
+<p>Sometimes multiple runs produce good results with different strengths. Pick the one you want and kick off another cook loop to incorporate an aspect from one of the other variants. The dice work for you instead of against you.</p>
 <h3>What it supports</h3>
 <p>Cook works with Claude Code, Codex, and OpenCode. You can configure different agents and models per step — use a fast model for the gate check, a strong model for the work, whatever makes sense for your project. Sandboxing options range from native agent sandboxes to full Docker isolation.</p>
 <p>Run <code>cook init</code> in your project to scaffold a <code>COOK.md</code> template and <code>.cook/config.json</code>, then <code>cook doctor</code> to verify everything&#39;s wired up.</p>
