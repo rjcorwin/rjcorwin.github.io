@@ -135,9 +135,9 @@
           position:absolute;
           left:${Math.random()*100}%; top:${Math.random()*100}%;
           width:${big ? 3 : 2}px; height:${big ? 3 : 2}px;
-          background:${Math.random()<.85 ? '#fff' : (Math.random()<.5 ? 'var(--cyan)' : 'var(--magenta)')};
+          background:${Math.random()<.8 ? '#f8f8f0' : (Math.random()<.5 ? '#f8d830' : '#6888c8')};
           animation:star-twinkle ${2+Math.random()*5}s ease-in-out infinite ${-(Math.random()*6)}s;
-          --base-op:${(.1+Math.random()*.3).toFixed(2)};
+          --base-op:${(.15+Math.random()*.3).toFixed(2)};
           --peak-op:${(.6+Math.random()*.4).toFixed(2)};
         `;
         container.appendChild(s);
@@ -152,7 +152,7 @@
       /* ── pixel art data ── */
       const P = 7; // px per game-pixel
       const _ = null;
-      const W = '#ffffff', R = '#FF00FF', D = '#660066';
+      const W = '#f8f8f0', R = '#e86060', D = '#803030';
 
       // Super Meat Boy style: all red, chunky, white square eyes
       const FRAME_A = [
@@ -208,15 +208,15 @@
       const JUMP_FORCE = -11;
       const MAX_JUMPS  = 2;
 
-      /* ── obstacle palette ── */
+      /* ── obstacle palette (Earthbound colors) ── */
       // [width, height, fill, highlight]
       const OTYPES = [
-        [16, 32, '#FF00FF', '#ff88ff'],
-        [16, 48, '#FF00FF', '#ff88ff'],
-        [16, 56, '#FF6B35', '#ffaa77'],
-        [24, 32, '#FFFF00', '#ffffaa'],
-        [ 8, 48, '#FF00FF', '#ff88ff'],
-        [24, 48, '#FF6B35', '#ffaa77'],
+        [16, 32, '#e86060', '#f09090'],
+        [16, 48, '#a868c8', '#c890e0'],
+        [16, 56, '#f89030', '#f8b070'],
+        [24, 32, '#6888c8', '#90a8e0'],
+        [ 8, 48, '#e86060', '#f09090'],
+        [24, 48, '#f89030', '#f8b070'],
       ];
 
       /* ── game state ── */
@@ -335,7 +335,7 @@
         if (++speedTick >= 500) { speedTick = 0; speed = Math.min(speed + 0.4, 11); }
         if (score % 100 === 0) {
           scoreFlash = 25;
-          spawnBits(canvas.width * 0.9, GY() - 40, '#FFFF00', 6);
+          spawnBits(canvas.width * 0.9, GY() - 40, '#f8d830', 6);
         }
         if (scoreFlash > 0) scoreFlash--;
 
@@ -364,7 +364,7 @@
               hiScore = score;
               localStorage.setItem('rjc-hi', hiScore);
             }
-            spawnBits(RX() + RW / 2, rfeet - RH / 2, '#FF00FF', 12);
+            spawnBits(RX() + RW / 2, rfeet - RH / 2, '#e86060', 12);
             break;
           }
         }
@@ -376,9 +376,9 @@
         ctx.clearRect(0, 0, canvas.width, CH);
 
         /* tile strip */
-        ctx.fillStyle = 'rgba(0,255,255,0.05)';
+        ctx.fillStyle = 'rgba(104,136,200,0.08)';
         ctx.fillRect(0, gy - TILE_H, canvas.width, TILE_H);
-        ctx.strokeStyle = 'rgba(0,255,255,0.3)';
+        ctx.strokeStyle = 'rgba(104,136,200,0.25)';
         ctx.lineWidth = 1;
         const tw = 32;
         for (let x = -(tileX % tw); x < canvas.width + tw; x += tw) {
@@ -389,27 +389,29 @@
         }
 
         /* ground line */
-        ctx.shadowColor = '#00FFFF';
-        ctx.shadowBlur  = 14;
-        ctx.fillStyle   = '#00FFFF';
+        ctx.fillStyle   = '#58b858';
         ctx.fillRect(0, gy, canvas.width, GROUND_H);
-        ctx.shadowBlur  = 0;
+        /* grass pixel detail */
+        ctx.fillStyle = '#70d070';
+        for (let gx = -(tileX % 12); gx < canvas.width; gx += 12) {
+          ctx.fillRect(Math.floor(gx), gy, 4, 2);
+        }
 
         /* obstacles */
         for (const o of obstacles) {
           const ox = Math.floor(o.x);
-          ctx.shadowColor = o.fill;
-          ctx.shadowBlur  = 12;
           ctx.fillStyle   = o.fill;
           ctx.fillRect(ox, gy - o.h, o.w, o.h);
           // bright top edge
-          ctx.shadowBlur  = 0;
           ctx.fillStyle   = o.hi;
-          ctx.fillRect(ox, gy - o.h, o.w, 2);
-          // pixel "notch" on top corners
-          ctx.fillStyle = 'rgba(255,255,255,0.6)';
-          ctx.fillRect(ox, gy - o.h, 2, 2);
-          ctx.fillRect(ox + o.w - 2, gy - o.h, 2, 2);
+          ctx.fillRect(ox, gy - o.h, o.w, 3);
+          // pixel highlight on top-left corner
+          ctx.fillStyle = 'rgba(255,255,255,0.5)';
+          ctx.fillRect(ox, gy - o.h, 3, 3);
+          // dark pixel shadow on bottom-right
+          ctx.fillStyle = 'rgba(0,0,0,0.3)';
+          ctx.fillRect(ox + o.w - 3, gy - o.h + 3, 3, o.h - 3);
+          ctx.fillRect(ox + 3, gy - 3, o.w - 3, 3);
         }
 
         /* bits / particles */
@@ -417,12 +419,9 @@
           const alpha = Math.min(1, b.life / 20);
           ctx.globalAlpha = alpha;
           ctx.fillStyle   = b.color;
-          ctx.shadowColor = b.color;
-          ctx.shadowBlur  = 6;
           ctx.fillRect(Math.floor(b.x), Math.floor(b.y), b.size, b.size);
         }
         ctx.globalAlpha = 1;
-        ctx.shadowBlur  = 0;
 
         /* runner */
         const rfeet = gy + ry;
@@ -432,8 +431,6 @@
 
         if (showRunner) {
           const frame = isDead ? FRAME_D : (frameIdx === 0 ? FRAME_A : FRAME_B);
-          ctx.shadowColor = R;
-          ctx.shadowBlur  = isDead ? 4 : 12;
           frame.forEach((row, py) => {
             row.forEach((color, px) => {
               if (!color) return;
@@ -441,7 +438,6 @@
               ctx.fillRect(rx + px * P, Math.floor(rtop) + py * P, P, P);
             });
           });
-          ctx.shadowBlur = 0;
         }
 
         /* HUD: score */
@@ -449,37 +445,28 @@
         const scoreX = canvas.width - 16;
         if (hiScore > 0) {
           ctx.font      = '9px "Press Start 2P", monospace';
-          ctx.fillStyle = 'rgba(57,255,20,0.3)';
+          ctx.fillStyle = 'rgba(88,184,88,0.35)';
           ctx.fillText(`HI ${pad(hiScore)}`, scoreX, 20);
         }
         const isFlash = scoreFlash > 0;
         ctx.font        = '9px "Press Start 2P", monospace';
-        ctx.fillStyle   = isFlash ? '#FFFF00' : '#39FF14';
-        ctx.shadowColor = isFlash ? '#FFFF00' : '#39FF14';
-        ctx.shadowBlur  = isFlash ? 16 : 7;
+        ctx.fillStyle   = isFlash ? '#f8d830' : '#58b858';
         ctx.fillText(pad(score), scoreX, isFlash ? 37 : 36);
-        ctx.shadowBlur = 0;
 
         /* overlay text */
         ctx.textAlign = 'center';
         const cx = canvas.width / 2;
         if (state === 'IDLE') {
           ctx.font        = '10px "Press Start 2P", monospace';
-          ctx.fillStyle   = '#00FFFF';
-          ctx.shadowColor = '#00FFFF';
-          ctx.shadowBlur  = 14;
+          ctx.fillStyle   = '#f8d830';
           ctx.fillText('SPACE / TAP  TO  RUN', cx, CH / 2 + 4);
-          ctx.shadowBlur = 0;
         } else if (state === 'DEAD' && deadTick > 10) {
           ctx.font        = '12px "Press Start 2P", monospace';
-          ctx.fillStyle   = '#FF00FF';
-          ctx.shadowColor = '#FF00FF';
-          ctx.shadowBlur  = 18;
+          ctx.fillStyle   = '#e86060';
           ctx.fillText('GAME  OVER', cx, CH / 2 - 6);
-          ctx.shadowBlur  = 0;
           if (deadTick > 30) {
             ctx.font      = '8px "Press Start 2P", monospace';
-            ctx.fillStyle = 'rgba(255,255,255,0.55)';
+            ctx.fillStyle = 'rgba(248,248,240,0.55)';
             ctx.fillText('SPACE / TAP  TO  RETRY', cx, CH / 2 + 14);
           }
         }
