@@ -235,6 +235,7 @@
       let deadTick  = 0;    // counts frames since death
       let scoreFlash = 0;   // frames of score milestone flash
       let bits = [];        // celebration particles
+      let lastTime  = null; // for delta-time calculation
 
       /* ── canvas sizing ── */
       function resize() {
@@ -304,48 +305,49 @@
       }
 
       /* ── update ── */
-      function update() {
+      function update(dt) {
         // update bits regardless of state
         bits = bits.filter(b => b.life > 0);
         bits.forEach(b => {
-          b.x += b.vx; b.y += b.vy; b.vy += 0.2; b.life--;
+          b.x += b.vx * dt; b.y += b.vy * dt; b.vy += 0.2 * dt; b.life -= dt;
         });
 
-        if (state === 'DEAD') { deadTick++; return; }
+        if (state === 'DEAD') { deadTick += dt; return; }
 
         if (state === 'IDLE') {
-          tileX = (tileX + 3) % 64;
-          if (++frameTick > 10) { frameTick = 0; frameIdx ^= 1; }
+          tileX = (tileX + 3 * dt) % 64;
+          if ((frameTick += dt) > 10) { frameTick = 0; frameIdx ^= 1; }
           return;
         }
 
         // physics
-        rvy += GRAVITY;
-        ry  += rvy;
+        rvy += GRAVITY * dt;
+        ry  += rvy * dt;
         if (ry >= 0) { ry = 0; rvy = 0; jumps = 0; }
 
         // tile scroll
-        tileX = (tileX + speed) % 64;
+        tileX = (tileX + speed * dt) % 64;
 
         // frame animation
-        if (++frameTick > Math.max(3, 9 - speed)) { frameTick = 0; frameIdx ^= 1; }
+        if ((frameTick += dt) > Math.max(3, 9 - speed)) { frameTick = 0; frameIdx ^= 1; }
 
         // score / speed
-        score++;
-        if (++speedTick >= 500) { speedTick = 0; speed = Math.min(speed + 0.4, 11); }
-        if (score % 100 === 0) {
+        const prevScore = Math.floor(score);
+        score += dt;
+        if ((speedTick += dt) >= 500) { speedTick = 0; speed = Math.min(speed + 0.4, 11); }
+        if (Math.floor(score / 100) > Math.floor(prevScore / 100)) {
           scoreFlash = 25;
           spawnBits(canvas.width * 0.9, GY() - 40, '#f8d830', 6);
         }
-        if (scoreFlash > 0) scoreFlash--;
+        if (scoreFlash > 0) scoreFlash -= dt;
 
         // obstacles
-        if (--nextObs <= 0) {
+        if ((nextObs -= dt) <= 0) {
           spawnObstacle();
           // gap increases with score (harder = more frequent = smaller gap)
           nextObs = Math.floor(55 + Math.random() * 75 + Math.max(0, (9 - speed) * 9));
         }
-        obstacles.forEach(o => o.x -= speed);
+        obstacles.forEach(o => o.x -= speed * dt);
         obstacles = obstacles.filter(o => o.x + o.w > -10);
 
         // collision (generous margin so it feels fair)
@@ -473,14 +475,16 @@
       }
 
       /* ── loop ── */
-      function loop() {
-        update();
+      function loop(ts) {
+        const dt = lastTime === null ? 1 : Math.min((ts - lastTime) / (1000 / 60), 3);
+        lastTime = ts;
+        update(dt);
         draw();
         requestAnimationFrame(loop);
       }
 
       // wait for pixel font so canvas text renders correctly
-      document.fonts.load('10px "Press Start 2P"').then(loop).catch(loop);
+      document.fonts.load('10px "Press Start 2P"').then(() => requestAnimationFrame(loop)).catch(() => requestAnimationFrame(loop));
     })();
   </script>
 </body>
