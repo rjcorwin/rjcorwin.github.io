@@ -3,7 +3,7 @@
 Builds on the [intermediate track](../2-intermediate/) with two additions:
 
 - **Review loops on every phase** — The intermediate track introduced the work-review-gate loop for implementation. Here, we extend the same pattern to research and plan. The CONTRIBUTING.md for this track adds `research-review-NNN.md`, `plan-review-NNN.md`, and their corresponding gate steps.
-- **Cook automation** — Instead of manually running three prompts (work, review, gate) per phase, the [cook](https://github.com/rjcorwin/cook) CLI runs one command and loops the agent through the cycle until it's satisfied.
+- **Cook automation** — Instead of manually running three prompts (work, review, gate) per phase, the [cook](https://github.com/rjcorwin/cook) CLI composes steps from the command line and loops the agent through the cycle until it's satisfied.
 
 ## Prerequisites
 
@@ -46,12 +46,14 @@ Requirements:
 - The toggle should be visible and accessible
 - Theme preference should persist across page reloads
 
-Read the existing codebase first, then write plans/x7k-dark-mode/research.md per CONTRIBUTING.md."
+Read the existing codebase first, then write plans/x7k-dark-mode/research.md per CONTRIBUTING.md." review
 ```
+
+The `review` keyword after the work prompt tells cook to run the review loop. Without it, `cook "prompt"` is a single LLM call with no review.
 
 Cook will:
 1. **Work** — The agent writes `research.md`
-2. **Review** — A second pass reviews the output in `research-review-001.md` and flags gaps
+2. **Review** — A second pass reviews the output and flags gaps
 3. **Gate** — A third pass decides if the review passes or if the agent needs to iterate
 
 If the gate says "ITERATE", cook loops back automatically. When it says "DONE", you get the result.
@@ -63,7 +65,7 @@ If the gate says "ITERATE", cook loops back automatically. When it says "DONE", 
 Same expansion here. In the intermediate track, planning was a single AI:Work prompt. Now it gets the full work-review-gate cycle too — the AI writes `plan.md`, reviews it in `plan-review-001.md`, and gates whether it needs revision.
 
 ```bash
-cook "Read plans/x7k-dark-mode/research.md for decisions and context. Write plans/x7k-dark-mode/plan.md per CONTRIBUTING.md."
+cook "Read plans/x7k-dark-mode/research.md for decisions and context. Write plans/x7k-dark-mode/plan.md per CONTRIBUTING.md." review
 ```
 
 **Human:Review** — Read the plan, approve or edit.
@@ -75,22 +77,22 @@ You already saw the implementation review loop in the intermediate track — wor
 If your plan has multiple phases or steps, you can run cook once per phase, letting it handle the iteration within each:
 
 ```bash
-cook "Read CONTRIBUTING.md for context. Read plans/x7k-dark-mode/plan.md. Implement step 1: [description]. When done, write plans/x7k-dark-mode/devlog-001.md."
+cook "Read CONTRIBUTING.md for context. Read plans/x7k-dark-mode/plan.md. Implement step 1: [description]. When done, write plans/x7k-dark-mode/devlog-001.md." review
 ```
 
 ```bash
-cook "Read CONTRIBUTING.md for context. Read plans/x7k-dark-mode/plan.md and plans/x7k-dark-mode/devlog-001.md. Implement step 2: [description]. When done, update devlog-001.md."
+cook "Read CONTRIBUTING.md for context. Read plans/x7k-dark-mode/plan.md and plans/x7k-dark-mode/devlog-001.md. Implement step 2: [description]. When done, update devlog-001.md." review
 ```
 
 Each cook command handles the work-review-gate cycle for that step. You review between steps — checking the devlog and the code — and move on when satisfied.
 
-For a plan with N steps, this becomes a simple loop if you want to let it run and review the results of all phases. This is referred to as a "Ralph Wiggum Loop", or simply ralph loop:
+For a plan with N steps, this becomes a simple loop if you want to let it run and review the results of all phases. Cook has a built-in "Ralph Wiggum Loop" (or simply ralph loop) for this:
 
 ```bash
-for step in {1..3}; do cook "Read plans/x7k-dark-mode/plan.md. Implement step $step and then write a devlog per CONTRIBUTING.md"; done
+cook "Read plans/x7k-dark-mode/plan.md. Implement the current step and then write a devlog per CONTRIBUTING.md." review ralph 3
 ```
 
-`{1..3}` is bash brace expansion — it generates `1 2 3`. Change the range to match however many steps your plan has (e.g., `{1..7}`). If cook hits its max iterations (default is 3) without the gate passing, it exits with an error and the loop breaks — this prevents moving on from a step with a broken implementation. When that happens, review the devlogs and review files to find out what went wrong.
+The `ralph 3` keyword tells cook to run the review loop 3 times sequentially — once per plan step. Change the number to match however many steps your plan has. If cook hits its max iterations (default is 3) without the gate passing on any step, it exits with an error — this prevents moving on from a step with a broken implementation. When that happens, review the devlogs and review files to find out what went wrong.
 
 ## What changed from intermediate?
 
@@ -98,10 +100,10 @@ for step in {1..3}; do cook "Read plans/x7k-dark-mode/plan.md. Implement step $s
 |---|---|---|
 | Research review loop | None — AI:Work then Human:Review | Work-review-gate, automated by cook |
 | Plan review loop | None — AI:Work then Human:Review | Work-review-gate, automated by cook |
-| Implementation review loop | 3 manual prompts (work, review, gate) | 1 cook command per phase |
+| Implementation review loop | 3 manual prompts (work, review, gate) | `cook "work" review` per phase |
 | Iteration on failures | You re-run prompts manually | Cook loops automatically |
 | Human checkpoints | Same | Same — you still review between phases |
-| Plan execution | One big implement prompt | One cook command per plan step |
+| Plan execution | One big implement prompt | `cook "work" review ralph N` for N steps |
 
 The human checkpoints don't change. You still make the decisions, review the research, approve the plan, and test the implementation. Cook just removes the mechanical overhead of running the agent loop yourself — and now that overhead extends to research and planning too, where the intermediate track didn't have review loops at all.
 

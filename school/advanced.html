@@ -33,7 +33,7 @@
 <p>Builds on the <a href="intermediate.html">intermediate track</a> with two additions:</p>
 <ul>
 <li><strong>Review loops on every phase</strong> — The intermediate track introduced the work-review-gate loop for implementation. Here, we extend the same pattern to research and plan. The CONTRIBUTING.md for this track adds <code>research-review-NNN.md</code>, <code>plan-review-NNN.md</code>, and their corresponding gate steps.</li>
-<li><strong>Cook automation</strong> — Instead of manually running three prompts (work, review, gate) per phase, the <a href="https://github.com/rjcorwin/cook">cook</a> CLI runs one command and loops the agent through the cycle until it&#39;s satisfied.</li>
+<li><strong>Cook automation</strong> — Instead of manually running three prompts (work, review, gate) per phase, the <a href="https://github.com/rjcorwin/cook">cook</a> CLI composes steps from the command line and loops the agent through the cycle until it&#39;s satisfied.</li>
 </ul>
 <h2>Prerequisites</h2>
 <ul>
@@ -63,33 +63,34 @@ Requirements:
 - The toggle should be visible and accessible
 - Theme preference should persist across page reloads
 
-Read the existing codebase first, then write plans/x7k-dark-mode/research.md per CONTRIBUTING.md.&quot;
+Read the existing codebase first, then write plans/x7k-dark-mode/research.md per CONTRIBUTING.md.&quot; review
 </code></pre>
+<p>The <code>review</code> keyword after the work prompt tells cook to run the review loop. Without it, <code>cook &quot;prompt&quot;</code> is a single LLM call with no review.</p>
 <p>Cook will:</p>
 <ol>
 <li><strong>Work</strong> — The agent writes <code>research.md</code></li>
-<li><strong>Review</strong> — A second pass reviews the output in <code>research-review-001.md</code> and flags gaps</li>
+<li><strong>Review</strong> — A second pass reviews the output and flags gaps</li>
 <li><strong>Gate</strong> — A third pass decides if the review passes or if the agent needs to iterate</li>
 </ol>
 <p>If the gate says &quot;ITERATE&quot;, cook loops back automatically. When it says &quot;DONE&quot;, you get the result.</p>
 <p><strong>Human:Review</strong> — You still make the decisions. For each open question, ask the AI to present options with pros and cons, pick one, and have the agent update <code>research.md</code> with your decision. (Same process as the <a href="beginner.html">beginner</a> and <a href="intermediate.html">intermediate</a> tracks.)</p>
 <h2>Plan — One cook command</h2>
 <p>Same expansion here. In the intermediate track, planning was a single AI:Work prompt. Now it gets the full work-review-gate cycle too — the AI writes <code>plan.md</code>, reviews it in <code>plan-review-001.md</code>, and gates whether it needs revision.</p>
-<pre><code class="language-bash">cook &quot;Read plans/x7k-dark-mode/research.md for decisions and context. Write plans/x7k-dark-mode/plan.md per CONTRIBUTING.md.&quot;
+<pre><code class="language-bash">cook &quot;Read plans/x7k-dark-mode/research.md for decisions and context. Write plans/x7k-dark-mode/plan.md per CONTRIBUTING.md.&quot; review
 </code></pre>
 <p><strong>Human:Review</strong> — Read the plan, approve or edit.</p>
 <h2>Implement — Cook loop over plan phases</h2>
 <p>You already saw the implementation review loop in the intermediate track — work, review, gate with <code>devlog-NNN.md</code> and <code>code-review-NNN.md</code>. The loop is the same here, but now cook runs it for you.</p>
 <p>If your plan has multiple phases or steps, you can run cook once per phase, letting it handle the iteration within each:</p>
-<pre><code class="language-bash">cook &quot;Read CONTRIBUTING.md for context. Read plans/x7k-dark-mode/plan.md. Implement step 1: [description]. When done, write plans/x7k-dark-mode/devlog-001.md.&quot;
+<pre><code class="language-bash">cook &quot;Read CONTRIBUTING.md for context. Read plans/x7k-dark-mode/plan.md. Implement step 1: [description]. When done, write plans/x7k-dark-mode/devlog-001.md.&quot; review
 </code></pre>
-<pre><code class="language-bash">cook &quot;Read CONTRIBUTING.md for context. Read plans/x7k-dark-mode/plan.md and plans/x7k-dark-mode/devlog-001.md. Implement step 2: [description]. When done, update devlog-001.md.&quot;
+<pre><code class="language-bash">cook &quot;Read CONTRIBUTING.md for context. Read plans/x7k-dark-mode/plan.md and plans/x7k-dark-mode/devlog-001.md. Implement step 2: [description]. When done, update devlog-001.md.&quot; review
 </code></pre>
 <p>Each cook command handles the work-review-gate cycle for that step. You review between steps — checking the devlog and the code — and move on when satisfied.</p>
-<p>For a plan with N steps, this becomes a simple loop if you want to let it run and review the results of all phases. This is referred to as a &quot;Ralph Wiggum Loop&quot;, or simply ralph loop:</p>
-<pre><code class="language-bash">for step in {1..3}; do cook &quot;Read plans/x7k-dark-mode/plan.md. Implement step $step and then write a devlog per CONTRIBUTING.md&quot;; done
+<p>For a plan with N steps, this becomes a simple loop if you want to let it run and review the results of all phases. Cook has a built-in &quot;Ralph Wiggum Loop&quot; (or simply ralph loop) for this:</p>
+<pre><code class="language-bash">cook &quot;Read plans/x7k-dark-mode/plan.md. Implement the current step and then write a devlog per CONTRIBUTING.md.&quot; review ralph 3
 </code></pre>
-<p><code>{1..3}</code> is bash brace expansion — it generates <code>1 2 3</code>. Change the range to match however many steps your plan has (e.g., <code>{1..7}</code>). If cook hits its max iterations (default is 3) without the gate passing, it exits with an error and the loop breaks — this prevents moving on from a step with a broken implementation. When that happens, review the devlogs and review files to find out what went wrong.</p>
+<p>The <code>ralph 3</code> keyword tells cook to run the review loop 3 times sequentially — once per plan step. Change the number to match however many steps your plan has. If cook hits its max iterations (default is 3) without the gate passing on any step, it exits with an error — this prevents moving on from a step with a broken implementation. When that happens, review the devlogs and review files to find out what went wrong.</p>
 <h2>What changed from intermediate?</h2>
 <table>
 <thead>
@@ -112,7 +113,7 @@ Read the existing codebase first, then write plans/x7k-dark-mode/research.md per
 <tr>
 <td>Implementation review loop</td>
 <td>3 manual prompts (work, review, gate)</td>
-<td>1 cook command per phase</td>
+<td><code>cook &quot;work&quot; review</code> per phase</td>
 </tr>
 <tr>
 <td>Iteration on failures</td>
@@ -127,7 +128,7 @@ Read the existing codebase first, then write plans/x7k-dark-mode/research.md per
 <tr>
 <td>Plan execution</td>
 <td>One big implement prompt</td>
-<td>One cook command per plan step</td>
+<td><code>cook &quot;work&quot; review ralph N</code> for N steps</td>
 </tr>
 </tbody></table>
 <p>The human checkpoints don&#39;t change. You still make the decisions, review the research, approve the plan, and test the implementation. Cook just removes the mechanical overhead of running the agent loop yourself — and now that overhead extends to research and planning too, where the intermediate track didn&#39;t have review loops at all.</p>
