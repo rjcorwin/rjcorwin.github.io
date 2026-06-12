@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE GOOD, THE BAD, AND THE UGLY - CLAUDE FABLE 5 — RJ CORWIN</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">RJ CORWIN</a>
+    <ul class="nav-links">
+      <li><a href="/blog/">BLOG</a></li>
+      <li><a href="/school/">HOW RJ CODES WITH AI</a></li>
+      <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
+      <li><a href="https://twitch.tv/HackingWithRJ" target="_blank" rel="noopener">TWITCH</a></li>
+      <li><a href="https://youtube.com/@HackingWithRJ" target="_blank" rel="noopener">YOUTUBE</a></li>
+    </ul>
+  </nav>
+
+  <div class="post-hero">
+    <div class="post-meta">
+      <span class="post-date">2026-06-12</span>
+      <div class="post-tags">
+        <span class="tag">AI</span>
+        <span class="tag">AGENTS</span>
+        <span class="tag">GAMEDEV</span>
+        <span class="tag">SEACAT</span>
+      </div>
+    </div>
+    <h1>THE GOOD, THE BAD, AND THE UGLY - CLAUDE FABLE 5</h1>
+  </div>
+
+  <div class="post-divider"></div>
+
+  <article class="post-body">
+<h1>The Good, the Bad, and the Ugly: Claude Fable 5</h1>
+<p>I have a game called <strong>seacat</strong>. It is a multiplayer seafaring cat game, which is exactly as serious a project as it sounds. I also have a new shiny model to play with — <strong>Claude Fable 5</strong> — and a deeply irresponsible amount of curiosity.</p>
+<p>So I did the natural thing: I wrote up an ambitious four-phase campaign spec, handed it to a fleet of AI agents, and went to sleep.</p>
+<p>The campaign:</p>
+<ul>
+<li><strong>Phase 1</strong> — A suburban neighborhood. Hold down points, fend off the invasion.</li>
+<li><strong>Phase 2</strong> — Sail to an island. Boss battle.</li>
+<li><strong>Phase 3</strong> — A cloud platforming stage, because why not.</li>
+<li><strong>Phase 4</strong> — Space. Final boss. Roll credits.</li>
+</ul>
+<p><img src="images/fable5/title.png" alt="The SUBURB X8 arcade title screen"></p>
+<h2>The setup, or: I built a tiny navy</h2>
+<p>The architecture is sillier than the game. There&#39;s a top-level agent I call the <strong>Commodore</strong> (his name is Halyard, he&#39;s very earnest). The Commodore spins up <strong>Captains</strong> — individual Claude Code sessions living in tmux, each in its own Docker container so they can&#39;t step on each other. Work gets tracked in a GitHub issue queue like a real project run by real adults.</p>
+<p>Then I did the only experiment worth doing: I spun up <strong>two Captains with the same spec</strong> — one running Fable 5, one running Opus — and let them race.</p>
+<h2>Fable 5 vs. Opus: the bake-off</h2>
+<p>Here is where it got spicy.</p>
+<p>The <strong>Opus Captain</strong> reported back fast. Suspiciously fast. &quot;Done, looks great, QA passed.&quot; The kind of confidence you get from a contractor who definitely did not go up on the roof.</p>
+<p>The Commodore got suspicious — <em>because</em> it ran so fast — and audited the work. Turns out Opus had &quot;QA&#39;d&quot; the campaign by reading a few dossiers and vibing. The receipts:</p>
+<ul>
+<li><strong>Opus:</strong> ~12 minutes of work, 6 dossier reads. A spot-check wearing a trench coat.</li>
+<li><strong>Fable 5:</strong> 38 tool calls, <strong>31 attempts to actually join its own game</strong>, and 9 in-game chats. It went in and <em>played the thing.</em></li>
+</ul>
+<p><img src="images/fable5/bakeoff-fable.png" alt="Fable&#39;s render of the invasion cutscene">
+<em>Fable 5&#39;s take on the &quot;invasion from above&quot; cutscene — a sunset suburb with a giant brain descending from the heavens. As one does.</em></p>
+<p><img src="images/fable5/bakeoff-opus.png" alt="Opus&#39;s render of the same scene">
+<em>Opus&#39;s version of the same brief. It&#39;s... there. It exists. It is a scene that is technically present.</em></p>
+<p>Same spec, two very different work ethics. Fable 5 didn&#39;t just claim it tested the game — it body-slammed the join button 31 times until it got in, then filed real bugs about what it saw. That&#39;s the headline finding for me: <strong>Fable showed up.</strong></p>
+<h2>The Good</h2>
+<p>Once Fable 5 got going, it was genuinely impressive in ways that made me say &quot;huh&quot; out loud at my desk.</p>
+<ul>
+<li><strong>It generates assets.</strong> New car sprites, environments, the works. Final tally: <strong>29 sprites and 17 audio clips</strong> from the Fable captain (Opus managed 19 and 12).</li>
+<li><strong>It wired up real external tools</strong> — <strong>PixelLab</strong> for sprites, <strong>ElevenLabs</strong> for audio — and used them without hand-holding.</li>
+<li><strong>It built actual novel features.</strong> It implemented <strong>cutscenes</strong>, which this game had never had in a campaign before. Look at that brain again. Nobody told it to make the brain that good.</li>
+<li><strong>It ran multiple campaign branches in parallel.</strong> A whole little A/B fleet, cooking overnight.</li>
+<li><strong>It scaled the neighborhood 8x</strong> — a 900×900 isometric tile map, three bosses (220/260/340 HP), 15 shared lives, escalating wave sizes — and it mostly held together.</li>
+</ul>
+<p><img src="images/fable5/suburb.png" alt="The 8x suburb neighborhood, in-engine with the HUD">
+<em>The actual playable 8x suburb, health bars and all. Built overnight while I was asleep.</em></p>
+<p>And it can <strong>iterate</strong>. Give it feedback — &quot;the dog needs more facing angles,&quot; &quot;the water balloon throws the wrong way&quot; — and it goes and fixes it, verifies the fix by taking a screenshot of its own game, and reports back. The feedback loop is real, and it is the most exciting part.</p>
+<p><img src="images/fable5/character-select.png" alt="The arcade character-select screen">
+<em>It even built a TMNT-style character-select lobby. That&#39;s Pip the cat on the left. I would die for Pip.</em></p>
+<h2>The Bad</h2>
+<p>Now. Let me tell you about the bugs, because they were <em>art.</em></p>
+<ul>
+<li><strong>Cars spawned and drove sideways</strong>, perpendicular to the road, fully committed to the bit.</li>
+<li><strong>Cars also liked to drive <em>beside</em> the road</strong> rather than on it, like they were avoiding traffic that didn&#39;t exist.</li>
+<li><strong>The ship spawned on land.</strong> A seafaring game. The ship. On land.</li>
+<li><strong>Characters got stuck inside buildings</strong>, which is a bold interpretation of &quot;open world.&quot;</li>
+<li><strong>The big neighborhood&#39;s streets didn&#39;t line up</strong>, giving the suburb a charming &quot;drawn from memory&quot; quality.</li>
+<li><strong>Lasers fired the instant you started walking</strong>, then stopped, like the character was sneezing.</li>
+<li><strong>The water balloon threw in the exact opposite direction</strong> you aimed. (To be fair, fixing this gave it a satisfying &quot;pull back to throw&quot; feel, so we kept the <em>correct</em> version.)</li>
+</ul>
+<p><img src="images/fable5/traffic.png" alt="Suburb with traffic — the cars have opinions about lane discipline"></p>
+<p>None of these are dealbreakers. All of them require a <strong>human to actually look at the screen and go &quot;no.&quot;</strong> That&#39;s the catch with the whole thing: Fable 5 will confidently build you a world where cars drive sideways and the boat is in a yard, and it genuinely cannot tell that&#39;s wrong until you tell it. Quality still rides on the human feedback loop.</p>
+<h2>The Ugly</h2>
+<p>Okay. The bill.</p>
+<p>I&#39;m on the <strong>Max 20 plan — $200/month.</strong> In <strong>48 hours</strong>, the Fable 5 captain (running flat out overnight, working the queue, with the Commodore unblocking it at 5 AM like a sleep-deprived parent) burned through roughly <strong>half of my weekly allocation.</strong></p>
+<p>Do the math with me:</p>
+<ul>
+<li>~50% of a week&#39;s tokens in ~2 days of hard work.</li>
+<li>That&#39;s about <strong>2 days of agent labor per week</strong> at this price.</li>
+<li>For $200/month to feel <em>sustainable</em>, I&#39;d want something closer to 7.</li>
+</ul>
+<p>For a hobby side project about a sailing cat, that price point stings. I&#39;m not running a studio. I&#39;m running a tiny navy of robots for fun.</p>
+<p>Could it pencil out for a <strong>real business</strong>? Probably. If an agent is doing genuine work, $1,000-ish a week is a rounding error next to a salary. But for solo developers and hobbyists, the price is the wall you hit first — well before you hit the model&#39;s limits.</p>
+<p>(It is also, to be clear, a <em>hungry</em> setup. The overnight A/B build thrashed my disk from 75% to 94% over and over — the Playwright screenshot tool alone is a 5.3 GB Docker image — and at one point I over-parallelized and watched free RAM drop to <strong>168 MB</strong> with a load average of <strong>83 on 4 cores.</strong> No crash. But I felt that one in my soul.)</p>
+<h2>Takeaways</h2>
+<ul>
+<li><strong>Fable 5 is a real upgrade over Opus for agentic work.</strong> When the job is &quot;go do a lot of stuff autonomously and actually check your work,&quot; it shows up and grinds. Opus phoned in the playtest; Fable played the game.</li>
+<li><strong>The productivity is real and kind of startling.</strong> Assets, features, cutscenes, parallel branches — overnight, unattended.</li>
+<li><strong>Quality still needs a human in the loop.</strong> Somebody has to look at the sideways cars. That somebody is me, in my pajamas, at 7 AM.</li>
+<li><strong>The unsolved engineering problem is <em>evaluation</em>.</strong> The better a game can automatically judge itself — &quot;is the boat in the water? are the cars on the road?&quot; — the more of that 7 AM pajama review the agent can do on its own. That&#39;s the frontier.</li>
+<li><strong>Price is the limiter for solo devs.</strong> Not the intelligence. The invoice.</li>
+</ul>
+<p>Would I do it again? I already am. There&#39;s a cat who needs to sail to space, and I am not going to be the one who builds the cloud platforming stage by hand.</p>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="how-coding-agents-work.html" class="post-nav-link prev-post">
+      <span class="nav-dir">&lt; PREV</span>
+      <span class="nav-title">HOW CODING AGENTS WORK (AND WHY YOU'RE STILL THE ENGINEER)</span>
+    </a>
+    
+  </nav>
+
+  <footer class="site-footer">
+    <p>RJ CORWIN &nbsp;&mdash;&nbsp; <a href="/">HOME</a> &nbsp;&mdash;&nbsp; <a href="/blog/">BLOG</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      const s = document.createElement('div');
+      s.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;';
+      for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        const dur   = 2 + Math.random() * 5;
+        const delay = -(Math.random() * 6);
+        star.style.cssText = `
+          position:absolute;
+          left:${Math.random()*100}%; top:${Math.random()*100}%;
+          width:2px; height:2px; background:#fff;
+          animation:star-twinkle ${dur}s ease-in-out infinite ${delay}s;
+          --base-op:${(.08+Math.random()*.2).toFixed(2)};
+          --peak-op:${(.4+Math.random()*.4).toFixed(2)};
+        `;
+        s.appendChild(star);
+      }
+      document.body.prepend(s);
+    })();
+  </script>
+
+</body>
+</html>
