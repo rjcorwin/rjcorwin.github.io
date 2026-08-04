@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waterbear Field School — August</title>
+<style>
+  :root{
+    --cream:#f6f1e7;
+    --paper:#fffdf7;
+    --forest:#2f4b3f;
+    --moss:#7a8b53;
+    --moss-2:#a3b565;
+    --terra:#c96f4a;
+    --ink:#2b2a26;
+    --muted:#6b6558;
+    --line:#e4ddcb;
+    --shadow:0 10px 30px rgba(47,75,63,.10);
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased;line-height:1.5;
+  }
+  button{font-family:inherit;cursor:pointer}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* header */
+  .topbar{position:sticky;top:0;z-index:60;background:rgba(246,241,231,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .topbar .inner{display:flex;align-items:center;gap:14px;padding:14px 0}
+  .hamb{display:inline-flex;flex-direction:column;gap:4px;justify-content:center;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--paper);padding:0 11px;flex:0 0 auto}
+  .hamb span{height:2.5px;background:var(--forest);border-radius:2px;display:block}
+  .wordmark{font-family:Georgia,serif;font-weight:700;font-size:21px;color:var(--forest);line-height:1.05}
+  .wordmark small{display:block;font-weight:400;font-size:12.5px;color:var(--muted);font-style:italic}
+  .topbar .spacer{margin-left:auto}
+  .ghost-cta{border:1px solid var(--forest);background:transparent;color:var(--forest);padding:9px 16px;border-radius:999px;font-weight:600;font-size:13.5px}
+
+  /* drawer */
+  .drawer-backdrop{position:fixed;inset:0;background:rgba(30,40,34,.45);opacity:0;pointer-events:none;transition:.2s;z-index:120}
+  .drawer-backdrop.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;left:0;height:100%;width:290px;max-width:82vw;background:var(--paper);z-index:130;transform:translateX(-102%);transition:transform .26s cubic-bezier(.4,0,.2,1);box-shadow:8px 0 40px rgba(0,0,0,.2);padding:22px;overflow:auto}
+  .drawer.open{transform:translateX(0)}
+  .drawer h3{font-family:Georgia,serif;color:var(--forest);margin:2px 0 16px}
+  .drawer nav a{display:flex;align-items:center;gap:12px;padding:12px 10px;border-radius:12px;text-decoration:none;font-weight:600;color:var(--ink);font-size:15px}
+  .drawer nav a:hover{background:var(--cream)}
+  .drawer nav a .em{font-size:20px;width:26px;text-align:center}
+  .drawer .close{float:right;border:none;background:var(--cream);width:36px;height:36px;border-radius:50%;font-size:18px;color:var(--muted)}
+
+  /* carousel */
+  .carousel-head{display:flex;align-items:baseline;gap:14px;margin:26px 0 12px}
+  .carousel-head h2{font-family:Georgia,serif;color:var(--forest);margin:0;font-size:clamp(20px,3vw,27px)}
+  .carousel-head .hint{color:var(--muted);font-size:13px;margin-left:auto}
+  .car{position:relative}
+  .car-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 14px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+  .car-track::-webkit-scrollbar{height:8px}
+  .car-track::-webkit-scrollbar-thumb{background:var(--line);border-radius:8px}
+  .ccard{scroll-snap-align:start;flex:0 0 258px;border-radius:var(--radius);overflow:hidden;background:var(--paper);box-shadow:var(--shadow);border:1px solid var(--line);display:flex;flex-direction:column}
+  .ccard .art{height:158px;position:relative;display:flex;align-items:center;justify-content:center}
+  .ccard .art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1}
+  .ccard .art .em{position:absolute;left:12px;bottom:10px;font-size:26px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5));z-index:3}
+  .ccard .art::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.28),transparent 45%);z-index:2}
+  .ccard .art.noimg img,.ccard .art.noimg::after{display:none}
+  .ccard .art.noimg .em{position:static;left:auto;bottom:auto;font-size:54px}
+  .ccard .body{padding:13px 15px 16px}
+  .ccard .body h3{margin:0 0 5px;font-size:16px;font-family:Georgia,serif}
+  .ccard .body p{margin:0;font-size:13px;color:var(--muted);line-height:1.45}
+  .car-btn{position:absolute;top:59px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:rgba(255,253,247,.95);color:var(--forest);font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);z-index:5}
+  .car-btn.prev{left:-8px}
+  .car-btn.next{right:-8px}
+
+  /* registration */
+  .reg{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-top:26px}
+  .reg h2{font-family:Georgia,serif;color:var(--forest);margin:0 0 3px;font-size:22px}
+  .reg .sub{color:var(--muted);font-size:13.5px;margin:0 0 16px}
+  .weekchips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .weekchips button{border:1px solid var(--line);background:var(--cream);color:var(--muted);padding:6px 12px;border-radius:999px;font-size:12.5px;font-weight:600}
+  .weekchips button.on{background:var(--forest);color:#fff;border-color:var(--forest)}
+  .week h4{font-size:12.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--moss);margin:14px 0 8px}
+  .days{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:9px}
+  .day{position:relative;border:1.5px solid var(--line);border-radius:13px;background:var(--cream);padding:11px 12px;transition:.14s;text-align:left;display:block}
+  .day:hover{border-color:var(--moss-2)}
+  .day.sel{border-color:var(--terra);background:#fbeee6;box-shadow:0 0 0 2px rgba(201,111,74,.15)}
+  .day .dow{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+  .day .dt{font-family:Georgia,serif;font-size:17px;color:var(--forest);margin:1px 0 4px}
+  .day .subj{font-size:12.5px;color:var(--ink);display:flex;align-items:center;gap:5px;line-height:1.25}
+  .day .tick{position:absolute;top:9px;right:9px;width:19px;height:19px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff}
+  .day.sel .tick{background:var(--terra);border-color:var(--terra)}
+  .reg-foot{display:flex;align-items:center;gap:14px;margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);flex-wrap:wrap}
+  .reg-foot .count{font-size:14px;color:var(--muted)}
+  .reg-foot .count b{color:var(--forest);font-family:Georgia,serif;font-size:16px}
+  .reg-foot .price{margin-left:auto;font-size:13px;color:var(--muted)}
+  .btn-primary{background:var(--terra);color:#fff;border:none;padding:12px 22px;border-radius:999px;font-weight:700;font-size:14.5px;box-shadow:0 6px 16px rgba(201,111,74,.28)}
+  .btn-primary:disabled{background:#d9cfbf;box-shadow:none;cursor:not-allowed}
+
+  .stickybar{position:sticky;bottom:14px;margin:16px auto 0;display:flex;align-items:center;gap:14px;background:var(--forest);color:#fff;padding:12px 18px;border-radius:999px;box-shadow:0 12px 30px rgba(47,75,63,.35);z-index:40}
+  .stickybar .c{font-size:14px}
+  .stickybar .c b{font-family:Georgia,serif}
+  .stickybar button{margin-left:auto;background:var(--terra);border:none;color:#fff;padding:10px 20px;border-radius:999px;font-weight:700}
+
+  /* workshops */
+  .workshops{margin-top:44px}
+  .workshops h2{font-family:Georgia,serif;color:var(--forest);font-size:24px;margin:0 0 4px}
+  .workshops .lede{color:var(--muted);margin:0 0 18px;font-size:14px}
+  .wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+  .wcard{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:16px;box-shadow:var(--shadow)}
+  .wcard .em{font-size:28px}
+  .wcard h3{font-family:Georgia,serif;margin:8px 0 5px;font-size:16px}
+  .wcard p{margin:0 0 10px;font-size:12.7px;color:var(--muted);line-height:1.45}
+  .wcard .tag{font-size:11px;font-weight:700;color:var(--moss);text-transform:uppercase;letter-spacing:.5px}
+
+  footer{max-width:1120px;margin:44px auto 0;padding:22px 20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  footer b{color:var(--forest);font-family:Georgia,serif}
+</style>
+</head>
+<body>
+
+<div class="drawer-backdrop" data-drawer></div>
+<aside class="drawer" data-drawer-panel>
+  <button class="close" data-close>×</button>
+  <h3>Explore</h3>
+  <nav>
+    <a href="#"><span class="em">🎨</span> Craft Days</a>
+    <a href="#"><span class="em">☀️</span> Summer Schedule</a>
+    <a href="#"><span class="em">🍂</span> Fall Blocks</a>
+    <a href="#"><span class="em">🔧</span> Workshops</a>
+    <a href="#"><span class="em">🌱</span> Ongoing Projects</a>
+    <a href="#"><span class="em">📓</span> Journal</a>
+    <a href="#"><span class="em">✉️</span> Contact</a>
+  </nav>
+</aside>
+
+<div class="topbar">
+  <div class="wrap inner">
+    <button class="hamb" data-open aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="wordmark">Waterbear Field School<small>Hands-on learning &amp; building for kids and adults</small></div>
+    <div class="spacer"></div>
+    <button class="ghost-cta">Sign in</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="carousel-head">
+    <h2>Craft Days</h2>
+    <span class="hint">swipe / scroll →</span>
+  </div>
+  <div class="car" data-car></div>
+
+  <div class="reg" data-reg></div>
+
+  <div class="stickybar" data-stickybar>
+    <div class="c"><b data-sb-count>0</b> days selected</div>
+    <button data-register>Register selected days</button>
+  </div>
+
+  <div class="workshops" data-workshops></div>
+</div>
+
+<footer>
+  <b>Waterbear Field School</b> · Mon–Sat, 9 AM–2 PM · hello@waterbearfieldschool.org<br>
+  A hands-on field school for kids and adults in rural New England.
+</footer>
+
+<script>
+const IMG="https://waterbearfieldschool.org/v6img/";
+const CRAFTS=[
+  {em:"🪵",name:"Woodworking",desc:"Build the shop's own furniture — sawhorse, bench, stool, toolbox.",img:IMG+"pg-wood.jpg",g:"linear-gradient(135deg,#a9744f,#6f4a2e)"},
+  {em:"🧵",name:"Sewing & Fiber Arts",desc:"Hand and machine stitching, mending, weaving, natural dyes.",img:IMG+"pg-fiber.jpg",g:"linear-gradient(135deg,#c98a9b,#7d4a58)"},
+  {em:"🎨",name:"Painting, Drawing & Sculpting",desc:"Drawing, painting and small sculpture from what's around us.",img:IMG+"pg-art.jpg",g:"linear-gradient(135deg,#5aa2a6,#2f5e63)"},
+  {em:"🌿",name:"Nature & Plants",desc:"Foraging, pressing, propagation and tending the garden beds.",img:IMG+"pg-nature.jpg",g:"linear-gradient(135deg,#8ab060,#456a34)"},
+  {em:"🎵",name:"Music & Instruments",desc:"Build simple instruments and play together, no experience needed.",img:IMG+"pg-music.jpg",g:"linear-gradient(135deg,#e0b25a,#a9772c)"},
+  {em:"🧭",name:"Hiking, Maps & Navigation",desc:"Maps, compass, knots and trail sense on the land around us.",img:IMG+"mt-hike.jpg",g:"linear-gradient(135deg,#6b8497,#39505f)"}
+];
+const WORKSHOPS=[
+  {em:"📻",name:"Mesh Radio",desc:"Decentralized radio messaging that works with no cell service or internet."},
+  {em:"☀️",name:"Intro to Solar",desc:"A gentle, hands-on intro to human-scale renewable energy and off-grid power."},
+  {em:"💨",name:"Air Filtration",desc:"Build and test simple, low-cost Corsi–Rosenthal box air purifiers."},
+  {em:"💧",name:"Rainwater Collection",desc:"Design and build a rainwater collection system for house and garden."},
+  {em:"🚲",name:"Bike Repair",desc:"Essential repair skills to keep a bicycle running smoothly."}
+];
+function rot(s,n){return CRAFTS[(s+n)%CRAFTS.length];}
+const DOW=["Mon","Tue","Wed","Thu","Fri","Sat"];
+const WEEKS=[
+  {label:"Week of Aug 17",start:17,rotFrom:0,days:6},
+  {label:"Week of Aug 24",start:24,rotFrom:2,days:6},
+  {label:"Week of Aug 31",start:31,rotFrom:4,days:3,months:["Aug","Sep","Sep"],nums:[31,1,2]}
+];
+const selected=new Set();
+
+/* carousel */
+(function(){
+  const host=document.querySelector('[data-car]');
+  const track=document.createElement('div');track.className='car-track';
+  CRAFTS.forEach(c=>{
+    const el=document.createElement('div');el.className='ccard';
+    el.innerHTML=`<div class="art" style="background:${c.g}"><img loading="lazy" src="${c.img}" alt="${c.name}" onerror="this.closest('.art').classList.add('noimg')"><span class="em">${c.em}</span></div>
+      <div class="body"><h3>${c.name}</h3><p>${c.desc}</p></div>`;
+    track.appendChild(el);
+  });
+  const prev=document.createElement('button');prev.className='car-btn prev';prev.innerHTML='‹';
+  const next=document.createElement('button');next.className='car-btn next';next.innerHTML='›';
+  prev.onclick=()=>track.scrollBy({left:-278,behavior:'smooth'});
+  next.onclick=()=>track.scrollBy({left:278,behavior:'smooth'});
+  host.appendChild(track);host.appendChild(prev);host.appendChild(next);
+})();
+
+/* registration */
+(function(){
+  const reg=document.querySelector('[data-reg]');
+  let html=`<h2>Register — August</h2>
+    <p class="sub">Individual craft days · 9 AM–2 PM · check the days you want.</p>
+    <div class="weekchips"></div>`;
+  WEEKS.forEach((w,wi)=>{
+    html+=`<div class="week" data-week="${wi}"><h4>${w.label}</h4><div class="days">`;
+    for(let d=0;d<w.days;d++){
+      const craft=rot(w.rotFrom,d);
+      const month=w.months?w.months[d]:"Aug";
+      const num=w.nums?w.nums[d]:(w.start+d);
+      const id=`${month}-${num}`;
+      html+=`<button class="day" data-day="${id}">
+        <span class="tick">✓</span>
+        <span class="dow">${DOW[d]}</span>
+        <span class="dt">${month} ${num}</span>
+        <span class="subj">${craft.em} ${craft.name}</span></button>`;
+    }
+    html+=`</div></div>`;
+  });
+  html+=`<div class="reg-foot">
+      <div class="count"><b data-count>0</b> days selected</div>
+      <div class="price">Sliding scale · pay what you can</div>
+      <button class="btn-primary" data-register disabled>Register selected days</button>
+    </div>`;
+  reg.innerHTML=html;
+  const chips=reg.querySelector('.weekchips');
+  chips.innerHTML=`<button class="on" data-filter="all">All weeks</button>`+
+    WEEKS.map((w,i)=>`<button data-filter="${i}">${w.label.replace('Week of ','')}</button>`).join('');
+  chips.addEventListener('click',e=>{
+    const b=e.target.closest('button');if(!b)return;
+    chips.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+    const f=b.dataset.filter;
+    reg.querySelectorAll('.week').forEach(wk=>wk.style.display=(f==='all'||wk.dataset.week===f)?'':'none');
+  });
+})();
+
+/* workshops */
+(function(){
+  const w=document.querySelector('[data-workshops]');
+  w.innerHTML=`<h2>One-day Workshops</h2>
+    <p class="lede">Standalone 3-hour sessions in practical, resilient skills.</p>
+    <div class="wgrid">`+
+    WORKSHOPS.map(x=>`<div class="wcard"><div class="em">${x.em}</div>
+      <div class="tag">3-hour session</div><h3>${x.name}</h3><p>${x.desc}</p></div>`).join('')+`</div>`;
+})();
+
+function sync(){
+  document.querySelectorAll('.day').forEach(b=>b.classList.toggle('sel',selected.has(b.dataset.day)));
+  const n=selected.size;
+  document.querySelectorAll('[data-count]').forEach(el=>el.textContent=n);
+  document.querySelectorAll('[data-sb-count]').forEach(el=>el.textContent=n);
+  document.querySelectorAll('.btn-primary[data-register]').forEach(b=>b.disabled=(n===0));
+  const sb=document.querySelector('[data-stickybar]');if(sb)sb.style.opacity=n>0?'1':'.55';
+}
+document.addEventListener('click',e=>{
+  const day=e.target.closest('.day');
+  if(day){const id=day.dataset.day;selected.has(id)?selected.delete(id):selected.add(id);sync();return;}
+  if(e.target.closest('[data-register]')){
+    if(!selected.size)return;
+    alert(`Great! Registering ${selected.size} day(s):\n${[...selected].join(', ')}\n\n(demo — checkout would open here)`);
+  }
+  if(e.target.closest('[data-open]')){document.querySelector('[data-drawer-panel]').classList.add('open');document.querySelector('[data-drawer]').classList.add('open');}
+  if(e.target.closest('[data-close]')||e.target.closest('[data-drawer]')){document.querySelector('[data-drawer-panel]').classList.remove('open');document.querySelector('[data-drawer]').classList.remove('open');}
+});
+sync();
+</script>
+</body>
+</html>
