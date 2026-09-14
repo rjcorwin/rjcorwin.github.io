@@ -8,7 +8,7 @@ excerpt: Blast radius tells you when to read AI-written code. It doesn't tell yo
 
 # What's on the box vs. what's in the box
 
-Boris Cherny, the original author of Claude Code, recently [shared an email](https://x.com/bcherny/status/2098217571153838124) laying out two views on AI-written code. View 1: code is accelerated by AI but stays reviewable, the submitter can explain it, and it's built to be maintained. View 2: vibe code, treat it as a black box, just check the output. His answer: room for both. Prototypes can be black boxes; production needs a higher bar. Someone added that the bar should scale with blast radius, read every line if it touches credit cards or logins. Boris: "exactly."
+Boris Cherny, the original author of Claude Code, recently [shared an email he received](https://x.com/bcherny/status/2098217571153838124) laying out two views on AI-written code. View 1: code is accelerated by AI but stays reviewable, the submitter can explain it, and it's built to be maintained. View 2: vibe code, treat it as a black box, just check the output. His reply: room for both. Prototypes can be black boxes; production needs a higher bar. Someone added that the bar should scale with blast radius, read every line if it touches credit cards or logins. Boris: "exactly."
 
 I agree with all of that, but blast radius only tells you *when* to read the code. It doesn't answer the question underneath: what does reading code give you that reviewing the plan and the output can't?
 
