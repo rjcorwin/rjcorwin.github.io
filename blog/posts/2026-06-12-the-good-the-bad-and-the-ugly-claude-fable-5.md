@@ -35,7 +35,7 @@ The **Opus Captain** reported back fast. Suspiciously fast. "Done, looks great, 
 
 The Commodore got suspicious — *because* it ran so fast — and audited the work. Turns out Opus had "QA'd" the campaign by reading a few dossiers and vibing. The receipts:
 
-- **Opus:** ~12 minutes of work, 6 dossier reads. A spot-check wearing a trench coat.
+- **Opus:** ~12 minutes of work, 6 dossier reads.
 - **Fable 5:** 38 tool calls, **31 attempts to actually join its own game**, and 9 in-game chats. It went in and *played the thing.*
 
 ![Fable's render of the invasion cutscene](images/fable5/bakeoff-fable.png)
