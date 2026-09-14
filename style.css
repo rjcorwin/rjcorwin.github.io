@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap');
 
 /* ─── TOKENS (Earthbound palette) ─── */
 :root {
@@ -15,6 +15,7 @@
   --text:    #c0b8a8;
   --border:  #f8f8f0;
   --font:    'Press Start 2P', 'Courier New', monospace;
+  --font-body: 'IBM Plex Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
 
   /* keep old names so markup neon-* classes still resolve */
   --cyan:    var(--blue);
@@ -141,7 +142,7 @@ body::after { display: none; }
 }
 
 /* ─── ABOUT ─── */
-.about-text p { font-size: 10px; line-height: 2.5; color: var(--text); margin-bottom: 20px; max-width: 720px; }
+.about-text p { font-family: var(--font-body); font-size: 15px; line-height: 1.8; color: var(--text); margin-bottom: 20px; max-width: 720px; }
 .about-text a { color: var(--yellow); text-decoration: none; border-bottom: 2px solid var(--yellow); transition: color .15s; }
 .about-text a:hover { color: var(--white); border-bottom-color: var(--white); }
 
@@ -227,7 +228,7 @@ body::after { display: none; }
 .blog-card .post-date { font-size: 8px; color: var(--green); margin-bottom: 12px; display: block; }
 .blog-card .post-title { font-size: clamp(10px, 2vw, 15px); color: var(--yellow); margin-bottom: 12px; display: block; line-height: 1.6; }
 .blog-card:hover .post-title { color: var(--white); }
-.blog-card .post-excerpt { font-size: 9px; color: var(--text); line-height: 2; }
+.blog-card .post-excerpt { font-family: var(--font-body); font-size: 14px; color: var(--text); line-height: 1.7; }
 .post-tags { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
 .tag { font-size: 7px; padding: 4px 10px; border: 2px solid var(--orange); color: var(--orange); letter-spacing: 1px; }
 
@@ -247,14 +248,14 @@ body::after { display: none; }
 }
 
 .post-body { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 48px 8% 80px; }
-.post-body p  { font-size: 10px; line-height: 2.6; color: var(--text); margin-bottom: 24px; }
+.post-body p  { font-family: var(--font-body); font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom: 24px; }
 .post-body h2 { font-size: clamp(12px, 2vw, 17px); color: var(--yellow); margin: 48px 0 20px; padding-left: 16px; border-left: 4px solid var(--yellow); }
 .post-body h3 { font-size: clamp(10px, 1.5vw, 13px); color: var(--red); margin: 32px 0 16px; }
 .post-body a  { color: var(--yellow); text-decoration: none; border-bottom: 2px solid var(--yellow); transition: color .15s; }
 .post-body a:hover { color: var(--white); border-bottom-color: var(--white); }
-.post-body code { font-family: var(--font); font-size: 8px; background: var(--bg-alt); border: 2px solid var(--green); color: var(--green); padding: 2px 8px; }
+.post-body code { font-family: var(--font-body); font-size: 14px; background: var(--bg-alt); border: 2px solid var(--green); color: var(--green); padding: 2px 8px; }
 .post-body pre { background: #0c0c1c; border: 3px solid var(--green); border-left: 6px solid var(--green); padding: 24px 20px; overflow-x: auto; margin: 24px 0 32px; }
-.post-body pre code { background: none; border: none; padding: 0; font-size: 9px; line-height: 2; }
+.post-body pre code { background: none; border: none; padding: 0; font-size: 14px; line-height: 1.7; }
 
 /* School: wrap code blocks instead of scrolling, add copy button */
 .school-body pre { overflow-x: visible; white-space: pre-wrap; word-break: break-all; position: relative; }
@@ -268,9 +269,9 @@ body::after { display: none; }
 }
 .copy-btn:hover { opacity: 1; }
 .copy-btn.copied { color: var(--blue); border-color: var(--blue); }
-.post-body blockquote { border-left: 6px solid var(--purple); padding: 20px 24px; margin: 24px 0; background: var(--bg-alt); color: var(--cream); font-size: 10px; }
+.post-body blockquote { border-left: 6px solid var(--purple); padding: 20px 24px; margin: 24px 0; background: var(--bg-alt); color: var(--cream); font-family: var(--font-body); font-size: 16px; line-height: 1.8; }
 .post-body ul, .post-body ol { padding-left: 20px; margin-bottom: 24px; }
-.post-body li { font-size: 10px; line-height: 2.4; color: var(--text); margin-bottom: 8px; }
+.post-body li { font-family: var(--font-body); font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom: 8px; }
 .post-body li::marker { color: var(--red); }
 .post-body img { max-width: 100%; image-rendering: pixelated; border: 4px solid var(--border); margin: 24px 0; }
 
