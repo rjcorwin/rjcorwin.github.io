@@ -2,79 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WHAT'S ON THE BOX VS. WHAT'S IN THE BOX — RJ CORWIN</title>
-  <link rel="stylesheet" href="../style.css">
+  <title>What Does Reading the Code Give You?</title>
+  <link rel="canonical" href="https://rjcorwin.github.io/blog/what-does-reading-the-code-give-you.html">
+  <meta http-equiv="refresh" content="0; url=/blog/what-does-reading-the-code-give-you.html">
 </head>
 <body>
-
-  <nav class="site-nav">
-    <a href="/" class="nav-logo">RJ CORWIN</a>
-    <ul class="nav-links">
-      <li><a href="/blog/">BLOG</a></li>
-      <li><a href="https://github.com/rjcorwin" target="_blank" rel="noopener">GITHUB</a></li>
-      <li><a href="https://twitch.tv/HackingWithRJ" target="_blank" rel="noopener">TWITCH</a></li>
-      <li><a href="https://youtube.com/@HackingWithRJ" target="_blank" rel="noopener">YOUTUBE</a></li>
-    </ul>
-  </nav>
-
-  <div class="post-hero">
-    <div class="post-meta">
-      <span class="post-date">2026-09-13</span>
-      <div class="post-tags">
-        <span class="tag">AI</span>
-        <span class="tag">AGENTS</span>
-        <span class="tag">CODE-REVIEW</span>
-      </div>
-    </div>
-    <h1>WHAT'S ON THE BOX VS. WHAT'S IN THE BOX</h1>
-  </div>
-
-  <div class="post-divider"></div>
-
-  <article class="post-body">
-<p>Boris Cherny, the original author of Claude Code, recently <a href="https://x.com/bcherny/status/2098217571153838124">shared an email he received</a> laying out two views on AI-written code. View 1: code is accelerated by AI but stays reviewable, the submitter can explain it, and it&#39;s built to be maintained. View 2: vibe code, treat it as a black box, just check the output. His reply: room for both. Prototypes can be black boxes; production needs a higher bar. Someone added that the bar should scale with blast radius, read every line if it touches credit cards or logins. Boris: &quot;exactly.&quot;</p>
-<p>I agree with all of that, but blast radius only tells you <em>when</em> to read the code. It doesn&#39;t answer the question underneath: what does reading code give you that reviewing the plan and the output can&#39;t?</p>
-<p>Here&#39;s the analogy I keep coming back to. The plan and the description of the code are the picture on the toy box. Open the box and the thing inside can have a different shape. Sometimes it&#39;s the shape that fails: we&#39;ve all seen the bug report that produces a test we didn&#39;t know we needed. If you don&#39;t know the shape of the code, you don&#39;t know how it can fail. And sometimes it&#39;s extra shape, the stuff we never asked for. You asked for a knife, and now a customer is complaining about the corkscrew. You didn&#39;t even know you were shipping a corkscrew.</p>
-<p><strong>The plan tells us what&#39;s on the box. The code tells us what&#39;s actually in the box.</strong></p>
-<p>When I review a PR, I&#39;m asking three questions: does it <em>Work</em> as expected, can we <em>Own</em> it, and now that we can try it, do we <em>Want</em> it? Agentic engineering is making the first and third cheaper: better harnesses for testing, more directions explored before we commit. But Own is the constraint between them. Work and Want tell you what&#39;s possible; Own tells you what you can afford. If we give up understanding the code, our ability to answer the other two questions erodes with it, because we no longer know what shape we&#39;ve taken on.</p>
-<p>Curious how others are drawing this line.</p>
-
-  </article>
-
-  <nav class="post-nav">
-    <a href="the-good-the-bad-and-the-ugly-claude-fable-5.html" class="post-nav-link prev-post">
-      <span class="nav-dir">&lt; PREV</span>
-      <span class="nav-title">THE GOOD, THE BAD, AND THE UGLY - CLAUDE FABLE 5</span>
-    </a>
-    
-  </nav>
-
-  <footer class="site-footer">
-    <p>RJ CORWIN &nbsp;&mdash;&nbsp; <a href="/">HOME</a> &nbsp;&mdash;&nbsp; <a href="/blog/">BLOG</a></p>
-  </footer>
-
-  <script>
-    (function () {
-      const s = document.createElement('div');
-      s.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;';
-      for (let i = 0; i < 50; i++) {
-        const star = document.createElement('div');
-        const dur   = 2 + Math.random() * 5;
-        const delay = -(Math.random() * 6);
-        star.style.cssText = `
-          position:absolute;
-          left:${Math.random()*100}%; top:${Math.random()*100}%;
-          width:2px; height:2px; background:#fff;
-          animation:star-twinkle ${dur}s ease-in-out infinite ${delay}s;
-          --base-op:${(.08+Math.random()*.2).toFixed(2)};
-          --peak-op:${(.4+Math.random()*.4).toFixed(2)};
-        `;
-        s.appendChild(star);
-      }
-      document.body.prepend(s);
-    })();
-  </script>
-
+  <p>This post moved to <a href="/blog/what-does-reading-the-code-give-you.html">What Does Reading the Code Give You?</a></p>
 </body>
 </html>

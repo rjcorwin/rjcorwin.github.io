@@ -1,12 +1,12 @@
 ---
-title: What's on the Box vs. What's in the Box
+title: What Does Reading the Code Give You?
 date: 2026-09-13
-slug: whats-on-the-box-vs-whats-in-the-box
+slug: what-does-reading-the-code-give-you
 tags: [ai, agents, code-review]
 excerpt: Blast radius tells you when to read AI-written code. It doesn't tell you what reading it gives you that a plan and the output can't. A few analogies I've been thinking with.
 ---
 
-# What's on the box vs. what's in the box
+# What does reading the code give you?
 
 Boris Cherny, the original author of Claude Code, recently [shared an email he received](https://x.com/bcherny/status/2098217571153838124) laying out two views on AI-written code. View 1: code is accelerated by AI but stays reviewable, the submitter can explain it, and it's built to be maintained. View 2: vibe code, treat it as a black box, just check the output. His reply: room for both. Prototypes can be black boxes; production needs a higher bar. Someone added that the bar should scale with blast radius, read every line if it touches credit cards or logins. Boris: "exactly."
 
