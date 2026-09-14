@@ -213,7 +213,8 @@ const posts = files.map(file => {
     slug:     data.slug    || file.replace(/\.md$/, ''),
     tags:     data.tags    || [],
     excerpt:  data.excerpt || '',
-    bodyHtml: marked(body),
+    // The hero already renders the title; drop a leading H1 from the body.
+    bodyHtml: marked(body.replace(/^# [^\n]*\n+/, '')),
   };
 });
 
