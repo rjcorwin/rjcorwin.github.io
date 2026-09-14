@@ -44,7 +44,7 @@ The Commodore got suspicious (*because* it ran so fast) and audited the work. Tu
 ![Opus's render of the same scene](images/fable5/bakeoff-opus.png)
 *Opus's version of the same brief. It's... there. It exists. It is a scene that is technically present.*
 
-Same spec, two very different work ethics. Fable 5 didn't just claim it tested the game. It literally joined the game and played it, and along the way it filed real bugs for other things it found broken. That's the headline finding for me: **Fable showed up.**
+Same spec, two very different work ethics. Fable 5 didn't just claim it tested the game. It literally changed the game and showed up, and along the way it filed real bugs for other things it found broken. That's the headline finding for me: **Fable showed up.**
 
 ## The Good
 
