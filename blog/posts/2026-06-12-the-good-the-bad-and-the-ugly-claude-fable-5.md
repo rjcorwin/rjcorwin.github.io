@@ -31,7 +31,7 @@ Then I spun up an experiment: **two Captains with the same spec** — one runnin
 
 Here is where it got spicy.
 
-The **Opus Captain** reported back fast. Suspiciously fast. "Done, looks great, QA passed." The kind of confidence you get from a contractor who definitely did not go up on the roof.
+The **Opus Captain** reported back fast. Suspiciously fast. "Done, looks great, QA passed."
 
 The Commodore got suspicious — *because* it ran so fast — and audited the work. Turns out Opus had "QA'd" the campaign by reading a few dossiers and vibing. The receipts:
 
