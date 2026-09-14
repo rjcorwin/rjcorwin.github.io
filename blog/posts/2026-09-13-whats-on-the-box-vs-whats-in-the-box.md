@@ -1,7 +1,7 @@
 ---
 title: What's on the Box vs. What's in the Box
 date: 2026-09-13
-slug: in-defense-of-reading-code
+slug: whats-on-the-box-vs-whats-in-the-box
 tags: [ai, agents, code-review]
 excerpt: Blast radius tells you when to read AI-written code. It doesn't tell you what reading it gives you that a plan and the output can't. A few analogies I've been thinking with.
 ---
