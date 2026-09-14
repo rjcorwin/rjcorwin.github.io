@@ -67,7 +67,10 @@ body::after { display: none; }
   padding: 20px 40px;
   background: var(--bg);
   border-bottom: 4px solid var(--purple);
+  transition: transform .25s ease;
 }
+/* Landing page: nav stays hidden until the user scrolls past the hero greeting */
+.site-nav.nav-hidden { transform: translateY(-100%); }
 .nav-logo {
   color: var(--yellow); text-decoration: none; font-size: 11px;
   letter-spacing: 3px;

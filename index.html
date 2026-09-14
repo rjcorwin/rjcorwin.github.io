@@ -9,7 +9,7 @@
 <body>
 
   <!-- NAV -->
-  <nav class="site-nav">
+  <nav class="site-nav nav-hidden" id="site-nav">
     <a href="/" class="nav-logo">RJ CORWIN</a>
     <ul class="nav-links">
       <li><a href="/blog/">BLOG</a></li>
@@ -120,6 +120,14 @@
   </footer>
 
   <script>
+    /* ── NAV: reveal on scroll ── */
+    (function () {
+      const nav = document.getElementById('site-nav');
+      const update = () => nav.classList.toggle('nav-hidden', window.scrollY < 80);
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+
     /* ── STARS ── */
     (function () {
       const container = document.getElementById('hero-stars');
