@@ -96,7 +96,7 @@ For a hobby side project about a sailing cat, that price point stings. I'm not r
 
 Could it pencil out for a **real business**? Probably. If an agent is doing genuine work, $1,000-ish a week is a rounding error next to a salary. But for solo developers and hobbyists, the price is the wall you hit first — well before you hit the model's limits.
 
-(It is also, to be clear, a *hungry* setup. The overnight A/B build thrashed my disk from 75% to 94% over and over — the Playwright screenshot tool alone is a 5.3 GB Docker image — and at one point I over-parallelized and watched free RAM drop to **168 MB** with a load average of **83 on 4 cores.** No crash. But I felt that one in my soul.)
+(It is also, to be clear, a *hungry* setup. The overnight A/B build thrashed my disk from 75% to 94% over and over — the Playwright screenshot tool alone is a 5.3 GB Docker image — and at one point I over-parallelized and watched free RAM drop to **168 MB** with a load average of **83 on 4 cores.** No crash. But it made my Mac mini feel really mini.)
 
 ## Takeaways
 
