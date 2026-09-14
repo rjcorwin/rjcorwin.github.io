@@ -25,7 +25,7 @@ The campaign:
 
 The architecture is sillier than the game. There's a top-level agent I call the **Commodore** (his name is Halyard, he's very earnest). The Commodore spins up **Captains** — individual Claude Code sessions living in tmux, each in its own Docker container so they can't step on each other. Work gets tracked in a GitHub issue queue like a real project run by real adults.
 
-Then I did the only experiment worth doing: I spun up **two Captains with the same spec** — one running Fable 5, one running Opus — and let them race.
+Then I spun up an experiment: I spun up **two Captains with the same spec** — one running Fable 5, one running Opus — and let them race.
 
 ## Fable 5 vs. Opus: the bake-off
 
