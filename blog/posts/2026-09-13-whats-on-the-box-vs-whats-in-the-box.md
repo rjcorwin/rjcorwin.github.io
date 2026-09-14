@@ -18,4 +18,4 @@ Here's the analogy I keep coming back to. The plan and the description of the co
 
 When I review a PR, I'm asking three questions: does it *Work* as expected, can we *Own* it, and now that we can try it, do we *Want* it? Agentic engineering is making the first and third cheaper: better harnesses for testing, more directions explored before we commit. But Own is the constraint between them. Work and Want tell you what's possible; Own tells you what you can afford. If we give up understanding the code, our ability to answer the other two questions erodes with it, because we no longer know what shape we've taken on.
 
-That's where my head's at. Interested in what analogies others are using.
+Curious how others are drawing this line.
