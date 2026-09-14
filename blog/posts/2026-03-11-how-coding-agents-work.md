@@ -48,6 +48,3 @@ They're also good at documentation, at exploring a codebase you hand them, and a
 
 **Decisions.** Every non-trivial software decision requires context the agent doesn't have. You keep the decision authority. The agent helps you think through options and execute the one you pick.
 
----
-
-This is the theory behind the three levels in [How RJ Codes With AI](/school/). Each level is the same todo app feature, implemented with increasing structure and automation — so you can see concretely what changes as the methodology gets more rigorous.

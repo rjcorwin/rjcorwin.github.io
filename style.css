@@ -257,9 +257,6 @@ body::after { display: none; }
 .post-body pre { background: #0c0c1c; border: 3px solid var(--green); border-left: 6px solid var(--green); padding: 24px 20px; overflow-x: auto; margin: 24px 0 32px; }
 .post-body pre code { background: none; border: none; padding: 0; font-size: 14px; line-height: 1.7; }
 
-/* School: wrap code blocks instead of scrolling, add copy button */
-.school-body pre { overflow-x: visible; white-space: pre-wrap; word-break: break-all; position: relative; }
-.school-body pre code { white-space: pre-wrap; word-break: break-all; }
 .copy-btn {
   position: absolute; top: 8px; right: 8px;
   font-family: var(--font); font-size: 7px; color: var(--green);
